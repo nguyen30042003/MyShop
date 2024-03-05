@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Pages\AnalystBudget.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Dashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\OrderManager.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Product.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\ProductManager.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Setting.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\InfoCard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\MenuButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\ProductCard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\TopProduct.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\User.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\AnalystBudget.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Dashboard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\OrderManager.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Product.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ProductManager.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Setting.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\InfoCard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\MenuButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\ProductCard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\TopProduct.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\User.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

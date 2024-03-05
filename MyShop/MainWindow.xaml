@@ -1,0 +1,45 @@
+﻿<Window x:Class="MyShop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uc="clr-namespace:MyShop.UserControls"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        Title="MainWindow" Height="760" Width="1280" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" Background="Transparent">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="boolToVis"/>
+    </Window.Resources>
+    <Border CornerRadius="25" Padding="20" Background="#151f2d">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--menu-->
+            <Border Background="#1e2e44" CornerRadius="25 0 0 25">
+                <Grid>
+                    <StackPanel VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 40">
+                            <Ellipse Width="8" Height="8" Fill="#eb1700"/>
+                            <Ellipse Width="8" Height="8" Fill="#eb1700" Margin="7 0"/>
+                            <Ellipse Width="8" Height="8" Fill="#eb1700"/>
+                        </StackPanel>
+
+                        <uc:MenuButton Icon="HomeVariant" MouseDoubleClick="dashboard_Click" />
+                        <uc:MenuButton Icon="Package" MouseDoubleClick="productManager_Click"/>
+                        <uc:MenuButton Icon="Cart" MouseDoubleClick="orderManager_Click"/> 
+                        <uc:MenuButton Icon="Cogs" MouseDoubleClick="setting_Click"/>
+                        <uc:MenuButton Icon="Finance" MouseDoubleClick="analystBudget_Click"/>
+
+                    </StackPanel>
+                    <uc:MenuButton Icon="Power" VerticalAlignment="Bottom" Margin=" 0 0 0 15"/>
+                    
+                </Grid>
+            </Border>
+            <ContentControl x:Name="contentControl" Grid.Column="1">
+                <!-- Nội dung UserControl sẽ được hiển thị ở đây -->
+            </ContentControl>
+        </Grid>
+    </Border>
+</Window>
