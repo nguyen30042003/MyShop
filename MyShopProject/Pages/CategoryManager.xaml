@@ -1,0 +1,61 @@
+﻿<Window x:Class="MyShopProject.Pages.CategoryManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:MyShopProject.Pages"
+         xmlns:uc="clr-namespace:MyShopProject.UserControls"
+        mc:Ignorable="d"
+        Title="CategoryManager" Height="450" Width="800">
+    <Border Background="White" Style="{StaticResource mainBorder}" Margin="20 10 20 10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Margin="10 10 10 0" Grid.RowSpan="3" Grid.Column="0"  Background="Wheat" CornerRadius="5" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" TextAlignment="Center" Text="List Product" Foreground="Black" FontSize="20" HorizontalAlignment="Center"/>
+                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid">
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="ID Category" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding ID}"/>
+
+                            <DataGridTextColumn Header="Name Category" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+
+
+                            <DataGridTemplateColumn Header="Edit" IsReadOnly="True" Width="70">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button>
+                                                <Icon:PackIconMaterial Kind="Delete" Background="Yellow"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="Add Category" TextAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Center" Margin="0 30 0 0">
+               
+                <TextBox Style="{StaticResource customTextbox}" Margin="5 0 0 0" Width="150" Height="36"/>
+                <uc:CustomButton Grid.Column="1" Grid.Row="1" nameButton="Add Product" Width="100" Height="50" Grid.RowSpan="2" />
+            </StackPanel>
+            
+        </Grid>
+    </Border>
+</Window>

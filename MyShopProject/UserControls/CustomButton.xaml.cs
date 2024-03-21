@@ -41,5 +41,13 @@ namespace MyShopProject.UserControls
         }
         public static readonly DependencyProperty nameButtonProperty =
             DependencyProperty.Register("nameButton", typeof(String), typeof(CustomButton));
+
+        public ICommand ClickCommand
+        {
+            get { return (ICommand)GetValue(ClickCommandProperty); }
+            set { SetValue(ClickCommandProperty, value); }
+        }
+        public static readonly DependencyProperty ClickCommandProperty =
+            DependencyProperty.Register("ClickCommand", typeof(ICommand), typeof(CustomButton));
     }
 }

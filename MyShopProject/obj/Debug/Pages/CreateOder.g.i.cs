@@ -41,7 +41,7 @@ namespace MyShopProject.Pages {
     /// <summary>
     /// CreateOder
     /// </summary>
-    public partial class CreateOder : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector {
+    public partial class CreateOder : System.Windows.Controls.Page, System.Windows.Markup.IComponentConnector {
         
         
         #line 100 "..\..\..\Pages\CreateOder.xaml"

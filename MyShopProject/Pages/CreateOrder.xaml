@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="MyShopProject.Pages.CreateOder"
+﻿<Window  x:Class="MyShopProject.Pages.CreateOrder"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:MyShopProject.Pages"
              xmlns:uc="clr-namespace:MyShopProject.UserControls"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             
             >
     <Grid>
+        
         <Border Style="{StaticResource mainBorder}" Margin="20 10 20 10">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -126,5 +126,5 @@
         </Border>
     </Grid>
 
-</UserControl>
+</Window>
 

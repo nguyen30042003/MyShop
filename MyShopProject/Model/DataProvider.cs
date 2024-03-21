@@ -17,6 +17,7 @@ namespace MyShopProject.Model
             } 
             set { instance = value; }
         }
+        
         public ManagerMyShopEntities DB { get; set; }
         public DataProvider()
         {

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MyShopProject.UserControls"
              mc:Ignorable="d" 
 d:DesignWidth="100" Name="customButton" >
-    <Button x:Name="myButton">
+    <Button x:Name="myButton" Command="{Binding ClickCommand, ElementName=customButton}">
         <Button.Content>
             <TextBlock Text="{Binding ElementName=customButton, Path=nameButton}" d:Text="Button" Foreground="White"/>
         </Button.Content>

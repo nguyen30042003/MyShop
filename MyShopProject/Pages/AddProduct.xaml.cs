@@ -1,6 +1,4 @@
-﻿using DocumentFormat.OpenXml.Spreadsheet;
-using MyShopProject.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,23 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MyShopProject.Pages
 {
     /// <summary>
-    /// Interaction logic for OrderManager.xaml
+    /// Interaction logic for AddProduct.xaml
     /// </summary>
-    public partial class OrderManager : UserControl
+    public partial class AddProduct : Window
     {
-        public OrderManagerVM orderManagerVM { get; set; }
-        public OrderManager()
+        public AddProduct()
         {
             InitializeComponent();
-            this.DataContext = orderManagerVM = new OrderManagerVM();
         }
-
-
     }
 }

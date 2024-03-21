@@ -18,9 +18,9 @@ namespace MyShopProject.Pages
     /// <summary>
     /// Interaction logic for CreateOder.xaml
     /// </summary>
-    public partial class CreateOder : UserControl
+    public partial class CreateOrder : Window
     {
-        public CreateOder()
+        public CreateOrder()
         {
             InitializeComponent();
         }

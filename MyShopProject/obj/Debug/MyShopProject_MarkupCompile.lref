@@ -2,7 +2,7 @@
 
 FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\MainWindow.xaml;;
 FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\Pages\AnalystBudget.xaml;;
-FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\Pages\CreateOder.xaml;;
+FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\Pages\CreateOrder.xaml;;
 FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\Pages\Dashboard.xaml;;
 FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\Pages\OrderManager.xaml;;
 FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\Pages\Product.xaml;;
@@ -13,4 +13,6 @@ FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\UserControls\Custom
 FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\UserControls\InfoCard.xaml;;
 FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\UserControls\MenuButton.xaml;;
 FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\UserControls\ProductCard.xaml;;
+FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\Pages\AddProduct.xaml;;
+FC:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\Pages\CategoryManager.xaml;;
 

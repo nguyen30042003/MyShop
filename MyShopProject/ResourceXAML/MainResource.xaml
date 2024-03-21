@@ -3,4 +3,5 @@
                     xmlns:viewmodel="clr-namespace:MyShopProject.ViewModel"
                     >
     <viewmodel:MainWidownVM x:Key="MainVM"></viewmodel:MainWidownVM>
+    <viewmodel:OrderManagerVM x:Key="OrderManagerVM"></viewmodel:OrderManagerVM>
 </ResourceDictionary>

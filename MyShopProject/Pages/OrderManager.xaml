@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MyShopProject.Pages"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:uc="clr-namespace:MyShopProject.UserControls">
+             xmlns:uc="clr-namespace:MyShopProject.UserControls"
+             DataContext="{StaticResource OrderManagerVM}">
     <Grid>
         <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
@@ -20,7 +21,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <uc:CustomButton Margin="10" Grid.Column="0" nameButton="Create Order"  Width="200" Height="50" MouseDoubleClick="CreateOrder" />
+            <uc:CustomButton Margin="10" Grid.Column="0" nameButton="Create Order"  Width="200" Height="50" ClickCommand="{Binding CreateOrder_Click}"/>
         <ComboBox Name="sortSelect" Grid.Column="1" Text="Select" Width="200" Height="50" Background="#1e2e44"/>
         <uc:CustomButton Margin="10" Grid.Column="2" nameButton="Sort"  Width="200" Height="50" />
         <TextBox Grid.Column="3" Margin="20 0 10 0" VerticalAlignment="Center" Background="#1e2e44" Foreground="White" Height="50" 
@@ -53,20 +54,19 @@ Padding="10,10,0,0" FontSize="20" />
             </DataGrid.Columns>
         </DataGrid>
     </Border>
-    <Border Grid.Row="2" Padding="5" HorizontalAlignment="Center">
-        <StackPanel Orientation="Horizontal">
-            <Button Style="{StaticResource pagingButton}">
-                <Icon:PackIconMaterial Kind="ChevronLeft"/>
-            </Button>
-            <Button Style="{StaticResource pagingButton}" Content="1"/>
-            <Button Style="{StaticResource pagingButton}" Content="2"/>
-            <Button Style="{StaticResource pagingButton}" Content="3"/>
-            <Button Style="{StaticResource pagingButton}" Content="4"/>
-            <Button Style="{StaticResource pagingButton}">
-                <Icon:PackIconMaterial Kind="ChevronRight"/>
-            </Button>
-        </StackPanel>
-
-    </Border>
+        <Border Grid.Row="2" Padding="5" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource pagingButton}">
+                    <Icon:PackIconMaterial Kind="ChevronLeft"/>
+                </Button>
+                <Button Style="{StaticResource pagingButton}" Content="1"/>
+                <Button Style="{StaticResource pagingButton}" Content="2"/>
+                <Button Style="{StaticResource pagingButton}" Content="3"/>
+                <Button Style="{StaticResource pagingButton}" Content="4"/>
+                <Button Style="{StaticResource pagingButton}">
+                    <Icon:PackIconMaterial Kind="ChevronRight"/>
+                </Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>
