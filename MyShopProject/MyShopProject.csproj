@@ -159,7 +159,7 @@
       <DependentUpon>TopProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\CategoryManager.cs" />
+    <Compile Include="ViewModel\CategoryManagerVM.cs" />
     <Compile Include="ViewModel\MainWidownVM.cs" />
     <Compile Include="ViewModel\OrderManagerVM.cs" />
     <Page Include="MainWindow.xaml">

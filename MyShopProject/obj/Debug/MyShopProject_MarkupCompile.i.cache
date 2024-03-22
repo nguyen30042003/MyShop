@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\obj\Debug\
+C:\Users\phamm\source\repos\MyShop\MyShopProject\obj\Debug\
 MyShopProject
 none
 false
 DEBUG;TRACE
-C:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\App.xaml
+C:\Users\phamm\source\repos\MyShop\MyShopProject\App.xaml
 16-1190804206
 2739969757
-46890477964
-27-583514628
+461678177155
+27-800618032
 MainWindow.xaml;Pages\AddProduct.xaml;Pages\AnalystBudget.xaml;Pages\CategoryManager.xaml;Pages\CreateOrder.xaml;Pages\Dashboard.xaml;Pages\OrderManager.xaml;Pages\Product.xaml;Pages\ProductManager.xaml;Pages\Setting.xaml;ResourceXAML\MainResource.xaml;UserControls\CustomButton.xaml;UserControls\InfoCard.xaml;UserControls\MenuButton.xaml;UserControls\ProductCard.xaml;UserControls\TopProduct.xaml;
 
 True
