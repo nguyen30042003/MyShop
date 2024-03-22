@@ -7,7 +7,7 @@
         xmlns:uc="clr-namespace:MyShopProject.UserControls"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="AddProduct" Height="450" Width="800">
+        Title="AddProduct" Height="470" Width="800">
     <StackPanel Background="#151f2d">
         <TextBlock Text="Add product" FontSize="28" TextAlignment="Center" Padding="0 0 0 5"/>
         <Grid>
@@ -67,7 +67,7 @@
                 <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Image" Width="270"/>
                 <TextBox Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
-            <uc:CustomButton Grid.Row="9" nameButton="Add product"  Width="70" Height="40" ClickCommand="{Binding CreateOrder_Click}"/>
+            <uc:CustomButton Grid.Row="9" nameButton="Add product"  Width="80" Height="40" Click="AddProduct_Click"/>
 
         </Grid>
     </StackPanel>

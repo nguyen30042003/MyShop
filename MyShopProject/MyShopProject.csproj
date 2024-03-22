@@ -162,6 +162,7 @@
     <Compile Include="ViewModel\CategoryManagerVM.cs" />
     <Compile Include="ViewModel\MainWidownVM.cs" />
     <Compile Include="ViewModel\OrderManagerVM.cs" />
+    <Compile Include="ViewModel\ProductManagerVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
