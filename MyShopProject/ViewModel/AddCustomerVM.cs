@@ -18,7 +18,7 @@ namespace MyShopProject.ViewModel
         public string tbGender { get; set; }
         public string tbPhone { get; set; }
 
-        public string _pathImage;
+        private string _pathImage;
         public string PathImage
         {
             get { return _pathImage; }
