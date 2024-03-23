@@ -10,18 +10,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyShopProject.Pages
-{
+namespace MyShopProject.Pages {
     /// <summary>
-    /// Interaction logic for ProductManager.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class ProductManager : UserControl
-    {
-        public ProductManager()
-        {
+    public partial class Login : Window {
+        public Login() {
             InitializeComponent();
         }
     }

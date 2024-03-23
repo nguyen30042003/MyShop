@@ -23,9 +23,5 @@ namespace MyShopProject.Pages
         {
             InitializeComponent();
         }
-
-        private void AddProduct_Click(object sender, RoutedEventArgs e) {
-
-        }
     }
 }

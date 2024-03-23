@@ -28,14 +28,13 @@ namespace MyShopProject.ViewModel {
         }
         public MainWidownVM()
         {
-            
                 quit_Click = new RelayCommand<Object>((p) => { return true; }, (p) => Application.Current.Shutdown());
                 dashboad_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Dashboard()));
                 productManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductManager()));
                 orderManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new OrderManager()));
                 setting_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Setting()));
                 analystBudget_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new AnalystBudget()));
-            
+                NavigateToPage(new Dashboard());
         }
         private void NavigateToPage(UserControl page)
         {

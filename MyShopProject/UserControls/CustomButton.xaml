@@ -24,7 +24,7 @@ d:DesignWidth="100" Name="customButton" >
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="Wheat"/>
+                                    <Setter TargetName="border" Property="Background" Value="#616C7C"/>
 
                                 </Trigger>
                             </ControlTemplate.Triggers>

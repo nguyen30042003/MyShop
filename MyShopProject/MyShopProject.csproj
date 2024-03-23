@@ -122,6 +122,9 @@
     <Compile Include="Pages\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\OrderManager.xaml.cs">
       <DependentUpon>OrderManager.xaml</DependentUpon>
     </Compile>
@@ -162,11 +165,14 @@
       <DependentUpon>TopProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddCustomerVM.cs" />
+    <Compile Include="ViewModel\AddProductVM.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CategoryManagerVM.cs" />
     <Compile Include="ViewModel\MainWidownVM.cs" />
     <Compile Include="ViewModel\OrderManagerVM.cs" />
     <Compile Include="ViewModel\ProductManagerVM.cs" />
+    <Compile Include="ViewModel\UpdateCustomerVM.cs" />
+    <Compile Include="ViewModel\UpdateProductVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -200,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -316,6 +326,7 @@
     <Resource Include="image\13.jpg" />
     <Resource Include="image\14.jpg" />
     <Resource Include="image\15.jpg" />
+    <Resource Include="image\password.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

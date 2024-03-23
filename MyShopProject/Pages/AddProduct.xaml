@@ -26,7 +26,7 @@
 
             <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0 5">
                 <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Name" Width="270"/>
-                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+                <TextBox Text="{Binding product.Name}" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0 5">
@@ -67,8 +67,7 @@
                 <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Image" Width="270"/>
                 <TextBox Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
-            <uc:CustomButton Grid.Row="9" nameButton="Add product"  Width="80" Height="40" Click="AddProduct_Click"/>
-
+            <uc:CustomButton Grid.Row="9" nameButton="{Binding Action}"  Width="80" Height="40" ClickCommand="{Binding Action_Click}"/>
         </Grid>
     </StackPanel>
 

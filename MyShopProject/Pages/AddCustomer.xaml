@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         DataContext="{StaticResource AddCustomerVM}"
         Title="AddCustomer" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#151f2d">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>

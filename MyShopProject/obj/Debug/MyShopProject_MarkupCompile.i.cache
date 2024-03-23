@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\phamm\Source\Repos\MyShop\MyShopProject\obj\Debug\
+C:\Users\phamm\source\repos\MyShop\MyShopProject\obj\Debug\
 MyShopProject
 none
 false
 DEBUG;TRACE
-C:\Users\phamm\Source\Repos\MyShop\MyShopProject\App.xaml
-16-1190804206
+C:\Users\phamm\source\repos\MyShop\MyShopProject\App.xaml
+18690117610
 2739969757
-47-1801027258
-27-1582630064
-MainWindow.xaml;Pages\AddProduct.xaml;Pages\AnalystBudget.xaml;Pages\CategoryManager.xaml;Pages\CreateOrder.xaml;Pages\Dashboard.xaml;Pages\OrderManager.xaml;Pages\Product.xaml;Pages\ProductManager.xaml;Pages\Setting.xaml;ResourceXAML\MainResource.xaml;UserControls\CustomButton.xaml;UserControls\InfoCard.xaml;UserControls\MenuButton.xaml;UserControls\ProductCard.xaml;UserControls\TopProduct.xaml;
+53647168986
+27-800618032
+MainWindow.xaml;Pages\AddCustomer.xaml;Pages\AddProduct.xaml;Pages\AnalystBudget.xaml;Pages\CategoryManager.xaml;Pages\CreateOrder.xaml;Pages\Dashboard.xaml;Pages\Login.xaml;Pages\OrderManager.xaml;Pages\Product.xaml;Pages\ProductManager.xaml;Pages\Setting.xaml;ResourceXAML\MainResource.xaml;UserControls\CustomButton.xaml;UserControls\InfoCard.xaml;UserControls\MenuButton.xaml;UserControls\ProductCard.xaml;UserControls\TopProduct.xaml;
 
 False
 

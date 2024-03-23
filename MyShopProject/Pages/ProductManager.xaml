@@ -21,12 +21,12 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <ComboBox Name="sortSelect" Text="Select" Width="200" Height="50" Background="#1e2e44"/>
-            <uc:CustomButton Margin="10" Grid.Column="1" nameButton="Sort"  Width="200" Height="50" Loaded="CustomButton_Loaded"/>
+            <uc:CustomButton Margin="10" Grid.Column="1" nameButton="Sort"  Width="200" Height="50"/>
             <TextBox Grid.Column="2" Margin="20 0 10 0" VerticalAlignment="Center" Background="#1e2e44" Foreground="White" Height="50" 
          Padding="10,10,0,0" FontSize="20" />
-            <uc:CustomButton Margin="10" Grid.Column="3" nameButton="Search"  Width="100" Height="50" Loaded="CustomButton_Loaded"/>
+            <uc:CustomButton Margin="10" Grid.Column="3" nameButton="Search"  Width="100" Height="50" />
         </Grid>
-        <uc:CustomButton Margin="0 0 30 0" nameButton="Add product" Grid.Row="1" HorizontalAlignment="Right" Width="100" Height="40" ClickCommand="{Binding addProduct_Click}"/>
+        <uc:CustomButton Margin="20 0 0 0" nameButton="Add product" Grid.Row="1" HorizontalAlignment="Left" Width="100" Height="40" ClickCommand="{Binding OpenAddProduct_Click}"/>
         <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="20 10 20 10">
 
             <WrapPanel Margin="0 10 0 10" Orientation="Horizontal">

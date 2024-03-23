@@ -3,10 +3,9 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-
             xmlns:local="clr-namespace:MyShopProject"
             mc:Ignorable="d"
-            DataContext="{StaticResource MainVM}"
+            DataContext="{StaticResource MainWindowVM}"
             xmlns:uc="clr-namespace:MyShopProject.UserControls"
             Title="MainWindow" Height="760" Width="1280" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None"
     WindowStartupLocation="CenterScreen" Background="Transparent">
@@ -30,7 +29,7 @@
                         <uc:MenuButton Icon="Package" ClickCommand="{Binding productManager_Click}"/>
                         <uc:MenuButton Icon="Cart" ClickCommand="{Binding orderManager_Click}"/>
                         <uc:MenuButton Icon="Cogs" ClickCommand="{Binding setting_Click}"/>
-                        <uc:MenuButton Icon="Finance" ClickCommand="{Binding analystBudget_Click}"/>
+                        <uc:MenuButton Icon="Finance" ClickCommand="{Binding analystBudget_Click}" />
 
                         </StackPanel>
                     <uc:MenuButton Icon="Power" ClickCommand="{Binding quit_Click}" VerticalAlignment="Bottom" Margin=" 0 0 0 15" />

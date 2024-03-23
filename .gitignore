@@ -1,8 +1,3 @@
 .vs
-/MyShopProject/.vs/
-bin
-obj
+/MyShopProject/.vs
 /MyShopProject/App.config
-/MyShopProject/obj/Debug/
-/MyShopProject/obj/Debug/
-/MyShopProject/.vs/MyShopProject.csproj.dtbcache.json

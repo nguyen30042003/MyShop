@@ -1,0 +1,35 @@
+﻿<Window x:Class="MyShopProject.Pages.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyShopProject.Pages"
+        mc:Ignorable="d"
+        xmlns:uc="clr-namespace:MyShopProject.UserControls"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        Title="Login" Height="450" Width="300" Background="#151f2d"
+        WindowStartupLocation="CenterScreen">
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/image/password.png" Stretch="Uniform" Width="80"/>
+        <TextBlock Grid.Row="1" Text="WELCOME BACK" TextAlignment="Center"/>
+            <TextBlock Grid.Row="2" Margin="0 0 0 20" Text="Login to your existing account" TextAlignment="Center"/>
+        <StackPanel Margin="10 5" Grid.Row="3">
+            <TextBlock Text="Username" Margin="0 0 0 2"/>
+            <TextBox VerticalContentAlignment="Center" Text="Username" Height="35" Style="{StaticResource customTextbox}"/>
+        </StackPanel>
+        <StackPanel Margin="10 0 10 5" Grid.Row="4">
+            <TextBlock Text="Password" Margin="0 0 0 2"/>
+            <PasswordBox VerticalContentAlignment="Center" Height="35" Style="{StaticResource customPasswordbox}"/>
+        </StackPanel>
+        <uc:CustomButton nameButton="Login" Margin="10 5" Height="40" Grid.Row="5"/>
+    </Grid>
+</Window>
