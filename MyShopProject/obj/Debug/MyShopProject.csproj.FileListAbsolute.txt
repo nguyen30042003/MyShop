@@ -66,3 +66,5 @@ C:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\obj\Debug\Pages\AddP
 C:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\obj\Debug\Pages\CategoryManager.g.cs
 C:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\obj\Debug\Pages\AddProduct.baml
 C:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\obj\Debug\Pages\CategoryManager.baml
+C:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\obj\Debug\Pages\AddCustomer.g.cs
+C:\HCMUS\Nam 3\C#\ProjectMyShop\MyShopProject\MyShopProject\obj\Debug\Pages\AddCustomer.baml

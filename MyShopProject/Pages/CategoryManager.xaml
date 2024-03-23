@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:MyShopProject.Pages"
          xmlns:uc="clr-namespace:MyShopProject.UserControls"
         mc:Ignorable="d"
+        DataContext="{StaticResource CategoryManagerVM}"
         Title="CategoryManager" Height="450" Width="800">
     <Border Background="White" Style="{StaticResource mainBorder}" Margin="20 10 20 10">
         <Grid>
@@ -26,7 +27,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" TextAlignment="Center" Text="List Product" Foreground="Black" FontSize="20" HorizontalAlignment="Center"/>
-                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid">
+                    <DataGrid ItemsSource="{Binding ListCategory}" SelectedItem="{Binding SelectedCategory}" Grid.Row="1" AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid">
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Header="ID Category" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding ID}"/>
@@ -38,9 +39,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Button>
-                                                <Icon:PackIconMaterial Kind="Delete" Background="Yellow"/>
-                                            </Button>
+                                            <uc:CustomButton ClickCommand="{Binding DeleteCategory_Click}" nameButton="Delete"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -51,11 +50,9 @@
             </Border>
             <TextBlock Grid.Row="0" Grid.Column="1" Text="Add Category" TextAlignment="Center"/>
             <StackPanel Orientation="Horizontal" Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Center" Margin="0 30 0 0">
-               
-                <TextBox Style="{StaticResource customTextbox}" Margin="5 0 0 0" Width="150" Height="36"/>
-                <uc:CustomButton Grid.Column="1" Grid.Row="1" nameButton="Add Product" Width="100" Height="50" Grid.RowSpan="2" />
+                <TextBox Text="{Binding tbCategoryName}" Style="{StaticResource customTextbox}" Margin="5 0 0 0" Width="150" Height="36"/>
+                <uc:CustomButton ClickCommand="{Binding AddCategory_Click}" Grid.Column="1" Grid.Row="1" nameButton="Add Product" Width="100" Height="50" Grid.RowSpan="2" />
             </StackPanel>
-            
         </Grid>
     </Border>
 </Window>

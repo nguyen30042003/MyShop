@@ -29,6 +29,5 @@ namespace MyShopProject.Pages
             this.DataContext = orderManagerVM = new OrderManagerVM();
         }
 
-
     }
 }

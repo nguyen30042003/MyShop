@@ -4,4 +4,6 @@
                     >
     <viewmodel:MainWidownVM x:Key="MainVM"></viewmodel:MainWidownVM>
     <viewmodel:OrderManagerVM x:Key="OrderManagerVM"></viewmodel:OrderManagerVM>
+    <viewmodel:CategoryManagerVM x:Key="CategoryManagerVM"></viewmodel:CategoryManagerVM>
+    <viewmodel:AddCustomerVM x:Key="AddCustomerVM"></viewmodel:AddCustomerVM>
 </ResourceDictionary>
