@@ -16,15 +16,15 @@ using System.Windows.Shapes;
 namespace MyShopProject.Pages
 {
     /// <summary>
-    /// Interaction logic for CategoryManager.xaml
+    /// Interaction logic for AddCustomer.xaml
     /// </summary>
-    public partial class CategoryManager : Window
+    public partial class AddCustomer : Window
     {
-        public CategoryManagerVM categoryManagerVM { get; set; }
-        public CategoryManager()
+        public AddCustomerVM addCustomerVM { get; set; }
+        public AddCustomer()
         {
             InitializeComponent();
-            this.DataContext = categoryManagerVM = new CategoryManagerVM();
+            this.DataContext = addCustomerVM = new AddCustomerVM();
         }
     }
 }

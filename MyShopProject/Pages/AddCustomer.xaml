@@ -1,0 +1,56 @@
+﻿<Window x:Class="MyShopProject.Pages.AddCustomer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:MyShopProject.UserControls"
+        xmlns:local="clr-namespace:MyShopProject.Pages"
+        mc:Ignorable="d"
+        DataContext="{StaticResource AddCustomerVM}"
+        Title="AddCustomer" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="ADD CUSTOMER" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="30"/>
+        <TextBlock Grid.Row="1" Text="Full Name" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding tbFullName}" Style="{StaticResource customTextbox}"  HorizontalAlignment="Left" Margin="5 0 0 0" Width="350"/>
+
+        <TextBlock Grid.Row="2" Text=" Date Of Birth" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <DatePicker Grid.Row="2" Grid.Column="1" Text="{Binding tbDOB}" HorizontalAlignment="Left" Margin="5 10 0 0"  Width="350"/>
+
+        <TextBlock  Grid.Row="3" Text="Email"  HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <TextBox  Grid.Row="3" Grid.Column="1" Text="{Binding tbEmail}" Style="{StaticResource customTextbox}"  HorizontalAlignment="Left" Margin="5 10 0 0"   Width="350"/>
+
+
+        <TextBlock Grid.Row="4" Text="Phone" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding tbPhone}" Style="{StaticResource customTextbox}"  HorizontalAlignment="Left" Margin="5 10 0 0" Width="350"/>
+
+        <TextBlock Grid.Row="5" Text=" Gender" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <RadioButton  HorizontalAlignment="Left" Margin="20 10 0 0" Grid.Row="5" Grid.Column="1" Name="Male" GroupName="Buttons"  IsChecked="True">Male</RadioButton>
+        <RadioButton  HorizontalAlignment="Left" Margin="100 10 0 0" Grid.Row="5" Grid.Column="1" Name="Female" GroupName="Buttons"  >Female</RadioButton>
+
+        <TextBlock Grid.Row="6" Text="Avatar" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Margin="5 10 0 0">
+            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" >
+                <Image Source="{Binding PathImage}"  Height="100" Width="100"/>
+            </Border>
+            <uc:CustomButton ClickCommand="{Binding PathImage_Click}" nameButton="Brows..." Height="50" Width="100" Margin="15 0 0 0" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <uc:CustomButton ClickCommand="{Binding AddCustomer_Click}" Grid.Row="7" Grid.ColumnSpan="2" nameButton="Save" Height="50" Width="100" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+    </Grid>
+</Window>
