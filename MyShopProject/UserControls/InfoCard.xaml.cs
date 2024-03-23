@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.IconPacks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,15 @@ namespace MyShopProject.UserControls
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(String), typeof(InfoCard));
 
+
+        public String NameTitle
+        {
+            get { return (String)GetValue(NameTitleProperty); }
+            set { SetValue(NameTitleProperty, value); }
+        }
+        public static readonly DependencyProperty NameTitleProperty =
+            DependencyProperty.Register("NameTitle", typeof(String), typeof(InfoCard));
+
         public String Number
         {
             get { return (String)GetValue(NumberProperty); }
@@ -55,5 +65,14 @@ namespace MyShopProject.UserControls
         }
         public static readonly DependencyProperty IsTechnicalProperty =
             DependencyProperty.Register("IsTechnical", typeof(String), typeof(InfoCard));
+
+
+        public PackIconMaterialKind Icon
+        {
+            get { return (PackIconMaterialKind)GetValue(InconProperty); }
+            set { SetValue(InconProperty, value); }
+        }
+        public static readonly DependencyProperty InconProperty =
+            DependencyProperty.Register("Icon", typeof(PackIconMaterialKind), typeof(InfoCard));
     }
 }

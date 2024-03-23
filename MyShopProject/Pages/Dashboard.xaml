@@ -17,19 +17,19 @@
         </Grid.RowDefinitions>
         <!--Card-->
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="20 20 10 10">
-            <uc:InfoCard Number="10" Title="Average Days to Hire" IsTechnical="True"/>
-            <uc:InfoCard Number="10" Title="Average Days to Hire" IsTechnical="True"/>
-            <uc:InfoCard Number="10" Title="Average Days to Hire" IsTechnical="True"/>
+            <uc:InfoCard Number="10" Icon="HomeVariant"  NameTitle="Total product" Title="Total number of products sold in today" IsTechnical="True"/>
+            <uc:InfoCard Number="10" Icon="HomeVariant" NameTitle="Total order" Title="Total number of order in today" IsTechnical="True"/>
+            <uc:InfoCard Number="10" Icon="HomeVariant" NameTitle="Total Customer" Title="Total number of customers purchased" IsTechnical="True"/>
         </StackPanel>
         <StackPanel Margin="0 20 10 10" Grid.Column="1">
-            <uc:InfoCard Number="10" Title="Average Days to Hire" IsTechnical="False"/>
-            <uc:InfoCard Number="10" Title="Average Days to Hire" IsTechnical="False"/>
-            <uc:InfoCard Number="10" Title="Average Days to Hire" IsTechnical="False"/>
+            <uc:InfoCard Number="10" Icon="HomeVariant" NameTitle="Total product" Title="Total number of the product have stock" IsTechnical="False"/>
+            <uc:InfoCard Number="10" Icon="HomeVariant" NameTitle="Total revenue" Title="Total revenue" IsTechnical="False"/>
+            <uc:InfoCard Number="10" Icon="HomeVariant" NameTitle="TOTAL PROFIT" Title="Total profit" IsTechnical="False"/>
         </StackPanel>
 
         <Border Grid.Column="2" Style="{StaticResource mainBorder}" Margin="0 20 20 30">
             <Grid>
-                <TextBlock Text="Sales statistics" Style="{StaticResource titleText}"/>
+                <TextBlock Text="Profit statistics" Style="{StaticResource titleText}"/>
 
                 <Button Style="{StaticResource titleButton}">
                     <Icon:PackIconMaterial Kind="Tune" Style="{StaticResource topMenuButtonIcon}"/>
@@ -65,7 +65,7 @@
 
         <Border Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource mainBorder}" Margin="20 0 10 20">
             <Grid>
-                <TextBlock Text="TOP SELLER" Style="{StaticResource titleText}"/>
+                <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
 
                 <lvc:CartesianChart Margin="0 30 0 0">
                     <lvc:CartesianChart.DataTooltip>
@@ -105,7 +105,7 @@
 
         <Border Grid.Column="2" Grid.Row="1" Style="{StaticResource mainBorder}" Margin="0 0 20 20" >
             <Grid>
-                <TextBlock Text="TOP PRODUCT" Style="{StaticResource titleText}"/>
+                <TextBlock Text="TOP 5 PRODUCT" Style="{StaticResource titleText}"/>
 
                 <ListView Margin="0 50 0 0" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                     <uc:TopProduct ProductName="" Flag="/image/12.jpg" Price="$" IsLevelUp="True"/>

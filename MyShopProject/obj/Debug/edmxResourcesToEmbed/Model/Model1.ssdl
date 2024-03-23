@@ -52,6 +52,7 @@
     <Property Name="IDCategory" Type="int" />
     <Property Name="Discount" Type="int" />
     <Property Name="Description" Type="text" />
+    <Property Name="image" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

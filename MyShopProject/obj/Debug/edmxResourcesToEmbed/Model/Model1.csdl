@@ -62,6 +62,7 @@
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Category" Relationship="Self.FK__Product__IDCateg__3B75D760" FromRole="Product" ToRole="Category" />
     <NavigationProperty Name="Items" Relationship="Self.FK__Item__IDProduct__4222D4EF" FromRole="Product" ToRole="Item" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
