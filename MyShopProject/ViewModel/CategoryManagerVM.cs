@@ -1,3 +1,4 @@
+
 ﻿using MyShopProject.Model;
 using MyShopProject.Repository;
 using System.Collections.Generic;
@@ -19,7 +20,8 @@ namespace MyShopProject.ViewModel
         {
             ListCategory = new ObservableCollection<Category>(categoryList());
 
-            AddCategory_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
+            AddCategory_Click = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
                 Category category = new Category() { ID = 0, Name = TbCategoryName };
                 ICategoryRepository categoryRepository = new ICategoryRepository();
                 categoryRepository.create(category);
@@ -27,7 +29,8 @@ namespace MyShopProject.ViewModel
                 MessageBox.Show("Add success");
             });
 
-            DeleteCategory_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
+            DeleteCategory_Click = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
                 MessageBox.Show("Are you delete category");
                 if (SelectedCategory != null)
                 {

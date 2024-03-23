@@ -51,19 +51,10 @@
     <Property Name="PriceImport" Type="float" />
     <Property Name="IDCategory" Type="int" />
     <Property Name="Discount" Type="int" />
+    <Property Name="Image" Type="varchar" MaxLength="255" />
     <Property Name="Description" Type="text" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
-  <Association Name="FK__Item__IDOrder__4316F928">
+  <Association Name="FK__Item__IDOrder__5535A963">
     <End Role="Order" Type="Self.Order" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -77,7 +68,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Item__IDProduct__4222D4EF">
+  <Association Name="FK__Item__IDProduct__5441852A">
     <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
     <End Role="Item" Type="Self.Item" Multiplicity="*" />
     <ReferentialConstraint>
@@ -89,7 +80,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Order__IDCustome__3E52440B">
+  <Association Name="FK__Order__IDCustome__5070F446">
     <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
     <End Role="Order" Type="Self.Order" Multiplicity="*" />
     <ReferentialConstraint>
@@ -101,7 +92,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Product__IDCateg__3B75D760">
+  <Association Name="FK__Product__IDCateg__4D94879B">
     <End Role="Category" Type="Self.Category" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -135,20 +126,19 @@
     <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Item__IDOrder__4316F928" Association="Self.FK__Item__IDOrder__4316F928">
+    <AssociationSet Name="FK__Item__IDOrder__5535A963" Association="Self.FK__Item__IDOrder__5535A963">
       <End Role="Order" EntitySet="Order" />
       <End Role="Item" EntitySet="Item" />
     </AssociationSet>
-    <AssociationSet Name="FK__Item__IDProduct__4222D4EF" Association="Self.FK__Item__IDProduct__4222D4EF">
+    <AssociationSet Name="FK__Item__IDProduct__5441852A" Association="Self.FK__Item__IDProduct__5441852A">
       <End Role="Product" EntitySet="Product" />
       <End Role="Item" EntitySet="Item" />
     </AssociationSet>
-    <AssociationSet Name="FK__Order__IDCustome__3E52440B" Association="Self.FK__Order__IDCustome__3E52440B">
+    <AssociationSet Name="FK__Order__IDCustome__5070F446" Association="Self.FK__Order__IDCustome__5070F446">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Order" EntitySet="Order" />
     </AssociationSet>
-    <AssociationSet Name="FK__Product__IDCateg__3B75D760" Association="Self.FK__Product__IDCateg__3B75D760">
+    <AssociationSet Name="FK__Product__IDCateg__4D94879B" Association="Self.FK__Product__IDCateg__4D94879B">
       <End Role="Category" EntitySet="Category" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>

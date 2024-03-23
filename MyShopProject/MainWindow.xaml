@@ -33,7 +33,7 @@
                         <uc:MenuButton Icon="Finance" ClickCommand="{Binding analystBudget_Click}"/>
 
                         </StackPanel>
-                        <uc:MenuButton Icon="Power" VerticalAlignment="Bottom" Margin=" 0 0 0 15"/>
+                    <uc:MenuButton Icon="Power" ClickCommand="{Binding quit_Click}" VerticalAlignment="Bottom" Margin=" 0 0 0 15" />
 
                     </Grid>
                 </Border>

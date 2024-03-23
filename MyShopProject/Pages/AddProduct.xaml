@@ -4,9 +4,72 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyShopProject.Pages"
+        xmlns:uc="clr-namespace:MyShopProject.UserControls"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="AddProduct" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="AddProduct" Height="470" Width="800">
+    <StackPanel Background="#151f2d">
+        <TextBlock Text="Add product" FontSize="28" TextAlignment="Center" Padding="0 0 0 5"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Name" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Create date" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Quantity" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Sale price" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Import price" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Category" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="6" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Discount" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="7" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Description" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="8" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Image" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+            <uc:CustomButton Grid.Row="9" nameButton="Add product"  Width="80" Height="40" Click="AddProduct_Click"/>
+
+        </Grid>
+    </StackPanel>
+
 </Window>

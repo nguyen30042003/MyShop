@@ -6,4 +6,5 @@
     <viewmodel:OrderManagerVM x:Key="OrderManagerVM"></viewmodel:OrderManagerVM>
     <viewmodel:CategoryManagerVM x:Key="CategoryManagerVM"></viewmodel:CategoryManagerVM>
     <viewmodel:AddCustomerVM x:Key="AddCustomerVM"></viewmodel:AddCustomerVM>
+    <viewmodel:ProductManagerVM x:Key="ProductManagerVM"></viewmodel:ProductManagerVM>
 </ResourceDictionary>

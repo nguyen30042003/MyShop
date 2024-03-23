@@ -23,13 +23,10 @@ namespace MyShopProject.ViewModel
 
         private void SwitchToCreateOrderPage()
         {
-            CategoryManager categoryManager = new CategoryManager();
-
-            CreateOrder createOrderPage = new CreateOrder();
 
             AddCustomer addCustomer = new AddCustomer();
             addCustomer.ShowDialog();
-            //createOrderPage.ShowDialog();
+
         }
     }
 }
