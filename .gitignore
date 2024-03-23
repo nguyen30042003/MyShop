@@ -1,5 +1,8 @@
-.vs/
-/.vs/
+.vs
+/MyShopProject/.vs/
 bin
 obj
 /MyShopProject/App.config
+/MyShopProject/obj/Debug/
+/MyShopProject/obj/Debug/
+/MyShopProject/.vs/MyShopProject.csproj.dtbcache.json
