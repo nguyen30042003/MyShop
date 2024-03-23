@@ -1,3 +1,5 @@
 .vs
-App.config
-bin
+/.vs
+/App.config
+/bin
+/obj
