@@ -25,12 +25,11 @@ namespace MyShopProject.Repository
 
 
         public ICustomerRepository() { }
-        private DataProvider dataProvider;
         public void create(Customer customer)
         {
             if (customer != null)
             {
-                DataProvider.Instance.DB.Customers.Add(customer);
+                DataProvider.Instance.DB.Customer.Add(customer);
                 DataProvider.Instance.DB.SaveChanges();
                 /*dataProvider.DB.Customers.Add(customer);
                  dataProvider.DB.SaveChanges();*/
@@ -42,21 +41,21 @@ namespace MyShopProject.Repository
             Customer c = findById(customer.ID);
             if(c != null)
             {
-                DataProvider.Instance.DB.Customers.Remove(c);
+                DataProvider.Instance.DB.Customer.Remove(c);
                 DataProvider.Instance.DB.SaveChanges();
             }
         }
 
         public List<Customer> findAll()
         {
-            return DataProvider.Instance.DB.Customers.ToList();
+            return DataProvider.Instance.DB.Customer.ToList();
         }
 
 
 
         public List<Customer> findByName(string name)
         {
-            return DataProvider.Instance.DB.Customers.Where(c=>c.Full_Name.Contains(name)).ToList();
+            return DataProvider.Instance.DB.Customer.Where(c=>c.Full_Name.Contains(name)).ToList();
         }
 
         public void update(Customer customer)
@@ -76,7 +75,7 @@ namespace MyShopProject.Repository
 
         public Customer findById(int id)
         {
-            Customer customer = DataProvider.Instance.DB.Customers.FirstOrDefault(c => c.ID == id);
+            Customer customer = DataProvider.Instance.DB.Customer.FirstOrDefault(c => c.ID == id);
             if (customer != null)
             {
                 Console.WriteLine(customer.Full_Name);

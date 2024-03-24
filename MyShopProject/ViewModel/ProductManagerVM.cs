@@ -10,10 +10,10 @@ using System.Windows.Input;
 namespace MyShopProject.ViewModel {
     internal class ProductManagerVM : BaseViewModel {
         public String Action {  get; set; }
-        public ICommand OpenAddProduct_Click {  get; set; }
+        public ICommand Action_Click {  get; set; }
         public ProductManagerVM() {
-            OpenAddProduct_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
-                OpenAddProductDialog();
+            Action_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
+                OpenUpdateProductDialog();
             });
         }
         private AddProduct addProduct { get; set; }
@@ -34,7 +34,12 @@ namespace MyShopProject.ViewModel {
         }
 
         private void OpenUpdateProductDialog() {
-            var updateProductVM = new UpdateProductVM(new Model.Product() { Name = "Haha"});
+            var product = new Model.Product() { Name = "Haha", Image = "Haha" };
+            var updateProductVM = new UpdateProductVM(product);
+            void UpdateProduct() {
+                addProduct.DialogResult = true;
+                MessageBox.Show(product.Name);
+            }
             updateProductVM.Click_Hanlder += UpdateProduct;
 
             addProduct = new AddProduct();
@@ -44,9 +49,5 @@ namespace MyShopProject.ViewModel {
             }
         }
 
-        private void UpdateProduct() {
-            addProduct.DialogResult = true;
-            MessageBox.Show("Update product");
-        }
     }
 }

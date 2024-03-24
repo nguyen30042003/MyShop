@@ -17,7 +17,7 @@ namespace MyShopProject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.Items = new HashSet<Item>();
+            this.Item = new HashSet<Item>();
         }
     
         public int ID { get; set; }
@@ -28,11 +28,11 @@ namespace MyShopProject.Model
         public Nullable<double> PriceImport { get; set; }
         public Nullable<int> IDCategory { get; set; }
         public Nullable<int> Discount { get; set; }
-        public string Description { get; set; }
         public string Image { get; set; }
+        public string Description { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Item> Items { get; set; }
+        public virtual ICollection<Item> Item { get; set; }
     }
 }

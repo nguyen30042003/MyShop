@@ -1,5 +1,8 @@
-﻿using MyShopProject.Pages;
+﻿using MyShopProject.Model;
+using MyShopProject.Pages;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +31,7 @@ namespace MyShopProject.ViewModel {
         }
         public MainWidownVM()
         {
+                MessageBox.Show(DataProvider.Instance.DB.Product.ToList().Count.ToString());
                 quit_Click = new RelayCommand<Object>((p) => { return true; }, (p) => Application.Current.Shutdown());
                 dashboad_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Dashboard()));
                 productManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductManager()));

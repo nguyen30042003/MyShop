@@ -1,6 +1,5 @@
 .vs
 /MyShopProject/.vs
 /MyShopProject/App.config
-/MyShopProject/bin/Debug
-/MyShopProject/obj/Debug
-/MyShopProject/obj/Debug/App.g.i.cs
+/MyShopProject/bin/
+/MyShopProject/obj/

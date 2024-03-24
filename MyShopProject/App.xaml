@@ -421,6 +421,11 @@
                 <Setter Property="Foreground" Value="White"/>
             </Style>
 
+            <Style TargetType="Calendar"
+           x:Key="DateTimeCalendar">
+                <Setter Property="Background" Value="#151f2d"/>
+            </Style>
+
             <!--list item view-->
             <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#1F26A0DA"/>
             <SolidColorBrush x:Key="Item.MouseOver.Border" Color="#a826A0Da"/>

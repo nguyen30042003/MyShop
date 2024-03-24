@@ -13,7 +13,7 @@ namespace MyShopProject.Repository
         {
             if (item != null)
             {
-                DataProvider.Instance.DB.Items.Add(item);
+                DataProvider.Instance.DB.Item.Add(item);
                 DataProvider.Instance.DB.SaveChanges();
             }
         }
@@ -23,19 +23,19 @@ namespace MyShopProject.Repository
             Item i = findById(item.ID);
             if (i != null)
             {
-                DataProvider.Instance.DB.Items.Remove(i);
+                DataProvider.Instance.DB.Item.Remove(i);
                 DataProvider.Instance.DB.SaveChanges();
             }
         }
 
         public List<Item> findAll()
         {
-            return DataProvider.Instance.DB.Items.ToList();
+            return DataProvider.Instance.DB.Item.ToList();
         }
 
         public Item findById(int id)
         {
-            Item item = DataProvider.Instance.DB.Items.FirstOrDefault(c => c.ID == id);
+            Item item = DataProvider.Instance.DB.Item.FirstOrDefault(c => c.ID == id);
             if (item != null)
             {
                 Console.WriteLine(item.IDOrder);
@@ -50,7 +50,7 @@ namespace MyShopProject.Repository
 
         public List<Item> findByIdOrder(int id)
         {
-            List<Item> items = DataProvider.Instance.DB.Items.Where(c => c.IDOrder == id).ToList();
+            List<Item> items = DataProvider.Instance.DB.Item.Where(c => c.IDOrder == id).ToList();
 
 
             return items;

@@ -48,7 +48,7 @@
             <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" >
                 <Image Source="{Binding PathImage}"  Height="100" Width="100"/>
             </Border>
-            <uc:CustomButton ClickCommand="{Binding PathImage_Click}" nameButton="Brows..." Height="50" Width="100" Margin="15 0 0 0" HorizontalAlignment="Center"/>
+            <uc:CustomButton ClickCommand="{Binding PathImage_Click}" nameButton="Browse..." Height="50" Width="100" Margin="15 0 0 0" HorizontalAlignment="Center"/>
         </StackPanel>
 
         <uc:CustomButton ClickCommand="{Binding AddCustomer_Click}" Grid.Row="7" Grid.ColumnSpan="2" nameButton="Save" Height="50" Width="100" HorizontalAlignment="Center" Margin="0 20 0 0"/>

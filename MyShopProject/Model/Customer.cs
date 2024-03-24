@@ -17,8 +17,8 @@ namespace MyShopProject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-            this.Orders = new HashSet<Order>();
-            this.Orders1 = new HashSet<Order>();
+            this.Order = new HashSet<Order>();
+            this.Order1 = new HashSet<Order>();
         }
     
         public int ID { get; set; }
@@ -30,8 +30,8 @@ namespace MyShopProject.Model
         public string Avatar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders1 { get; set; }
+        public virtual ICollection<Order> Order1 { get; set; }
     }
 }
