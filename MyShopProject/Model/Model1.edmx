@@ -58,7 +58,6 @@
           <Property Name="Discount" Type="int" />
           <Property Name="Image" Type="varchar" MaxLength="255" />
           <Property Name="Description" Type="text" />
-          <Property Name="image" Type="varchar" MaxLength="255" />
         </EntityType>
         <Association Name="FK__Item__IDOrder__5535A963">
           <End Role="Order" Type="Self.Order" Multiplicity="0..1">
@@ -366,7 +365,6 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="ManagerMyShopModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />

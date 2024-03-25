@@ -13,10 +13,10 @@ namespace MyShopProject.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ManagerMyShopEntities : DbContext
+    public partial class ManagerMyShopEntities1 : DbContext
     {
-        public ManagerMyShopEntities()
-            : base("name=ManagerMyShopEntities")
+        public ManagerMyShopEntities1()
+            : base("name=ManagerMyShopEntities1")
         {
         }
     
@@ -25,10 +25,10 @@ namespace MyShopProject.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Item> Items { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<Item> Item { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
     }
 }

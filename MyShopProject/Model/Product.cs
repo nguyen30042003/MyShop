@@ -30,7 +30,6 @@ namespace MyShopProject.Model
         public Nullable<int> Discount { get; set; }
         public string Image { get; set; }
         public string Description { get; set; }
-        public string image { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
