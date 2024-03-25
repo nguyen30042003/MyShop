@@ -52,7 +52,7 @@
     <Property Name="IDCategory" Type="int" />
     <Property Name="Discount" Type="int" />
     <Property Name="Description" Type="text" />
-    <Property Name="image" Type="varchar" MaxLength="255" />
+    <Property Name="Image" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -87,18 +87,6 @@
       </Principal>
       <Dependent Role="Item">
         <PropertyRef Name="IDProduct" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Order__IDCustome__3E52440B">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="IDCustomer" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -144,10 +132,6 @@
     <AssociationSet Name="FK__Item__IDProduct__4222D4EF" Association="Self.FK__Item__IDProduct__4222D4EF">
       <End Role="Product" EntitySet="Product" />
       <End Role="Item" EntitySet="Item" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Order__IDCustome__3E52440B" Association="Self.FK__Order__IDCustome__3E52440B">
-      <End Role="Customer" EntitySet="Customer" />
-      <End Role="Order" EntitySet="Order" />
     </AssociationSet>
     <AssociationSet Name="FK__Product__IDCateg__3B75D760" Association="Self.FK__Product__IDCateg__3B75D760">
       <End Role="Category" EntitySet="Category" />

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ManagerMyShopModelStoreContainer" CdmEntityContainer="ManagerMyShopEntities">
-    <EntitySetMapping Name="Categories">
+    <EntitySetMapping Name="Category">
       <EntityTypeMapping TypeName="ManagerMyShopModel.Category">
         <MappingFragment StoreEntitySet="Category">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -9,7 +9,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Customers">
+    <EntitySetMapping Name="Customer">
       <EntityTypeMapping TypeName="ManagerMyShopModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -22,7 +22,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Items">
+    <EntitySetMapping Name="Item">
       <EntityTypeMapping TypeName="ManagerMyShopModel.Item">
         <MappingFragment StoreEntitySet="Item">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -33,7 +33,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
+    <EntitySetMapping Name="Order">
       <EntityTypeMapping TypeName="ManagerMyShopModel.Order">
         <MappingFragment StoreEntitySet="Order">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -44,10 +44,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Products">
+    <EntitySetMapping Name="Product">
       <EntityTypeMapping TypeName="ManagerMyShopModel.Product">
         <MappingFragment StoreEntitySet="Product">
-          <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
@@ -57,11 +56,12 @@
           <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
           <ScalarProperty Name="Discount" ColumnName="Discount" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="ManagerMyShopModel.sysdiagram">
+      <EntityTypeMapping TypeName="ManagerMyShopModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />

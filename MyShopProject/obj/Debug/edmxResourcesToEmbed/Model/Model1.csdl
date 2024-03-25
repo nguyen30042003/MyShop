@@ -6,7 +6,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Products" Relationship="Self.FK__Product__IDCateg__3B75D760" FromRole="Category" ToRole="Product" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Product__IDCateg__3B75D760" FromRole="Category" ToRole="Product" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -19,8 +19,7 @@
     <Property Name="DOB" Type="DateTime" Precision="0" />
     <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Avatar" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK__Order__IDCustome__3E52440B" FromRole="Customer" ToRole="Order" />
-    <NavigationProperty Name="Orders1" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
   </EntityType>
   <EntityType Name="Item">
     <Key>
@@ -43,9 +42,8 @@
     <Property Name="TotalPrice" Type="Double" />
     <Property Name="TotalQuantity" Type="Int32" />
     <Property Name="CreateDate" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="Customer" Relationship="Self.FK__Order__IDCustome__3E52440B" FromRole="Order" ToRole="Customer" />
-    <NavigationProperty Name="Customer1" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
-    <NavigationProperty Name="Items" Relationship="Self.FK__Item__IDOrder__4316F928" FromRole="Order" ToRole="Item" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="Item" Relationship="Self.FK__Item__IDOrder__4316F928" FromRole="Order" ToRole="Item" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -60,11 +58,11 @@
     <Property Name="IDCategory" Type="Int32" />
     <Property Name="Discount" Type="Int32" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Category" Relationship="Self.FK__Product__IDCateg__3B75D760" FromRole="Product" ToRole="Category" />
-    <NavigationProperty Name="Items" Relationship="Self.FK__Item__IDProduct__4222D4EF" FromRole="Product" ToRole="Item" />
-    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Item" Relationship="Self.FK__Item__IDProduct__4222D4EF" FromRole="Product" ToRole="Item" />
   </EntityType>
-  <EntityType Name="sysdiagram">
+  <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
@@ -85,18 +83,6 @@
       </Principal>
       <Dependent Role="Product">
         <PropertyRef Name="IDCategory" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Order__IDCustome__3E52440B">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="IDCustomer" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -141,31 +127,27 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="ManagerMyShopEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Categories" EntityType="Self.Category" />
-    <EntitySet Name="Customers" EntityType="Self.Customer" />
-    <EntitySet Name="Items" EntityType="Self.Item" />
-    <EntitySet Name="Orders" EntityType="Self.Order" />
-    <EntitySet Name="Products" EntityType="Self.Product" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" />
+    <EntitySet Name="Item" EntityType="Self.Item" />
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <AssociationSet Name="FK__Product__IDCateg__3B75D760" Association="Self.FK__Product__IDCateg__3B75D760">
-      <End Role="Category" EntitySet="Categories" />
-      <End Role="Product" EntitySet="Products" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Order__IDCustome__3E52440B" Association="Self.FK__Order__IDCustome__3E52440B">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="Order" EntitySet="Orders" />
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
     </AssociationSet>
     <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="Order" EntitySet="Orders" />
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Order" EntitySet="Order" />
     </AssociationSet>
     <AssociationSet Name="FK__Item__IDOrder__4316F928" Association="Self.FK__Item__IDOrder__4316F928">
-      <End Role="Order" EntitySet="Orders" />
-      <End Role="Item" EntitySet="Items" />
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Item" EntitySet="Item" />
     </AssociationSet>
     <AssociationSet Name="FK__Item__IDProduct__4222D4EF" Association="Self.FK__Item__IDProduct__4222D4EF">
-      <End Role="Product" EntitySet="Products" />
-      <End Role="Item" EntitySet="Items" />
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Item" EntitySet="Item" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -4,15 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7b9dab6422ad41079ccc77409400a243" Name="Diagram1" ZoomLevel="63">
-        <EntityTypeShape EntityType="ManagerMyShopModel.Category" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagerMyShopModel.Customer" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagerMyShopModel.Item" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagerMyShopModel.Order" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagerMyShopModel.Product" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagerMyShopModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+      <Diagram DiagramId="bd5fdc744ffc464d875b48084885c488" Name="Diagram1">
+        <EntityTypeShape EntityType="ManagerMyShopModel.Category" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerMyShopModel.Customer" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerMyShopModel.Item" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerMyShopModel.Order" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerMyShopModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerMyShopModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="ManagerMyShopModel.FK__Product__IDCateg__3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="ManagerMyShopModel.FK__Order__IDCustome__3E52440B" ManuallyRouted="false" />
         <AssociationConnector Association="ManagerMyShopModel.FK_Order_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="ManagerMyShopModel.FK__Item__IDOrder__4316F928" ManuallyRouted="false" />
         <AssociationConnector Association="ManagerMyShopModel.FK__Item__IDProduct__4222D4EF" ManuallyRouted="false" />
