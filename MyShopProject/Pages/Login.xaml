@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:MyShopProject.Pages"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MyShopProject.UserControls"
-        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         Title="Login" Height="450" Width="300" Background="#151f2d"
         WindowStartupLocation="CenterScreen">
         <Grid>
@@ -24,12 +23,12 @@
             <TextBlock Grid.Row="2" Margin="0 0 0 20" Text="Login to your existing account" TextAlignment="Center"/>
         <StackPanel Margin="10 5" Grid.Row="3">
             <TextBlock Text="Username" Margin="0 0 0 2"/>
-            <TextBox VerticalContentAlignment="Center" Text="Username" Height="35" Style="{StaticResource customTextbox}"/>
+            <TextBox Text="{Binding username}" VerticalContentAlignment="Center" Height="35" Style="{StaticResource customTextbox}"/>
         </StackPanel>
         <StackPanel Margin="10 0 10 5" Grid.Row="4">
             <TextBlock Text="Password" Margin="0 0 0 2"/>
-            <PasswordBox VerticalContentAlignment="Center" Height="35" Style="{StaticResource customPasswordbox}"/>
+            <PasswordBox x:Name="passwordbox" PasswordChanged="ChangePassword" VerticalContentAlignment="Center" Height="35" Style="{StaticResource customPasswordbox}"/>
         </StackPanel>
-        <uc:CustomButton nameButton="Login" Margin="10 5" Height="40" Grid.Row="5"/>
+        <uc:CustomButton nameButton="Login" Margin="10 5" Height="40" Grid.Row="5" ClickCommand="{Binding LoginCommand}"/>
     </Grid>
 </Window>

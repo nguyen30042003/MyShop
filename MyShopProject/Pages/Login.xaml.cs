@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyShopProject.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +18,15 @@ namespace MyShopProject.Pages {
     /// Interaction logic for Login.xaml
     /// </summary>
     public partial class Login : Window {
+        LoginVM LoginViewModel { get; set; }
         public Login() {
             InitializeComponent();
+            LoginViewModel = new LoginVM();
+            DataContext = LoginViewModel;
+        }
+
+        private void ChangePassword(object sender, RoutedEventArgs e) {
+            LoginViewModel.password = passwordbox.Password;
         }
     }
 }

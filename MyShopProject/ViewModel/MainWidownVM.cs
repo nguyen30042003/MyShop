@@ -31,7 +31,6 @@ namespace MyShopProject.ViewModel {
         }
         public MainWidownVM()
         {
-                MessageBox.Show(DataProvider.Instance.DB.Products.ToList().Count.ToString());
                 quit_Click = new RelayCommand<Object>((p) => { return true; }, (p) => Application.Current.Shutdown());
                 dashboad_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Dashboard()));
                 productManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductManager()));
