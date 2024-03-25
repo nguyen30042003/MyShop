@@ -24,10 +24,5 @@ namespace MyShopProject.Pages
         {
             InitializeComponent();
         }
-
-        private void CustomButton_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

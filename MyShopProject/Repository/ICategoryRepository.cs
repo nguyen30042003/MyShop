@@ -9,7 +9,6 @@ namespace MyShopProject.Repository
 {
     public class ICategoryRepository : CategoryRepository
     {
-        private DataProvider dataProvider;
         public void create(Category category)
         {
             if (category != null)

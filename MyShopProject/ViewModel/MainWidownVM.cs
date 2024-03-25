@@ -1,5 +1,8 @@
-﻿using MyShopProject.Pages;
+﻿using MyShopProject.Model;
+using MyShopProject.Pages;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +16,7 @@ namespace MyShopProject.ViewModel {
         public ICommand orderManager_Click { get; set; }
         public ICommand setting_Click { get; set; }
         public ICommand analystBudget_Click { get; set; }
+        public ICommand quit_Click { get; set; }
 
         private UserControl _currentPage;
 
@@ -27,12 +31,13 @@ namespace MyShopProject.ViewModel {
         }
         public MainWidownVM()
         {
-            NavigateToPage(new Dashboard());
-            dashboad_Click = new RelayCommand<Object>((p) => { return true; }, (p) => { NavigateToPage(new Dashboard()); });
-            productManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => { NavigateToPage(new ProductManager()); });
-            orderManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => { NavigateToPage(new OrderManager()); });
-            setting_Click = new RelayCommand<Object>((p) => { return true; }, (p) => { NavigateToPage(new Setting()); });
-            analystBudget_Click = new RelayCommand<Object>((p) => { return true; }, (p) => { NavigateToPage(new AnalystBudget()); });
+                quit_Click = new RelayCommand<Object>((p) => { return true; }, (p) => Application.Current.Shutdown());
+                dashboad_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Dashboard()));
+                productManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductManager()));
+                orderManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new OrderManager()));
+                setting_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Setting()));
+                analystBudget_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new AnalystBudget()));
+                NavigateToPage(new Dashboard());
         }
         private void NavigateToPage(UserControl page)
         {

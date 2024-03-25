@@ -25,7 +25,6 @@ namespace MyShopProject.Repository
 
 
         public ICustomerRepository() { }
-        private DataProvider dataProvider;
         public void create(Customer customer)
         {
             if (customer != null)

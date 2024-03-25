@@ -4,9 +4,135 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyShopProject.Pages"
+        xmlns:uc="clr-namespace:MyShopProject.UserControls"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="AddProduct" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        ResizeMode="NoResize"
+        Title="AddProduct" Height="480" Width="800">
+    <StackPanel Background="#151f2d">
+        <TextBlock Text="Add product" FontSize="28" TextAlignment="Center" Padding="0 0 0 5"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Name" Width="270"/>
+                <TextBox Text="{Binding product.Name}" Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Create date" Width="270"/>
+                <Border BorderThickness="1" Background="White" CornerRadius="5">
+                    <DatePicker Padding="5 0" d:SelectedDate="1/2" CalendarStyle="{StaticResource DateTimeCalendar}" VerticalContentAlignment="Center" BorderThickness="0" Width="298" Height="30">
+                        <DatePicker.Resources>
+                            <Style TargetType="DatePickerTextBox">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type DatePickerTextBox}">
+                                            <Grid>
+                                                <Grid.Resources>
+                                                    <SolidColorBrush x:Key="WatermarkBrush" Color="#FFAAAAAA"/>
+                                                </Grid.Resources>
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates">
+                                                        <VisualStateGroup.Transitions>
+                                                            <VisualTransition GeneratedDuration="0"/>
+                                                            <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver"/>
+                                                        </VisualStateGroup.Transitions>
+                                                        <VisualState x:Name="Normal"/>
+                                                        <VisualState x:Name="MouseOver" />
+                                                    </VisualStateGroup>
+                                                    <VisualStateGroup x:Name="WatermarkStates">
+                                                        <VisualStateGroup.Transitions>
+                                                            <VisualTransition GeneratedDuration="0"/>
+                                                        </VisualStateGroup.Transitions>
+                                                        <VisualState x:Name="Unwatermarked"/>
+                                                        <VisualState x:Name="Watermarked">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ContentElement"/>
+                                                                <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_Watermark"/>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                    <VisualStateGroup x:Name="FocusStates">
+                                                        <VisualStateGroup.Transitions>
+                                                            <VisualTransition GeneratedDuration="0"/>
+                                                        </VisualStateGroup.Transitions>
+                                                        <VisualState x:Name="Unfocused"/>
+                                                        <VisualState x:Name="Focused" />
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="1" Opacity="1" Padding="{TemplateBinding Padding}">
+                                                    <Grid x:Name="WatermarkContent" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                        <Border x:Name="ContentElement" BorderBrush="#FFFFFFFF" BorderThickness="1"/>
+                                                        <Border x:Name="watermark_decorator" BorderBrush="#FFFFFFFF" BorderThickness="1">
+                                                            <ContentControl x:Name="PART_Watermark" Focusable="False" IsHitTestVisible="False" Opacity="0" Padding="2"/>
+                                                        </Border>
+                                                        <ScrollViewer x:Name="PART_ContentHost" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DatePicker.Resources>
+                    </DatePicker>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Quantity" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Sale price" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Import price" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Category" Width="270"/>
+                <ComboBox VerticalContentAlignment="Center" Background="White" ItemsSource="{Binding Categories}" Height="30"  Width="300">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Foreground="Black" Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="6" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Discount" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="7" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Description" Width="270"/>
+                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="8" Margin="0 5">
+                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Image" Width="270"/>
+                <TextBox IsEnabled="False" Text="{Binding product.Image, Mode=TwoWay}" Style="{StaticResource customTextbox}" Width="235"/>
+                <uc:CustomButton ClickCommand="{Binding BrowseImage_Click}" Padding="5 0" Width="70" nameButton="Browse"/>
+            </StackPanel>
+            <uc:CustomButton Grid.Row="9" nameButton="{Binding Action}"  Width="80" Height="40" ClickCommand="{Binding Action_Click}"/>
+        </Grid>
+    </StackPanel>
+
 </Window>

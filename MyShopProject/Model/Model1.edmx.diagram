@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bd5fdc744ffc464d875b48084885c488" Name="Diagram1">
+      <Diagram DiagramId="8946e6530c0841b88b28d3069bdc4ece" Name="Diagram1" ZoomLevel="81">
         <EntityTypeShape EntityType="ManagerMyShopModel.Category" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ManagerMyShopModel.Customer" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ManagerMyShopModel.Item" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ManagerMyShopModel.Order" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ManagerMyShopModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ManagerMyShopModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="ManagerMyShopModel.FK__Product__IDCateg__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="ManagerMyShopModel.FK__Product__IDCateg__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="ManagerMyShopModel.FK_Order_Customer" ManuallyRouted="false" />
-        <AssociationConnector Association="ManagerMyShopModel.FK__Item__IDOrder__4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="ManagerMyShopModel.FK__Item__IDProduct__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="ManagerMyShopModel.FK__Item__IDOrder__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="ManagerMyShopModel.FK__Item__IDProduct__5441852A" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
