@@ -19,7 +19,9 @@ namespace MyShopProject.ViewModel {
 
         public delegate void Hanlder();
         public event Hanlder Click_Hanlder;
-        public UpdateProductVM(Product product) {
+        public UpdateProductVM(Product product_in) {
+            product = new Product() { Name=product_in.Name, Image=product_in.Image };
+            Action = "Update";
             Categories = new List<Category>() {
                 new Category() {Name = "Haha"},
                 new Category() {Name = "Hihi"}
@@ -33,8 +35,6 @@ namespace MyShopProject.ViewModel {
                     OnPropertyChanged("product");
                 }
             });
-            this.product = new Product() { Name=product.Name, Image=product.Image };
-            Action = "Update";
             Action_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
                 Click_Hanlder.Invoke();
             });

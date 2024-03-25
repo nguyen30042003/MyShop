@@ -38,7 +38,7 @@ namespace MyShopProject.ViewModel {
             var updateProductVM = new UpdateProductVM(product);
             void UpdateProduct() {
                 addProduct.DialogResult = true;
-                MessageBox.Show(product.Name);
+                MessageBox.Show(product.Image);
             }
             updateProductVM.Click_Hanlder += UpdateProduct;
 
