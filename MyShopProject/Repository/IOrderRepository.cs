@@ -28,7 +28,7 @@ namespace MyShopProject.Repository
         {
             if (order != null)
             {
-                DataProvider.Instance.DB.Order.Add(order);
+                DataProvider.Instance.DB.Orders.Add(order);
                 DataProvider.Instance.DB.SaveChanges();
             }
         }
@@ -38,19 +38,19 @@ namespace MyShopProject.Repository
             Order o = findById(order.ID);
             if (o != null)
             {
-                DataProvider.Instance.DB.Order.Remove(o);
+                DataProvider.Instance.DB.Orders.Remove(o);
                 DataProvider.Instance.DB.SaveChanges();
             }
         }
 
         public List<Order> findAll()
         {
-            return DataProvider.Instance.DB.Order.ToList();
+            return DataProvider.Instance.DB.Orders.ToList();
         }
 
         public Order findById(int id)
         {
-            Order order = DataProvider.Instance.DB.Order.FirstOrDefault(c => c.ID == id);
+            Order order = DataProvider.Instance.DB.Orders.FirstOrDefault(c => c.ID == id);
             if (order != null)
             {
                 Console.WriteLine(order.ID);
@@ -70,7 +70,7 @@ namespace MyShopProject.Repository
 
             foreach (var customer in customers)
             {
-                orders.AddRange(DataProvider.Instance.DB.Order.Where(c => c.IDCustomer == customer.ID).ToList());
+                orders.AddRange(DataProvider.Instance.DB.Orders.Where(c => c.IDCustomer == customer.ID).ToList());
             }
 
             return orders;

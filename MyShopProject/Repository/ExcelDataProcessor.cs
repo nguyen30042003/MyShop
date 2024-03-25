@@ -63,7 +63,7 @@ namespace MyShopProject.Repository
         {
             if (customer != null)
             {
-                dataProvider.DB.Customer.Add(customer);
+                dataProvider.DB.Customers.Add(customer);
                 dataProvider.DB.SaveChanges();
             }
         }

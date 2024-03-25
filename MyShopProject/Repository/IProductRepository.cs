@@ -13,7 +13,7 @@ namespace MyShopProject.Repository
         {
             if (product != null)
             {
-                DataProvider.Instance.DB.Product.Add(product);
+                DataProvider.Instance.DB.Products.Add(product);
                 DataProvider.Instance.DB.SaveChanges();
                
             }
@@ -24,19 +24,19 @@ namespace MyShopProject.Repository
             Product p = findById(product.ID);
             if (p != null)
             {
-                DataProvider.Instance.DB.Product.Remove(p);
+                DataProvider.Instance.DB.Products.Remove(p);
                 DataProvider.Instance.DB.SaveChanges();
             }
         }
 
         public List<Product> findAll()
         {
-            return DataProvider.Instance.DB.Product.ToList();
+            return DataProvider.Instance.DB.Products.ToList();
         }
 
         public Product findById(int id)
         {
-            Product product = DataProvider.Instance.DB.Product.FirstOrDefault(c => c.ID == id);
+            Product product = DataProvider.Instance.DB.Products.FirstOrDefault(c => c.ID == id);
             if (product != null)
             {
                 Console.WriteLine(product.Name);
@@ -51,7 +51,7 @@ namespace MyShopProject.Repository
 
         public List<Product> findByName(string name)
         {
-            return DataProvider.Instance.DB.Product.Where(c => c.Name.Contains(name)).ToList();
+            return DataProvider.Instance.DB.Products.Where(c => c.Name.Contains(name)).ToList();
         }
 
         public void update(Product product)
