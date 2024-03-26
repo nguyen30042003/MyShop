@@ -11,9 +11,22 @@ namespace MyShopProject.ViewModel {
     internal class ProductManagerVM : BaseViewModel {
         public String Action {  get; set; }
         public ICommand Action_Click {  get; set; }
+        public ICommand GetProductInfo {  get; set; }
+        public List<int> products { get; set; }
         public ProductManagerVM() {
+            products = new List<int>();
+            products.Add(1);
+            products.Add(2);
+            products.Add(3);
+            products.Add(4);
+            products.Add(5);
+            products.Add(6);
+            products.Add(7);
             Action_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
                 OpenUpdateProductDialog();
+            });
+            GetProductInfo = new RelayCommand<object>((p) => { return true; }, (p) => {
+                getProductInfo((int) p);
             });
         }
         private AddProduct addProduct { get; set; }
@@ -49,5 +62,10 @@ namespace MyShopProject.ViewModel {
             }
         }
 
+        private void getProductInfo(int p) {
+            Window mainWindow = Application.Current.MainWindow;
+            MainWidownVM mainWidownVM = (MainWidownVM)mainWindow.DataContext;
+            mainWidownVM.analystBudget_Click.Execute(null);
+        }
     }
 }

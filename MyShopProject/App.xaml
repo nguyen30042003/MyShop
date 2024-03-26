@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             StartupUri="Pages\Login.xaml"
+             StartupUri="MainWindow.xaml"
              xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Application.Resources>
         <ResourceDictionary>
@@ -61,8 +61,7 @@
 
             <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
                 <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-                <Setter Property="Foreground" Value="#AAA8341A"/>
-                <Setter Property="Background" Value="DarkGray"/>
+                <Setter Property="Foreground" Value="#1e2e44"/>
                 <Setter Property="Width" Value="10"/>
                 <Setter Property="Template">
                     <Setter.Value>
@@ -84,11 +83,11 @@
 
                             <ControlTemplate.Triggers>
                                 <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
-                                    <Setter Value="{DynamicResource ButtonSelectBrush}" 
+                                    <Setter Value="#355279" 
                                             TargetName="Thumb" Property="Background"/>
                                 </Trigger>
                                 <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
-                                    <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background"/>
+                                    <Setter Value="#355279" TargetName="Thumb" Property="Background"/>
                                 </Trigger>
 
                                 <Trigger Property="IsEnabled" Value="false">

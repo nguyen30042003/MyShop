@@ -7,14 +7,18 @@
         xmlns:uc="clr-namespace:MyShopProject.UserControls"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        ResizeMode="NoResize"
-        Title="AddProduct" Height="480" Width="800">
+        
+        Title="AddProduct" Height="480" Width="700">
     <StackPanel Background="#151f2d">
-        <TextBlock Text="Add product" FontSize="28" TextAlignment="Center" Padding="0 0 0 5"/>
+        <TextBlock FontSize="28" TextAlignment="Center" Padding="0 0 0 5">
+            <Run Text="{Binding Action}"/> <Run Text="Product"/>
+        </TextBlock>
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -25,15 +29,15 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0 5">
-                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Name" Width="270"/>
-                <TextBox Text="{Binding product.Name}" Style="{StaticResource customTextbox}" Width="300"/>
+            <StackPanel HorizontalAlignment="Right" Grid.Row="0" Margin="5 5">
+                <TextBlock Padding="5 0" Text="Name" />
+                <TextBox HorizontalAlignment="Left" Text="{Binding product.Name}" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0 5">
-                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Create date" Width="270"/>
-                <Border BorderThickness="1" Background="White" CornerRadius="5">
-                    <DatePicker Padding="5 0" d:SelectedDate="1/2" CalendarStyle="{StaticResource DateTimeCalendar}" VerticalContentAlignment="Center" BorderThickness="0" Width="298" Height="30">
+            <StackPanel HorizontalAlignment="Right" Grid.Row="1" Margin="5 5">
+                <TextBlock Padding="5 0" Text="Create date" />
+                <Border HorizontalAlignment="Left" BorderThickness="1" Background="White" CornerRadius="5" Width="300">
+                    <DatePicker Padding="5 0" d:SelectedDate="1/2" CalendarStyle="{StaticResource DateTimeCalendar}" VerticalContentAlignment="Center" BorderThickness="0" Height="30">
                         <DatePicker.Resources>
                             <Style TargetType="DatePickerTextBox">
                                 <Setter Property="Template">
@@ -91,24 +95,24 @@
                 </Border>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0 5">
-                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Quantity" Width="270"/>
-                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            <StackPanel HorizontalAlignment="Right" Grid.Row="2" Margin="5 5">
+                <TextBlock Padding="5 0" Text="Quantity"/>
+                <TextBox HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="0 5">
-                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Sale price" Width="270"/>
-                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            <StackPanel HorizontalAlignment="Right" Grid.Row="3" Margin="5 5">
+                <TextBlock  Padding="5 0"  Text="Sale price" />
+                <TextBox HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0 5">
-                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Import price" Width="270"/>
-                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            <StackPanel HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" Margin="5 5">
+                <TextBlock  Padding="5 0"  Text="Import price" />
+                <TextBox HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="0 5">
-                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Category" Width="270"/>
-                <ComboBox VerticalContentAlignment="Center" Background="White" ItemsSource="{Binding Categories}" Height="30"  Width="300">
+            <StackPanel HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="5 5">
+                <TextBlock  Padding="5 0"  Text="Category" />
+                <ComboBox HorizontalAlignment="Left" VerticalContentAlignment="Center" Background="White" ItemsSource="{Binding Categories}" Height="30"  Width="300">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Foreground="Black" Text="{Binding Name}"/>
@@ -116,22 +120,26 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Row="6" Margin="0 5">
-                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Discount" Width="270"/>
-                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            <StackPanel HorizontalAlignment="Left"  Grid.Row="2" Grid.Column="1" Margin="5 5">
+                <TextBlock  Padding="5 0"  Text="Discount" />
+                <TextBox HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="7" Margin="0 5">
-                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Description" Width="270"/>
-                <TextBox Style="{StaticResource customTextbox}" Width="300"/>
+            <StackPanel  HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" Margin="5 5">
+                <TextBlock  Padding="5 0"  Text="Description" />
+                <TextBox TextWrapping="Wrap" HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="8" Margin="0 5">
-                <TextBlock TextAlignment="Right" Padding="5 0" VerticalAlignment="Center" Text="Image" Width="270"/>
-                <TextBox IsEnabled="False" Text="{Binding product.Image, Mode=TwoWay}" Style="{StaticResource customTextbox}" Width="235"/>
-                <uc:CustomButton ClickCommand="{Binding BrowseImage_Click}" Padding="5 0" Width="70" nameButton="Browse"/>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="5" Margin="5 5">
+                <StackPanel>
+                    <Border BorderBrush="White" BorderThickness="1" CornerRadius="10" >
+                        <Image Source="{Binding product.Image}" Height="100" Width="100"/>
+                    </Border>
+                    <TextBlock TextAlignment="Center" Padding="5 0"  Text="Image" />
+                </StackPanel>
+                <uc:CustomButton ClickCommand="{Binding BrowseImage_Click}" Padding="5 0" Width="70" Height="40" nameButton="Browse"/>
             </StackPanel>
-            <uc:CustomButton Grid.Row="9" nameButton="{Binding Action}"  Width="80" Height="40" ClickCommand="{Binding Action_Click}"/>
+            <uc:CustomButton Grid.Row="6" Grid.ColumnSpan="2" nameButton="{Binding Action}"  Width="80" Height="40" ClickCommand="{Binding Action_Click}"/>
         </Grid>
     </StackPanel>
 

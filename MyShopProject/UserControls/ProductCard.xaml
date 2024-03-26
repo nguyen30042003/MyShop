@@ -1,31 +1,36 @@
-﻿<UserControl x:Class="MyShopProject.UserControls.ProductCard"
+﻿<Button x:Class="MyShopProject.UserControls.ProductCard"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MyShopProject.UserControls"
-                          mc:Ignorable="d" 
-             Name="productCard">
-    <Border CornerRadius="25" Padding="10">
-        <Border.Style>
-            <Style TargetType="Border" BasedOn="{StaticResource mainBorder}">
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="Wheat"/>
+                          mc:Ignorable="d"
+             Name="productCard" Padding="10">
+    <Button.Style>
+            <Style TargetType="Button">
+                <Setter Property="Background" Value="#1e2e44"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" 
+                            Background="{TemplateBinding Background}"  
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#616C7C"/>
 
-                    </Trigger>
-                </Style.Triggers>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
-        </Border.Style>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="220"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Image Margin="5" Source="{Binding ElementName=productCard, Path=imageProduct}" Grid.Row="0" d:Source="/image/12.jpg"/>
-            <TextBlock x:Name="NameProduct" Text="{Binding ElementName=productCard, Path=nameProduct}" Foreground="White" Grid.Row="1"  FontSize="14" FontWeight="Bold" d:Text="hello" TextAlignment="Center"/>
-            <TextBlock x:Name="PriceProduct" Margin="0 10 0 0" Text="{Binding ElementName=productCard, Path=priceProduct}" Foreground="White" Grid.Row="2"  FontSize="14" FontWeight="Bold" d:Text="20000" TextAlignment="Center"/>
-        </Grid>
-    </Border>
-</UserControl>
+        </Button.Style>
+        <StackPanel>
+            <Image Stretch="Uniform" d:Source="/image/12.jpg" Source="{Binding ElementName=productCard, Path=imageProduct}" Margin="10 10 10 10"/>
+            <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding ElementName=productCard, Path=nameProduct}" d:Text="Button"/>
+        </StackPanel>
+</Button>

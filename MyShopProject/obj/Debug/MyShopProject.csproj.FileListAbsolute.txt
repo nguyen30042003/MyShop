@@ -138,3 +138,5 @@ C:\Users\phamm\source\repos\MyShop\MyShopProject\obj\Debug\MyShopProject.csproj.
 C:\Users\phamm\source\repos\MyShop\MyShopProject\obj\Debug\MyShopProject.csproj.CopyComplete
 C:\Users\phamm\source\repos\MyShop\MyShopProject\obj\Debug\MyShopProject.exe
 C:\Users\phamm\source\repos\MyShop\MyShopProject\obj\Debug\MyShopProject.pdb
+C:\Users\phamm\source\repos\MyShop\MyShopProject\obj\Debug\Pages\ProductInfo.g.cs
+C:\Users\phamm\source\repos\MyShop\MyShopProject\obj\Debug\Pages\ProductInfo.baml
