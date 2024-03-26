@@ -1,5 +1,6 @@
 ﻿using MyShopProject.Model;
 using MyShopProject.Repository;
+using MyShopProject.ServiceImpl;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -11,7 +12,7 @@ namespace MyShopProject.ViewModel
     {
         public ICommand AddCategory_Click { get; set; }
         public ICommand DeleteCategory_Click { get; set; }
-        public string TbCategoryName { get; set; }
+        public string tbCategoryName { get; set; }
         public ObservableCollection<Category> ListCategory { get; set; }
         public Category SelectedCategory { get; set; } // Added property for selected category
 
@@ -20,11 +21,14 @@ namespace MyShopProject.ViewModel
             ListCategory = new ObservableCollection<Category>(categoryList());
 
             AddCategory_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
-                Category category = new Category() { ID = 0, Name = TbCategoryName };
-                ICategoryRepository categoryRepository = new ICategoryRepository();
-                categoryRepository.create(category);
-                ListCategory.Add(category);
-                MessageBox.Show("Add success");
+                Category category = new Category() { ID = 0, Name = tbCategoryName };
+
+                if(CategoryServiceImpl.Instance.save(category))
+                {
+                    ListCategory.Add(category);
+                    MessageBox.Show("Add category success");
+                }    
+                MessageBox.Show("Add category unsuccess");
             });
 
             DeleteCategory_Click = new RelayCommand<object>((p) => { return true; }, (p) => {

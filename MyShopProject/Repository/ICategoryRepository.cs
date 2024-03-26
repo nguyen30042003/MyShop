@@ -1,32 +1,63 @@
 ﻿using MyShopProject.Model;
+using MyShopProject.ServiceImpl;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MyShopProject.Repository
 {
     public class ICategoryRepository : CategoryRepository
     {
-        public void create(Category category)
+        private static ICategoryRepository instance;
+        public static ICategoryRepository Instance
         {
-            if (category != null)
+            get
+            {
+                if (instance == null)
+                    instance = new ICategoryRepository();
+                return instance;
+            }
+            set { instance = value; }
+        }
+        public bool create(Category category)
+        {
+            try
             {
                 DataProvider.Instance.DB.Categories.Add(category);
                 DataProvider.Instance.DB.SaveChanges();
+                return true;
+            }catch(SqlException ex)
+            {
+                return false;
             }
+            return false;
         }
 
-        public void delete(Category category)
+
+        public bool delete(Category category)
         {
             Category c = findById(category.ID);
             if (c != null)
             {
-                DataProvider.Instance.DB.Categories.Remove(c);
-                DataProvider.Instance.DB.SaveChanges();
+                try
+                {
+                    DataProvider.Instance.DB.Categories.Remove(c);
+                    DataProvider.Instance.DB.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error while deleting category: {ex.Message}");
+                    return false; 
+                }
             }
+            return false;
         }
+
 
         public List<Category> findAll()
         {
@@ -53,15 +84,16 @@ namespace MyShopProject.Repository
             return DataProvider.Instance.DB.Categories.Where(c => c.Name.Contains(name)).ToList();
         }
 
-        public void update(Category category)
+        public bool update(Category category)
         {
             Category c = findById(category.ID);
             if (c != null)
             {
                 c.Name = category.Name;
-                
                 DataProvider.Instance.DB.SaveChanges();
+                return true;
             }
+            return false;
         }
     }
 }

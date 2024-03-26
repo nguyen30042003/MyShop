@@ -24,23 +24,43 @@ namespace MyShopProject.Repository
 
 
 
-        public void create(Order order)
+        public bool create(Order order)
         {
             if (order != null)
             {
-                DataProvider.Instance.DB.Orders.Add(order);
-                DataProvider.Instance.DB.SaveChanges();
+                try
+                {
+                    DataProvider.Instance.DB.Orders.Add(order);
+                    DataProvider.Instance.DB.SaveChanges();
+                    return true; // Thành công
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error while creating order: {ex.Message}");
+                    return false; // Thất bại
+                }
             }
+            return false;
         }
 
-        public void delete(Order order)
+        public bool delete(Order order)
         {
             Order o = findById(order.ID);
             if (o != null)
             {
-                DataProvider.Instance.DB.Orders.Remove(o);
-                DataProvider.Instance.DB.SaveChanges();
+                try
+                {
+                    DataProvider.Instance.DB.Orders.Remove(o);
+                    DataProvider.Instance.DB.SaveChanges();
+                    return true; // Thành công
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error while deleting order: {ex.Message}");
+                    return false; // Thất bại
+                }
             }
+            return false;
         }
 
         public List<Order> findAll()
@@ -76,17 +96,61 @@ namespace MyShopProject.Repository
             return orders;
         }
 
-        public void update(Order order)
+        public List<Order> sortByCreateDate(DateTime previousDate, DateTime lastDate)
+        {
+            return DataProvider.Instance.DB.Orders.Where(o => o.CreateDate >= previousDate && o.CreateDate <= lastDate)
+                                                     .OrderBy(o => o.CreateDate)
+                                                     .ToList();
+        }
+
+        public List<Order> sortByPrice(float minPrice, float maxPrice)
+        {
+            return DataProvider.Instance.DB.Orders.Where(o => o.TotalPrice >= minPrice && o.TotalPrice <= maxPrice)
+                                                     .OrderBy(o => o.TotalPrice)
+                                                     .ToList();
+        }
+
+        public List<Order> sortByPriceASC()
+        {
+            return DataProvider.Instance.DB.Orders.OrderBy(o => o.TotalPrice).ToList();
+        }
+
+        public List<Order> sortByPriceDesc()
+        {
+            return DataProvider.Instance.DB.Orders.OrderByDescending(o => o.TotalPrice).ToList();
+        }
+
+        public List<Order> sortByQuantityASC()
+        {
+            return DataProvider.Instance.DB.Orders.OrderBy(o => o.TotalQuantity).ToList();
+        }
+
+        public List<Order> sortByQuantityDesc()
+        {
+            return DataProvider.Instance.DB.Orders.OrderByDescending(o => o.TotalQuantity).ToList();
+        }
+
+        public bool update(Order order)
         {
             Order o = findById(order.ID);
             if (o != null)
             {
-                o.IDCustomer = order.IDCustomer;
-                o.TotalPrice = order.TotalPrice;
-                o.TotalQuantity = order.TotalQuantity;
-                o.CreateDate = order.CreateDate;
-                DataProvider.Instance.DB.SaveChanges();
+                try
+                {
+                    o.IDCustomer = order.IDCustomer;
+                    o.TotalPrice = order.TotalPrice;
+                    o.TotalQuantity = order.TotalQuantity;
+                    o.CreateDate = order.CreateDate;
+                    DataProvider.Instance.DB.SaveChanges();
+                    return true; // Thành công
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error while updating order: {ex.Message}");
+                    return false; // Thất bại
+                }
             }
+            return false;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MyShopProject.Model;
+using MyShopProject.ServiceImpl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,14 @@ namespace MyShopProject.ViewModel {
         public AddProductVM() {
             Action = "Add product";
             Action_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
+                if (ProductServiceImpl.Instance.save(product))
+                {
+                    MessageBox.Show("Add Product Success");
+                }
+                else
+                {
+                    MessageBox.Show("Add Product unsuccess");
+                }
                 Click_Hanlder.Invoke();
             });
         }

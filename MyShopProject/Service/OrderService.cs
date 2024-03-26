@@ -5,17 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyShopProject.Repository
+namespace MyShopProject.Service
 {
-    internal interface OrderRepository
+    internal interface OrderService
     {
-        bool create(Order order);
+        bool save(Order order);
         bool update(Order order);
-        bool delete(Order order);
         List<Order> findAll();
-        List<Order> findByName(string name);
+        List<Order> findByCustomerName(string name);
         Order findById(int id);
-
+        bool delete(Order order);
 
         List<Order> sortByCreateDate(DateTime previousDate, DateTime lastDate);
         List<Order> sortByPrice(float minPrice, float maxPrice);
@@ -23,5 +22,6 @@ namespace MyShopProject.Repository
         List<Order> sortByPriceDesc();
         List<Order> sortByQuantityASC();
         List<Order> sortByQuantityDesc();
+
     }
 }

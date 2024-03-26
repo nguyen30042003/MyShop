@@ -9,9 +9,9 @@ namespace MyShopProject.Repository
 {
     internal interface CategoryRepository 
     {
-        void create(Category category);
-        void update(Category category);
-        void delete(Category category);
+        bool create(Category category);
+        bool update(Category category);
+        bool delete(Category category);
         List<Category> findAll();
         List<Category> findByName(string name);
         Category findById(int id);

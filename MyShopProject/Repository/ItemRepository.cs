@@ -9,9 +9,9 @@ namespace MyShopProject.Repository
 {
     internal interface ItemRepository
     {
-        void create(Item item);
-        void update(Item item);
-        void delete(Item item);
+        bool create(Item item);
+        bool update(Item item);
+        bool delete(Item item);
         List<Item> findAll();
         List<Item> findByIdOrder(int id);
         Item findById(int id);

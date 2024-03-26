@@ -183,6 +183,16 @@
     <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
+    <Compile Include="ServiceImpl\CategoryServiceImpl.cs" />
+    <Compile Include="ServiceImpl\CustomerServiceImpl.cs" />
+    <Compile Include="ServiceImpl\ItemServiceImpl.cs" />
+    <Compile Include="ServiceImpl\OrderServiceImpl.cs" />
+    <Compile Include="ServiceImpl\ProductServiceImpl.cs" />
+    <Compile Include="Service\CategoryService.cs" />
+    <Compile Include="Service\CustomerService.cs" />
+    <Compile Include="Service\ItemService.cs" />
+    <Compile Include="Service\OrderService.cs" />
+    <Compile Include="Service\ProductService.cs" />
     <Compile Include="UserControls\CustomButton.xaml.cs">
       <DependentUpon>CustomButton.xaml</DependentUpon>
     </Compile>
@@ -343,9 +353,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

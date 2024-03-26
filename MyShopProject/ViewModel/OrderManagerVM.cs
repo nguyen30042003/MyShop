@@ -28,7 +28,8 @@ namespace MyShopProject.ViewModel
             CreateOrder createOrderPage = new CreateOrder();
 
             AddCustomer addCustomer = new AddCustomer();
-            addCustomer.ShowDialog();
+            //addCustomer.ShowDialog();
+            categoryManager.ShowDialog();
             //createOrderPage.ShowDialog();
         }
     }

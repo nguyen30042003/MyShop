@@ -2,20 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyShopProject.Repository
+namespace MyShopProject.Service
 {
-    internal interface CustomerRepository
+    internal interface CustomerService
     {
-        bool create(Customer customer);
+        bool save(Customer customer);
         bool update(Customer customer);
-        bool delete(Customer customer);
         List<Customer> findAll();
         List<Customer> findByName(string name);
         Customer findById(int id);
+        bool delete(Customer customer);
+
 
     }
 }

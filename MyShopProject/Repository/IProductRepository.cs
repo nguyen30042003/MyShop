@@ -9,24 +9,54 @@ namespace MyShopProject.Repository
 {
     public class IProductRepository : ProductRepository
     {
-        public void create(Product product)
+        private static IProductRepository instance;
+        public static IProductRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new IProductRepository();
+                return instance;
+            }
+            set { instance = value; }
+        }
+        public bool create(Product product)
         {
             if (product != null)
             {
-                DataProvider.Instance.DB.Products.Add(product);
-                DataProvider.Instance.DB.SaveChanges();
-               
+                try
+                {
+                    DataProvider.Instance.DB.Products.Add(product);
+                    DataProvider.Instance.DB.SaveChanges();
+                    return true; // Thành công
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error while creating product: {ex.Message}");
+                    return false; // Thất bại
+                }
             }
+            return false; // T
         }
 
-        public void delete(Product product)
+        public bool delete(Product product)
         {
             Product p = findById(product.ID);
             if (p != null)
             {
-                DataProvider.Instance.DB.Products.Remove(p);
-                DataProvider.Instance.DB.SaveChanges();
+                try
+                {
+                    DataProvider.Instance.DB.Products.Remove(p);
+                    DataProvider.Instance.DB.SaveChanges();
+                    return true; // Thành công
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error while deleting product: {ex.Message}");
+                    return false; // Thất bại
+                }
             }
+            return false;
         }
 
         public List<Product> findAll()
@@ -54,20 +84,64 @@ namespace MyShopProject.Repository
             return DataProvider.Instance.DB.Products.Where(c => c.Name.Contains(name)).ToList();
         }
 
-        public void update(Product product)
+        public List<Product> sortByCreateDate(DateTime previousDate, DateTime lastDate)
+        {
+            return DataProvider.Instance.DB.Products.Where(p => p.CreateDate >= previousDate && p.CreateDate <= lastDate)
+                                                     .OrderBy(p => p.CreateDate)
+                                                     .ToList();
+        }
+
+        public List<Product> sortByPrice(float minPrice, float maxPrice)
+        {
+            return DataProvider.Instance.DB.Products.Where(p => p.PriceSale >= minPrice && p.PriceSale <= maxPrice)
+                                                     .OrderBy(p => p.PriceSale)
+                                                     .ToList();
+        }
+
+        public List<Product> sortByPriceASC()
+        {
+            return DataProvider.Instance.DB.Products.OrderBy(p => p.PriceSale).ToList();
+        }
+
+        public List<Product> sortByPriceDesc()
+        {
+            return DataProvider.Instance.DB.Products.OrderByDescending(p => p.PriceSale).ToList();
+        }
+
+        public List<Product> sortByQuantityASC()
+        {
+            return DataProvider.Instance.DB.Products.OrderBy(p => p.Quantity).ToList();
+        }
+
+        public List<Product> sortByQuantityDesc()
+        {
+            return DataProvider.Instance.DB.Products.OrderByDescending(p => p.Quantity).ToList();
+        }
+
+        public bool update(Product product)
         {
             Product p = findById(product.ID);
             if (p != null)
             {
-                p.Name = product.Name;
-                p.Description = product.Description;
-                p.IDCategory = product.IDCategory;
-                p.PriceImport = product.PriceImport;
-                p.PriceSale = product.PriceSale;
-                p.Discount = product.Discount;
-                p.Quantity = product.Quantity;
-                DataProvider.Instance.DB.SaveChanges();
+                try
+                {
+                    p.Name = product.Name;
+                    p.Description = product.Description;
+                    p.IDCategory = product.IDCategory;
+                    p.PriceImport = product.PriceImport;
+                    p.PriceSale = product.PriceSale;
+                    p.Discount = product.Discount;
+                    p.Quantity = product.Quantity;
+                    DataProvider.Instance.DB.SaveChanges();
+                    return true; // Thành công
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error while updating product: {ex.Message}");
+                    return false; // Thất bại
+                }
             }
+            return false; // Thất bại
         }
     }
 }

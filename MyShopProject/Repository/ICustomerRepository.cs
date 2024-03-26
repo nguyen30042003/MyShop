@@ -25,25 +25,43 @@ namespace MyShopProject.Repository
 
 
         public ICustomerRepository() { }
-        public void create(Customer customer)
+        public bool create(Customer customer)
         {
             if (customer != null)
             {
-                DataProvider.Instance.DB.Customers.Add(customer);
-                DataProvider.Instance.DB.SaveChanges();
-                /*dataProvider.DB.Customers.Add(customer);
-                 dataProvider.DB.SaveChanges();*/
+                try
+                {
+                    DataProvider.Instance.DB.Customers.Add(customer);
+                    DataProvider.Instance.DB.SaveChanges();
+                    return true; // Thành công
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error while creating customer: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false; // Thất bại
+                }
             }
+            return false; // Thất bại
         }
 
-        public void delete(Customer customer)
+        public bool delete(Customer customer)
         {
             Customer c = findById(customer.ID);
-            if(c != null)
+            if (c != null)
             {
-                DataProvider.Instance.DB.Customers.Remove(c);
-                DataProvider.Instance.DB.SaveChanges();
+                try
+                {
+                    DataProvider.Instance.DB.Customers.Remove(c);
+                    DataProvider.Instance.DB.SaveChanges();
+                    return true; // Thành công
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error while deleting customer: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false; // Thất bại
+                }
             }
+            return false; // Thất bại
         }
 
         public List<Customer> findAll()
@@ -58,19 +76,29 @@ namespace MyShopProject.Repository
             return DataProvider.Instance.DB.Customers.Where(c=>c.Full_Name.Contains(name)).ToList();
         }
 
-        public void update(Customer customer)
+        public bool update(Customer customer)
         {
             Customer c = findById(customer.ID);
             if (c != null)
             {
-                c.Full_Name = customer.Full_Name;
-                c.Phone = customer.Phone;
-                c.Email = customer.Email;
-                c.DOB = customer.DOB;
-                c.Gender = customer.Gender;
-                c.Avatar = customer.Avatar;
-                DataProvider.Instance.DB.SaveChanges();
+                try
+                {
+                    c.Full_Name = customer.Full_Name;
+                    c.Phone = customer.Phone;
+                    c.Email = customer.Email;
+                    c.DOB = customer.DOB;
+                    c.Gender = customer.Gender;
+                    c.Avatar = customer.Avatar;
+                    DataProvider.Instance.DB.SaveChanges();
+                    return true; // Thành công
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error while updating customer: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false; // Thất bại
+                }
             }
+            return false; // Thất bại
         }
 
         public Customer findById(int id)
