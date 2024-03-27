@@ -10,20 +10,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyShopProject.Pages
-{
+namespace MyShopProject.Pages {
     /// <summary>
-    /// Interaction logic for Dashboard.xaml
+    /// Interaction logic for ProductInfo.xaml
     /// </summary>
-    public partial class Dashboard : UserControl
-    {
-        public Dashboard()
-        {
+    public partial class ProductInfo : UserControl {
+        public ProductInfo() {
             InitializeComponent();
         }
-
     }
 }

@@ -18,7 +18,7 @@ namespace MyShopProject.UserControls
     /// <summary>
     /// Interaction logic for ProductCard.xaml
     /// </summary>
-    public partial class ProductCard : UserControl
+    public partial class ProductCard : Button
     {
         public ProductCard()
         {
@@ -48,6 +48,7 @@ namespace MyShopProject.UserControls
         }
         public static readonly DependencyProperty imageProductProperty =
             DependencyProperty.Register("imageProduct", typeof(String), typeof(ProductCard));
-    }
+
+        }
 }
 

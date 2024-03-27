@@ -36,7 +36,7 @@ namespace MyShopProject.ViewModel {
                 productManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductManager()));
                 orderManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new OrderManager()));
                 setting_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Setting()));
-                analystBudget_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new AnalystBudget()));
+                analystBudget_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductInfo()));
                 NavigateToPage(new Dashboard());
         }
         private void NavigateToPage(UserControl page)
