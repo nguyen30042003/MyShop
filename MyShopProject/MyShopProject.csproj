@@ -210,6 +210,7 @@
     </Compile>
     <Compile Include="ViewModel\AddCustomerVM.cs" />
     <Compile Include="ViewModel\AddProductVM.cs" />
+    <Compile Include="ViewModel\AnalystBudgetVM.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CategoryManagerVM.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />

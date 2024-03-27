@@ -261,8 +261,6 @@
                             <uc:CustomButton nameButton="Choose" Margin="10 0 0 0"/>
                         </StackPanel>
                         <Grid Grid.Row="1" Grid.ColumnSpan="2">
-
-
                             <lvc:PieChart Margin="0 30 0 0">
                                 <lvc:PieChart.DataTooltip>
                                     <lvc:DefaultTooltip Background="#101a28" Foreground="#d5e2ff"/>
