@@ -28,6 +28,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
                     <ComboBox VerticalContentAlignment="Center" Background="White"  Width="100">
                         <ComboBoxItem>
@@ -47,7 +48,7 @@
                 </StackPanel>
 
                 <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                    <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
+                    
 
                     <lvc:CartesianChart Margin="0 30 0 0">
                         <lvc:CartesianChart.DataTooltip>
@@ -98,6 +99,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1">
                     <ComboBox VerticalContentAlignment="Center" Background="White"  Width="100">
                         <ComboBoxItem>
@@ -117,7 +119,7 @@
                 </StackPanel>
 
                 <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                    <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
+                    
 
                     <lvc:CartesianChart Margin="0 30 0 0">
                         <lvc:CartesianChart.DataTooltip>
@@ -168,6 +170,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1">
                     <ComboBox VerticalContentAlignment="Center" Background="White"  Width="100">
                         <ComboBoxItem>
@@ -187,18 +190,33 @@
                 </StackPanel>
 
                 <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                    <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
 
-                    <lvc:PieChart Margin="0 30 0 0">
-                        <lvc:PieChart.DataTooltip>
-                            <lvc:DefaultTooltip Background="#101a28" Foreground="#d5e2ff"/>
-                        </lvc:PieChart.DataTooltip>
 
-                        <lvc:PieChart.Series>
-                            <lvc:PieSeries Title="Inventory" Values="40" Fill="#FFA3FF6E"/>
-                            <lvc:PieSeries Title="Sales" Values="60" Fill="#FF4F81BD"/>
-                        </lvc:PieChart.Series>
-                    </lvc:PieChart>
+                    <lvc:CartesianChart Margin="0 30 0 0">
+                        <lvc:CartesianChart.DataTooltip>
+                            <lvc:DefaultTooltip Background="#24336a" Foreground="#d5e2ff"/>
+
+                        </lvc:CartesianChart.DataTooltip>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug">
+                                <lvc:Axis.Separator>
+                                    <lvc:Separator StrokeThickness="0" Step="1"/>
+                                </lvc:Axis.Separator>
+                            </lvc:Axis>
+                        </lvc:CartesianChart.AxisX>
+
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" MinValue="0" MaxValue="50">
+                                <lvc:Axis.Separator>
+                                    <lvc:Separator StrokeThickness="0"/>
+                                </lvc:Axis.Separator>
+                            </lvc:Axis>
+                        </lvc:CartesianChart.AxisY>
+
+                        <lvc:CartesianChart.Series>
+                            <lvc:StackedColumnSeries Fill="#7166f9" MaxColumnWidth="15" Values="12,16,0,11,20,6,0,8"/>
+                        </lvc:CartesianChart.Series>
+                    </lvc:CartesianChart>
                 </Grid>
 
             </Grid>
@@ -222,11 +240,10 @@
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="TOP PRODUCT" Style="{StaticResource titleText}"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="0" Grid.ColumnSpan="2">
                             <ComboBox VerticalContentAlignment="Center" Background="White"  Width="100">
                                 <ComboBoxItem>
                                     <TextBlock Foreground="Black" Text="Today"/>
@@ -243,7 +260,23 @@
                             </ComboBox>
                             <uc:CustomButton nameButton="Choose" Margin="10 0 0 0"/>
                         </StackPanel>
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2">
 
+
+                            <lvc:PieChart Margin="0 30 0 0">
+                                <lvc:PieChart.DataTooltip>
+                                    <lvc:DefaultTooltip Background="#101a28" Foreground="#d5e2ff"/>
+                                </lvc:PieChart.DataTooltip>
+
+                                <lvc:PieChart.Series>
+                                    <lvc:PieSeries Title="MSI" Values="40" Fill="#FFA3FF6E"/>
+                                    <lvc:PieSeries Title="ACER" Values="60" Fill="White"/>
+                                    <lvc:PieSeries Title="MACBOOK" Values="60" Fill="Red"/>
+                                    <lvc:PieSeries Title="ASUS" Values="60" Fill="Blue"/>
+                                    <lvc:PieSeries Title="HP" Values="60" Fill="#FF4F81BD"/>
+                                </lvc:PieChart.Series>
+                            </lvc:PieChart>
+                        </Grid>
 
 
                     </Grid>
