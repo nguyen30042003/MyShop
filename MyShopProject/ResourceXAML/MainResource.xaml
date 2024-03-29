@@ -8,4 +8,7 @@
     <viewmodel:AddCustomerVM x:Key="AddCustomerVM"></viewmodel:AddCustomerVM>
     <viewmodel:LoginVM x:Key="LoginVM"></viewmodel:LoginVM>
     <viewmodel:ProductManagerVM x:Key="ProductManagerVM"></viewmodel:ProductManagerVM>
+    <viewmodel:AnalystBudgetVM x:Key="AnalystBudgetVM"></viewmodel:AnalystBudgetVM>
+    <viewmodel:CreateOrderVM x:Key="CreateOrderVM"></viewmodel:CreateOrderVM>
+    <viewmodel:CustomerManagerVM x:Key="CustomerManagerVM"></viewmodel:CustomerManagerVM>
 </ResourceDictionary>

@@ -11,6 +11,17 @@ namespace MyShopProject.ServiceImpl
 {
     public class OrderServiceImpl : OrderService
     {
+        private static OrderServiceImpl instance;
+        public static OrderServiceImpl Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new OrderServiceImpl();
+                return instance;
+            }
+            set { instance = value; }
+        }
         public bool delete(Order order)
         {
             if(IOrderRepository.Instance.delete(order))

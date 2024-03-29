@@ -10,7 +10,7 @@
         
         Title="AddProduct" Height="480" Width="700">
     <StackPanel Background="#151f2d">
-        <TextBlock FontSize="28" TextAlignment="Center" Padding="0 0 0 5">
+        <TextBlock FontSize="28" TextAlignment="Center" Padding="0 0 0 5" Foreground="White">
             <Run Text="{Binding Action}"/> <Run Text="Product"/>
         </TextBlock>
         <Grid>
@@ -30,14 +30,14 @@
             </Grid.RowDefinitions>
 
             <StackPanel HorizontalAlignment="Right" Grid.Row="0" Margin="5 5">
-                <TextBlock Padding="5 0" Text="Name" />
+                <TextBlock Padding="5 0" Text="Name" Foreground="White"/>
                 <TextBox HorizontalAlignment="Left" Text="{Binding product.Name}" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Right" Grid.Row="1" Margin="5 5">
-                <TextBlock Padding="5 0" Text="Create date" />
+                <TextBlock Padding="5 0" Text="Create date" Foreground="White"/>
                 <Border HorizontalAlignment="Left" BorderThickness="1" Background="White" CornerRadius="5" Width="300">
-                    <DatePicker Padding="5 0" d:SelectedDate="1/2" CalendarStyle="{StaticResource DateTimeCalendar}" VerticalContentAlignment="Center" BorderThickness="0" Height="30">
+                    <DatePicker Text="{Binding product.CreateDate}" Padding="5 0" d:SelectedDate="1/2" CalendarStyle="{StaticResource DateTimeCalendar}" VerticalContentAlignment="Center" BorderThickness="0" Height="30">
                         <DatePicker.Resources>
                             <Style TargetType="DatePickerTextBox">
                                 <Setter Property="Template">
@@ -96,38 +96,34 @@
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Right" Grid.Row="2" Margin="5 5">
-                <TextBlock Padding="5 0" Text="Quantity"/>
-                <TextBox HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
+                <TextBlock Padding="5 0" Text="Quantity" Foreground="White"/>
+                <TextBox Text="{Binding product.Quantity}" HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Right" Grid.Row="3" Margin="5 5">
-                <TextBlock  Padding="5 0"  Text="Sale price" />
-                <TextBox HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
+                <TextBlock  Padding="5 0"  Text="Sale price" Foreground="White"/>
+                <TextBox Text="{Binding product.PriceSale}" HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" Margin="5 5">
-                <TextBlock  Padding="5 0"  Text="Import price" />
-                <TextBox HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
+                <TextBlock  Padding="5 0"  Text="Import price" Foreground="White"/>
+                <TextBox Text="{Binding product.PriceImport}" HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="5 5">
-                <TextBlock  Padding="5 0"  Text="Category" />
-                <ComboBox HorizontalAlignment="Left" VerticalContentAlignment="Center" Background="White" ItemsSource="{Binding Categories}" Height="30"  Width="300">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Foreground="Black" Text="{Binding Name}"/>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
+                <TextBlock  Padding="5 0"  Text="Category" Foreground="White"/>
+                <ComboBox IsEditable="True" IsTextSearchEnabled="True" SelectedIndex="{Binding cbCategories}" HorizontalAlignment="Left" VerticalContentAlignment="Center" Background="White" ItemsSource="{Binding Categories}" Height="30"  Width="300">
+
                 </ComboBox>
             </StackPanel>
             <StackPanel HorizontalAlignment="Left"  Grid.Row="2" Grid.Column="1" Margin="5 5">
-                <TextBlock  Padding="5 0"  Text="Discount" />
-                <TextBox HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
+                <TextBlock  Padding="5 0"  Text="Discount" Foreground="White"/>
+                <TextBox Text="{Binding product.Discount}" HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
             <StackPanel  HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" Margin="5 5">
-                <TextBlock  Padding="5 0"  Text="Description" />
-                <TextBox TextWrapping="Wrap" HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
+                <TextBlock  Padding="5 0"  Text="Description" Foreground="White"/>
+                <TextBox Text="{Binding product.Description}" TextWrapping="Wrap" HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="5" Margin="5 5">
@@ -135,7 +131,7 @@
                     <Border BorderBrush="White" BorderThickness="1" CornerRadius="10" >
                         <Image Source="{Binding product.Image}" Height="100" Width="100"/>
                     </Border>
-                    <TextBlock TextAlignment="Center" Padding="5 0"  Text="Image" />
+                    <TextBlock TextAlignment="Center" Padding="5 0"  Text="Image" Foreground="White"/>
                 </StackPanel>
                 <uc:CustomButton ClickCommand="{Binding BrowseImage_Click}" Padding="5 0" Width="70" Height="40" nameButton="Browse"/>
             </StackPanel>

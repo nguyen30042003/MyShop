@@ -14,13 +14,13 @@
         <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
     <Grid Grid.Row="0" Margin="20 10 20 10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
             <uc:CustomButton Margin="10" Grid.Column="0" nameButton="Create Order"  Width="200" Height="50" ClickCommand="{Binding CreateOrder_Click}"/>
         <ComboBox Name="sortSelect" Grid.Column="1" Text="Select" Width="200" Height="50" Background="#1e2e44"/>
         <uc:CustomButton Margin="10" Grid.Column="2" nameButton="Sort"  Width="200" Height="50" />

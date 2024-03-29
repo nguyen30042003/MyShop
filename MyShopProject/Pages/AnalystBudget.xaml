@@ -8,6 +8,7 @@
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:uc="clr-namespace:MyShopProject.UserControls"
              mc:Ignorable="d" 
+             DataContext="{StaticResource AnalystBudgetVM}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -15,10 +16,17 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Style="{StaticResource mainBorder}" Grid.Column="0" Grid.Row="0" Margin="20 10 0 0">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
+            <ComboBox  ItemsSource="{Binding FilterOptions}" VerticalContentAlignment="Center" Background="White"  Width="100" SelectedValue="{Binding cbFilter}">
+            </ComboBox>
+            <uc:CustomButton nameButton="Choose" Margin="10 0 0 0" Height="40" Width="80" ClickCommand="{Binding filter_Click}"/>
+        </StackPanel>
+
+        <Border Style="{StaticResource mainBorder}" Grid.Column="0" Grid.Row="1" Margin="20 10 0 0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -29,24 +37,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
-                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
-                    <ComboBox VerticalContentAlignment="Center" Background="White"  Width="100">
-                        <ComboBoxItem>
-                            <TextBlock Foreground="Black" Text="Today"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Foreground="Black" Text="WEEK"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Foreground="Black" Text="MONTH"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Foreground="Black" Text="YEAR"/>
-                        </ComboBoxItem>
-                    </ComboBox>
-                    <uc:CustomButton nameButton="Choose" Margin="10 0 0 0"/>
-                </StackPanel>
-
+                
                 <Grid Grid.Row="1" Grid.ColumnSpan="2">
                     
 
@@ -89,7 +80,7 @@
             
         </Border>
 
-        <Border Style="{StaticResource mainBorder}" Grid.Column="1" Grid.Row="0" Margin="20 10 0 0">
+        <Border Style="{StaticResource mainBorder}" Grid.Column="1" Grid.Row="1" Margin="20 10 0 0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -100,23 +91,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1">
-                    <ComboBox VerticalContentAlignment="Center" Background="White"  Width="100">
-                        <ComboBoxItem>
-                            <TextBlock Foreground="Black" Text="Today"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Foreground="Black" Text="WEEK"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Foreground="Black" Text="MONTH"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Foreground="Black" Text="YEAR"/>
-                        </ComboBoxItem>
-                    </ComboBox>
-                    <uc:CustomButton nameButton="Choose" Margin="10 0 0 0"/>
-                </StackPanel>
+                
 
                 <Grid Grid.Row="1" Grid.ColumnSpan="2">
                     
@@ -160,7 +135,7 @@
 
         </Border>
 
-        <Border Style="{StaticResource mainBorder}" Grid.Column="0" Grid.Row="1" Margin="20 10 0 0">
+        <Border Style="{StaticResource mainBorder}" Grid.Column="0" Grid.Row="2" Margin="20 10 0 0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -171,24 +146,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1">
-                    <ComboBox VerticalContentAlignment="Center" Background="White"  Width="100">
-                        <ComboBoxItem>
-                            <TextBlock Foreground="Black" Text="Today"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Foreground="Black" Text="WEEK"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Foreground="Black" Text="MONTH"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Foreground="Black" Text="YEAR"/>
-                        </ComboBoxItem>
-                    </ComboBox>
-                    <uc:CustomButton nameButton="Choose" Margin="10 0 0 0"/>
-                </StackPanel>
-
+               
                 <Grid Grid.Row="1" Grid.ColumnSpan="2">
 
 
@@ -222,7 +180,7 @@
             </Grid>
 
         </Border>
-        <Border Style="{StaticResource mainBorder}" Grid.Column="1" Grid.Row="1" Margin="20 10 0 0">
+        <Border Style="{StaticResource mainBorder}" Grid.Column="1" Grid.Row="2" Margin="20 10 0 0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -243,23 +201,6 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="TOP PRODUCT" Style="{StaticResource titleText}"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="0" Grid.ColumnSpan="2">
-                            <ComboBox VerticalContentAlignment="Center" Background="White"  Width="100">
-                                <ComboBoxItem>
-                                    <TextBlock Foreground="Black" Text="Today"/>
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    <TextBlock Foreground="Black" Text="WEEK"/>
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    <TextBlock Foreground="Black" Text="MONTH"/>
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    <TextBlock Foreground="Black" Text="YEAR"/>
-                                </ComboBoxItem>
-                            </ComboBox>
-                            <uc:CustomButton nameButton="Choose" Margin="10 0 0 0"/>
-                        </StackPanel>
                         <Grid Grid.Row="1" Grid.ColumnSpan="2">
                             <lvc:PieChart Margin="0 30 0 0">
                                 <lvc:PieChart.DataTooltip>

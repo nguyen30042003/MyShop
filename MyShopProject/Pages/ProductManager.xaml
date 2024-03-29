@@ -27,7 +27,7 @@
             <uc:CustomButton Margin="10" Grid.Column="3" nameButton="Search"  Width="100" Height="50" />
         </Grid>
         <uc:CustomButton Margin="20 0 0 0" nameButton="Add product" Grid.Row="1" HorizontalAlignment="Left" Width="100" Height="40" ClickCommand="{Binding Action_Click}"/>
-        <ListView ItemsSource="{Binding products}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" Background="Transparent" x:Name="ProductList" Grid.Row="2" Margin="20 10 20 10">
+        <ListView ItemsSource="{Binding Products}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" Background="Transparent" x:Name="ProductList" Grid.Row="2" Margin="20 10 20 10">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Template">
@@ -61,7 +61,7 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <uc:ProductCard Command="{Binding ElementName=ProductList, Path=DataContext.GetProductInfo}" CommandParameter="{Binding}" imageProduct="/image/13.jpg" nameProduct="Hello" Height="300" Width="250" Margin="0 5 5 5"/>
+                    <uc:ProductCard Command="{Binding ElementName=ProductList, Path=DataContext.GetProductInfo}" CommandParameter="{Binding}" imageProduct="{Binding Image}" nameProduct="{Binding Name}" Height="300" Width="250" Margin="0 5 5 5"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.ItemsPanel>

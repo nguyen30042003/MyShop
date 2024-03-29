@@ -11,6 +11,17 @@ namespace MyShopProject.ServiceImpl
 {
     public class ItemServiceImpl : ItemService
     {
+        private static ItemServiceImpl instance;
+        public static ItemServiceImpl Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new ItemServiceImpl();
+                return instance;
+            }
+            set { instance = value; }
+        }
         public bool delete(Item item)
         {
             if (IItemRepository.Instance.delete(item))

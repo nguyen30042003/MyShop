@@ -11,6 +11,17 @@ namespace MyShopProject.ServiceImpl
 {
     public class CustomerServiceImpl : CustomerService
     {
+        private static CustomerServiceImpl instance;
+        public static CustomerServiceImpl Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new CustomerServiceImpl();
+                return instance;
+            }
+            set { instance = value; }
+        }
         public bool delete(Customer customer)
         {
             if(ICustomerRepository.Instance.delete(customer))

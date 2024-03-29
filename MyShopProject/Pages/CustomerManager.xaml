@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="MyShopProject.Pages.CustomerManager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+ xmlns:uc="clr-namespace:MyShopProject.UserControls"
+             DataContext="{StaticResource CustomerManagerVM}"
+             xmlns:local="clr-namespace:MyShopProject.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="20 10 20 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <uc:CustomButton Margin="10" Grid.Column="0" nameButton="Create customer"  Width="200" Height="50" ClickCommand="{Binding CreateCustomer_Click}"/>
+            <ComboBox Name="sortSelect" Grid.Column="1" Text="Select" Width="200" Height="50" Background="#1e2e44"/>
+            <uc:CustomButton Margin="10" Grid.Column="2" nameButton="Sort"  Width="200" Height="50" />
+            <TextBox Grid.Column="3" Margin="20 0 10 0" VerticalAlignment="Center" Background="#1e2e44" Foreground="White" Height="50" 
+Padding="10,10,0,0" FontSize="20" />
+            <uc:CustomButton Margin="10" Grid.Column="4" nameButton="Search"  Width="100" Height="50"/>
+        </Grid>
+        <Border Grid.Row="1" Margin="20 0 20 10" Style="{StaticResource mainBorder}">
+            <DataGrid ItemsSource="{Binding customerList}" Template="{DynamicResource DataGridTemplate1}" AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid">
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="ID" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding ID}"/>
+
+                    <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding Full_Name}"/>
+                    <DataGridTextColumn Header="Gender" IsReadOnly="True" Width="Auto" Binding="{Binding Gender}"/>
+                    <DataGridTextColumn Header="Date Of Birth" IsReadOnly="True" Width="*" Binding="{Binding DOB}"/>
+                    <DataGridTextColumn Header="Email" IsReadOnly="True" Width="*" Binding="{Binding Email}"/>
+                    <DataGridTextColumn Header="Phone" IsReadOnly="True" Width="*" Binding="{Binding Phone}"/>
+                    <DataGridTemplateColumn Header="Avatar" IsReadOnly="True" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Avatar}" Width="50" Height="50"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Edit" IsReadOnly="True" Width="70">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button>
+                                        <Icon:PackIconMaterial Kind="Delete" Background="Yellow"/>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+        <Border Grid.Row="2" Padding="5" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource pagingButton}">
+                    <Icon:PackIconMaterial Kind="ChevronLeft"/>
+                </Button>
+                <Button Style="{StaticResource pagingButton}" Content="1"/>
+                <Button Style="{StaticResource pagingButton}" Content="2"/>
+                <Button Style="{StaticResource pagingButton}" Content="3"/>
+                <Button Style="{StaticResource pagingButton}" Content="4"/>
+                <Button Style="{StaticResource pagingButton}">
+                    <Icon:PackIconMaterial Kind="ChevronRight"/>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

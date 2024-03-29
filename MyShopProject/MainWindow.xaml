@@ -28,6 +28,7 @@
                         <uc:MenuButton Icon="HomeVariant"  ClickCommand="{Binding dashboad_Click}"/>
                         <uc:MenuButton Icon="Package" ClickCommand="{Binding productManager_Click}"/>
                         <uc:MenuButton Icon="Cart" ClickCommand="{Binding orderManager_Click}"/>
+                        <uc:MenuButton Icon="Human" ClickCommand="{Binding customerManager_Click}"/>
                         <uc:MenuButton Icon="Cogs" ClickCommand="{Binding setting_Click}"/>
                         <uc:MenuButton Icon="Finance" ClickCommand="{Binding analystBudget_Click}" />
 

@@ -29,8 +29,8 @@ namespace MyShopProject.ViewModel
 
             AddCustomer addCustomer = new AddCustomer();
             //addCustomer.ShowDialog();
-            categoryManager.ShowDialog();
-            //createOrderPage.ShowDialog();
+            //categoryManager.ShowDialog();
+            createOrderPage.ShowDialog();
         }
     }
 }

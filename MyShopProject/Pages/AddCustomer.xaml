@@ -25,27 +25,27 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="ADD CUSTOMER" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="30"/>
-        <TextBlock Grid.Row="1" Text="Full Name" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Text="ADD CUSTOMER" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="30" Foreground="White"/>
+        <TextBlock Grid.Row="1" Text="Full Name" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding tbFullName}" Style="{StaticResource customTextbox}"  HorizontalAlignment="Left" Margin="5 0 0 0" Width="350"/>
 
-        <TextBlock Grid.Row="2" Text=" Date Of Birth" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <TextBlock Grid.Row="2" Text=" Date Of Birth" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
         <DatePicker Grid.Row="2" Grid.Column="1" Text="{Binding tbDOB}" HorizontalAlignment="Left" Margin="5 10 0 0"  Width="350"/>
 
-        <TextBlock  Grid.Row="3" Text="Email"  HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <TextBlock  Grid.Row="3" Text="Email"  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
         <TextBox  Grid.Row="3" Grid.Column="1" Text="{Binding tbEmail}" Style="{StaticResource customTextbox}"  HorizontalAlignment="Left" Margin="5 10 0 0"   Width="350"/>
 
 
-        <TextBlock Grid.Row="4" Text="Phone" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Text="Phone" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding tbPhone}" Style="{StaticResource customTextbox}"  HorizontalAlignment="Left" Margin="5 10 0 0" Width="350"/>
 
-        <TextBlock Grid.Row="5" Text=" Gender" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5" Text=" Gender" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" />
         <RadioButton  HorizontalAlignment="Left" Margin="20 10 0 0" Grid.Row="5" Grid.Column="1" Name="Male" GroupName="Buttons"  IsChecked="True">Male</RadioButton>
         <RadioButton  HorizontalAlignment="Left" Margin="100 10 0 0" Grid.Row="5" Grid.Column="1" Name="Female" GroupName="Buttons"  >Female</RadioButton>
 
-        <TextBlock Grid.Row="6" Text="Avatar" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="6" Text="Avatar" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
         <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Margin="5 10 0 0">
-            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" >
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="10" >
                 <Image Source="{Binding PathImage}"  Height="100" Width="100"/>
             </Border>
             <uc:CustomButton ClickCommand="{Binding PathImage_Click}" nameButton="Browse..." Height="50" Width="100" Margin="15 0 0 0" HorizontalAlignment="Center"/>
