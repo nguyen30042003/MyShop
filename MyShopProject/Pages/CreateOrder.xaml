@@ -7,11 +7,11 @@
              xmlns:uc="clr-namespace:MyShopProject.UserControls"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
               DataContext="{StaticResource CreateOrderVM}"
-         Height="760" Width="1280"
+         Height="760" Width="1280" Background="#151f2d"
             >
     <Grid>
 
-        <Border Style="{StaticResource mainBorder}" Margin="20 10 20 10">
+        <Border Style="{StaticResource mainBorder}"   Background="#151f2d" Margin="20 10 20 10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -23,9 +23,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Grid.Column="0">
-                    <uc:CustomButton nameButton="Back" Background="Wheat" Width="100" Margin="0 5 350 0"/>
-                </Grid>
+
                 <Grid Grid.Row="1" Grid.ColumnSpan="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="77*"/>
@@ -34,10 +32,10 @@
                         <ColumnDefinition Width="109*"/>
                         <ColumnDefinition Width="951*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ORDER" Foreground="White" TextAlignment="Center" FontSize="25" Grid.ColumnSpan="5"/>
+                    <TextBlock Text="ORDER" Foreground="White" TextAlignment="Center" FontSize="40" Grid.ColumnSpan="5"/>
                 </Grid>
-                <Border Margin="10 10 30 0" Grid.Row="2" Grid.Column="0" Background="Wheat" CornerRadius="5" >
-                    <Grid>
+                <Border Margin="10 10 30 0" Grid.Row="2" Grid.Column="0" Style="{StaticResource mainBorder}" CornerRadius="5" >
+                    <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -45,23 +43,23 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" TextAlignment="Center" Text="Information Customer" Foreground="Black" FontSize="20" HorizontalAlignment="Center"/>
+                        <TextBlock Foreground="#ffffff" Grid.Row="0" TextAlignment="Center" Text="Information Customer"  FontSize="20" HorizontalAlignment="Center"/>
                         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" Margin="0 30 0 0">
-                            <TextBlock Text=" Full Name" VerticalAlignment="Center"/>
+                            <TextBlock Foreground="#ffffff" Text=" Full Name" VerticalAlignment="Center"/>
                             <ComboBox IsEditable="True" IsTextSearchEnabled="True" 
                             ItemsSource="{Binding customerList}" SelectedIndex="{Binding cbName}"  Margin="5 0 0 0" Width="350"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="0 30 0 0">
-                            <TextBlock Text="    Address " VerticalAlignment="Center"/>
+                        <StackPanel  Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="0 30 0 0">
+                            <TextBlock Foreground="#ffffff" Text="    Address " VerticalAlignment="Center"/>
                             <TextBox Style="{StaticResource customTextbox}" Text="{Binding address}" Width="350"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" Margin="0 30 0 0">
-                            <TextBlock Text="    Phone   " VerticalAlignment="Center"/>
+                            <TextBlock Foreground="#ffffff" Text="    Phone   " VerticalAlignment="Center"/>
                             <TextBox Style="{StaticResource customTextbox}" Text="{Binding Phone}" Width="350"/>
                         </StackPanel>
                     </Grid>
                 </Border>
-                <Border Margin="30 10 10 0" Grid.Row="2" Grid.Column="2"  Background="Wheat" CornerRadius="5" >
+                <Border Margin="30 10 10 0" Grid.Row="2" Grid.Column="2"  Style="{StaticResource mainBorder}" CornerRadius="5" >
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -70,20 +68,20 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" TextAlignment="Center" Text="Product" Foreground="Black" FontSize="20" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" TextAlignment="Center" Text="Product" Foreground="#ffffff" FontSize="20" HorizontalAlignment="Center"/>
                         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" Margin="0 30 0 0">
-                            <TextBlock Text="Product Name" VerticalAlignment="Center"/>
+                            <TextBlock Foreground="#ffffff" Text="Product Name" VerticalAlignment="Center"/>
                             <ComboBox IsEditable="True" IsTextSearchEnabled="True"  
                             ItemsSource="{Binding productList}" SelectedIndex="{Binding cbProduct, UpdateSourceTrigger=PropertyChanged}"  Margin="5 0 0 0" Width="350">
 
                             </ComboBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" Margin="0 30 0 0">
-                            <TextBlock Text="              Price" VerticalAlignment="Center"/>
+                            <TextBlock Foreground="#ffffff" Text="              Price" VerticalAlignment="Center"/>
                             <TextBox Style="{StaticResource customTextbox }" Text="{Binding priceProduct}" Margin="5 0 0 0" Width="350"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="0 30 0 0">
-                            <TextBlock Text="         Quantity " VerticalAlignment="Center"/>
+                            <TextBlock Foreground="#ffffff" Text="         Quantity " VerticalAlignment="Center"/>
                             <TextBox Style="{StaticResource customTextbox}" Text="{Binding quantityProduct}" Width="350"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Center" Margin="0 30 0 0">
@@ -93,13 +91,13 @@
                     </Grid>
                 </Border>
 
-                <Border Margin="10,10,431,0" Grid.Row="3" Grid.Column="0"  Background="Wheat" CornerRadius="5" Grid.ColumnSpan="2" >
+                <Border Margin="10,10,431,0" Grid.Row="3" Grid.Column="0" Style="{StaticResource mainBorder}" CornerRadius="5" Grid.ColumnSpan="2" >
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" TextAlignment="Center" Text="List Product" Foreground="Black" FontSize="20" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" TextAlignment="Center" Text="List Product" Foreground="#ffffff" FontSize="20" HorizontalAlignment="Center"/>
                         <DataGrid ItemsSource="{Binding itemList}" Grid.Row="1" AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid">
                             <DataGrid.Columns>
 
@@ -126,7 +124,7 @@
                     </Grid>
 
                 </Border>
-                <Border Margin="200,10,10,5" Grid.Row="3" Grid.Column="1"  Background="Wheat" CornerRadius="5">
+                <Border Style="{StaticResource mainBorder}" Margin="200,10,10,5" Grid.Row="3" Grid.Column="1"  CornerRadius="5">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -144,24 +142,24 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="TOTALL BILL" FontSize="20" Foreground="Black" TextAlignment="Center" Margin="0 5"/>
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="TOTALL BILL" FontSize="20" Foreground="#ffffff" TextAlignment="Center" Margin="0 5"/>
 
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="ID Order:" FontSize="14" Foreground="Black" TextAlignment="Right" Margin="10 5"/>
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Customer:" FontSize="14" Foreground="Black" TextAlignment="Right" Margin="10 5"/>
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Address:" FontSize="14" Foreground="Black" TextAlignment="Right" Margin="10 5"/>
-                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Phone:" FontSize="14" Foreground="Black" TextAlignment="Right" Margin="10 5"/>
-                        <TextBlock Grid.Row="5" Grid.Column="0" Text="Total Quantity:" FontSize="14" Foreground="Black" TextAlignment="Right" Margin="10 5"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="ID Order:" FontSize="14" Foreground="#ffffff" TextAlignment="Right" Margin="10 5"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Customer:" FontSize="14" Foreground="#ffffff" TextAlignment="Right" Margin="10 5"/>
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Address:" FontSize="14" Foreground="#ffffff" TextAlignment="Right" Margin="10 5"/>
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Phone:" FontSize="14" Foreground="#ffffff" TextAlignment="Right" Margin="10 5"/>
+                        <TextBlock Grid.Row="5" Grid.Column="0" Text="Total Quantity:" FontSize="14" Foreground="#ffffff" TextAlignment="Right" Margin="10 5"/>
                         <Line Grid.Row="6" Grid.ColumnSpan="2" Stroke="Black" StrokeThickness="1" Stretch="Fill"  X2="1" Margin="10 20"/>
 
 
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding IdOrder}" FontSize="14" Foreground="Black" TextAlignment="Center" Margin="10 5"/>
-                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding nameCustomer}" FontSize="14" Foreground="Black" TextAlignment="Center" Margin="10 5"/>
-                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Address}" FontSize="14" Foreground="Black" TextAlignment="Center" Margin="10 5"/>
-                        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Phone}" FontSize="14" Foreground="Black" TextAlignment="Center" Margin="10 5"/>
-                        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding TotalQuantity}" FontSize="14" Foreground="Black" TextAlignment="Center" Margin="10 5"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding IdOrder}" FontSize="14" Foreground="#ffffff" TextAlignment="Center" Margin="10 5"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding nameCustomer}" FontSize="14" Foreground="#ffffff" TextAlignment="Center" Margin="10 5"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Address}" FontSize="14" Foreground="#ffffff" TextAlignment="Center" Margin="10 5"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Phone}" FontSize="14" Foreground="#ffffff" TextAlignment="Center" Margin="10 5"/>
+                        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding TotalQuantity}" FontSize="14" Foreground="#ffffff" TextAlignment="Center" Margin="10 5"/>
 
-                        <TextBlock Grid.Row="7" Grid.Column="1" Text="Total Price:" FontSize="14" Foreground="Black" TextAlignment="Center" Margin="10 5"/>
-                        <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding TotalPrice}" FontSize="14" Foreground="Black" TextAlignment="Center" Margin="180,5,10,39"/>
+                        <TextBlock Grid.Row="7" Grid.Column="1" Text="Total Price:" FontSize="14" Foreground="#ffffff" TextAlignment="Center" Margin="10 5"/>
+                        <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding TotalPrice}" FontSize="14" Foreground="#ffffff" TextAlignment="Center" Margin="180,5,10,39"/>
                     </Grid>
                 </Border>
             </Grid>

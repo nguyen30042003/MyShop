@@ -16,10 +16,8 @@ using System.Windows.Shapes;
 namespace MyShopProject.Pages {
 
     public partial class ProductInfo : Window {
-        public ProductInfoVM productInfoVM { get; set; }
         public ProductInfo() {
             InitializeComponent();
-            this.DataContext = productInfoVM = new ProductInfoVM();
         }
     }
 }

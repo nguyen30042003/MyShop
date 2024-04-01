@@ -1,4 +1,5 @@
-﻿using MyShopProject.Model;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using MyShopProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -116,6 +117,16 @@ namespace MyShopProject.Repository
             return customer;
         }
 
+        public List<Customer> findPage(int skipCount, int takeCount)
+        {
+            List<Customer> customers = DataProvider.Instance.DB.Customers.OrderBy(c => c.ID).Skip(skipCount).Take(takeCount).ToList();
+            return customers;
+        }
 
+        public List<Customer> findPageByName(int skipCount, int takeCount, string name)
+        {
+            List<Customer> customers = DataProvider.Instance.DB.Customers.OrderBy(c => c.Full_Name.Contains(name) && c.Gender.Contains("Male")).Skip(skipCount).Take(takeCount).ToList();
+            return customers;
+        }
     }
 }

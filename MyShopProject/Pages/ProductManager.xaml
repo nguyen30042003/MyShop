@@ -5,32 +5,44 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MyShopProject.Pages"
              xmlns:uc="clr-namespace:MyShopProject.UserControls"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              DataContext="{StaticResource ProductManagerVM}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="20 0 20 0">
+        <Grid Margin="20">
+            <TextBlock Margin="40 0 15 0" VerticalAlignment="Center" Foreground="#9ea4ad" Panel.ZIndex="1" 
+                       IsHitTestVisible="False" Text="Search here..."
+                       Visibility="{Binding ElementName=textBox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="textBox" Text="{Binding search}" Style="{StaticResource searchTextBox}"/>
+            <Icon:PackIconMaterial Margin="10 0 0 0" Kind="Magnify" Width="15" Height="15" Foreground="#9ea4ad" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        </Grid>
+        <Grid Grid.Row="1" Margin="20 0 20 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ComboBox Name="sortSelect" Text="Select" Width="200" Height="50" Background="#1e2e44"/>
-            <uc:CustomButton Margin="10" Grid.Column="1" nameButton="Sort"  Width="200" Height="50"/>
-            <TextBox Grid.Column="2" Margin="20 0 10 0" VerticalAlignment="Center" Background="#1e2e44" Foreground="White" Height="50" 
-         Padding="10,10,0,0" FontSize="20" />
-            <uc:CustomButton Margin="10" Grid.Column="3" nameButton="Search"  Width="100" Height="50" />
+            <uc:CustomButton Grid.Column="0" Margin="20 0 0 0" nameButton="Category"  Width="100" Height="40" ClickCommand="{Binding Category_Click}" />
+            <uc:CustomButton Grid.Column="1" Margin="20 0 0 0" nameButton="Add product"  Width="100" Height="40" ClickCommand="{Binding Action_Click}" />
+
+            <StackPanel  Grid.Column="2" Margin="20 0 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Icon:PackIconMaterial Kind="Filter" Width="30" Height="30" Foreground="#9ea4ad" VerticalAlignment="Center"/>
+                <ComboBox Margin="10 0 0 0" Name="sortSelect" Text="Select"  Width="100" Height="40" Background="#1e2e44"/>
+                <uc:CustomButton Margin="20 0 0 0"   nameButton="Sort"   Width="100" Height="40"/>
+                
+            </StackPanel>
+
         </Grid>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
-            <uc:CustomButton Margin="20 0 0 0" nameButton="Category"  Width="100" Height="40" ClickCommand="{Binding Category_Click}" />
-            <uc:CustomButton Margin="20 0 0 0" nameButton="Add product"  Width="100" Height="40" ClickCommand="{Binding Action_Click}" />
-        </StackPanel>
-        <ListView ItemsSource="{Binding Products}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" Background="Transparent" x:Name="ProductList" Grid.Row="2" Margin="20 10 20 10">
+        <ListView ItemsSource="{Binding Products}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" Background="Transparent" x:Name="ProductList" Grid.Row="3" Margin="20 10 20 10">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Template">
@@ -73,7 +85,7 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
         </ListView>
-        <Grid Grid.Row="3" HorizontalAlignment="Center" Margin="0,10,0,10">
+        <Grid Grid.Row="4" HorizontalAlignment="Center" Margin="0,10,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>

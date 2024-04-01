@@ -9,35 +9,45 @@
              xmlns:local="clr-namespace:MyShopProject.Pages"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="20 10 20 10">
+        <Grid Grid.Row="0" Margin="20 10 20 0">
+            <TextBlock Margin="40 0 15 0" VerticalAlignment="Center" Foreground="#9ea4ad" Panel.ZIndex="1" 
+       IsHitTestVisible="False" Text="Search here..."
+       Visibility="{Binding ElementName=textBox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="textBox" Text="{Binding search}" Style="{StaticResource searchTextBox}"/>
+            <Icon:PackIconMaterial Margin="20 " Kind="Magnify" Width="15" Height="15" Foreground="#9ea4ad" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        </Grid>
+        <Grid Grid.Row="1" Margin="20 10 20 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <uc:CustomButton Margin="10" Grid.Column="0" nameButton="Create customer"  Width="200" Height="50" ClickCommand="{Binding CreateCustomer_Click}"/>
-            <ComboBox Name="sortSelect" Grid.Column="1" Text="Select" Width="200" Height="50" Background="#1e2e44"/>
-            <uc:CustomButton Margin="10" Grid.Column="2" nameButton="Sort"  Width="200" Height="50" ClickCommand="{Binding Sort_Click}"/>
-            <TextBox Grid.Column="3" Margin="20 0 10 0" VerticalAlignment="Center" Background="#1e2e44" Foreground="White" Height="50" 
-Padding="10,10,0,0" FontSize="20" />
-            <uc:CustomButton Margin="10" Grid.Column="4" nameButton="Search"  Width="100" Height="50"/>
-        </Grid>
-        <Border Grid.Row="1" Margin="20 0 20 10" Style="{StaticResource mainBorder}">
-            <DataGrid ItemsSource="{Binding customerList}" Template="{DynamicResource DataGridTemplate1}" AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid">
-                <DataGrid.Columns>
+            <uc:CustomButton Margin="10" Grid.Column="0" nameButton="Create customer"  Width="100" Height="40" ClickCommand="{Binding CreateCustomer_Click}"/>
+            <StackPanel  Grid.Column="2" Margin="20 0 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Icon:PackIconMaterial Kind="Filter" Width="30" Height="30" Foreground="#9ea4ad" VerticalAlignment="Center"/>
+                <ComboBox Margin="10 0 0 0" Name="sortSelect" Text="Select"  Width="100" Height="40" Background="#1e2e44"/>
+                <uc:CustomButton Margin="20 0 0 0"   nameButton="Sort"   Width="100" Height="40"/>
 
-                    <DataGridTextColumn Header="ID" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding ID}"/>
+            </StackPanel>
+        </Grid>
+        
+        <Border Grid.Row="2" Margin="20 0 20 10" Padding="10" Style="{StaticResource mainBorder}">
+            <DataGrid BorderThickness="1" BorderBrush="#1e2e44" ItemsSource="{Binding customerList}"  AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid" Margin="10">
+                <DataGrid.Columns >
+
+                    <DataGridTextColumn Header="ID" IsReadOnly="True" CanUserResize="False" Width="50" Binding="{Binding ID}"/>
 
                     <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding Full_Name}"/>
-                    <DataGridTextColumn Header="Gender" IsReadOnly="True" Width="Auto" Binding="{Binding Gender}"/>
+                    <DataGridTextColumn Header="Gender" IsReadOnly="True" Width="70" Binding="{Binding Gender}"/>
                     <DataGridTextColumn Header="Date Of Birth" IsReadOnly="True" Width="*" Binding="{Binding DOB}"/>
                     <DataGridTextColumn Header="Email" IsReadOnly="True" Width="*" Binding="{Binding Email}"/>
                     <DataGridTextColumn Header="Phone" IsReadOnly="True" Width="*" Binding="{Binding Phone}"/>
@@ -49,12 +59,15 @@ Padding="10,10,0,0" FontSize="20" />
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn Header="Edit" IsReadOnly="True" Width="70">
+                    <DataGridTemplateColumn Header="Edit" IsReadOnly="True" Width="100">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button>
-                                        <Icon:PackIconMaterial Kind="Delete" Background="Yellow"/>
+                                    <Button  Style="{StaticResource gridRemoveButton}">
+                                        <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource girdButtonIcon}"/>
+                                    </Button>
+                                    <Button Margin="10 0 0 0    "  Style="{StaticResource gridEditButton}">
+                                        <Icon:PackIconMaterial Kind="AccountEdit" Style="{StaticResource girdButtonIcon}"/>
                                     </Button>
                                 </StackPanel>
                             </DataTemplate>
@@ -63,19 +76,26 @@ Padding="10,10,0,0" FontSize="20" />
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
-        <Border Grid.Row="2" Padding="5" HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <Button Style="{StaticResource pagingButton}">
-                    <Icon:PackIconMaterial Kind="ChevronLeft"/>
-                </Button>
-                <Button Style="{StaticResource pagingButton}" Content="1"/>
-                <Button Style="{StaticResource pagingButton}" Content="2"/>
-                <Button Style="{StaticResource pagingButton}" Content="3"/>
-                <Button Style="{StaticResource pagingButton}" Content="4"/>
-                <Button Style="{StaticResource pagingButton}">
-                    <Icon:PackIconMaterial Kind="ChevronRight"/>
-                </Button>
-            </StackPanel>
-        </Border>
+        <StackPanel Grid.Row="3"  Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Button  Style="{StaticResource pagingButton}" Command="{Binding previousPage}" CommandParameter="Previous">
+                <Icon:PackIconMaterial Kind="ChevronLeft"/>
+            </Button>
+            <ItemsControl ItemsSource="{Binding PageNumbers}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Style="{StaticResource pagingButton}" Content="{Binding}" Command="{Binding DataContext.NavigateToPageCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"  CommandParameter="{Binding}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Button Command="{Binding nextPage}" Style="{StaticResource pagingButton}"  CommandParameter="Next">
+                <Icon:PackIconMaterial Kind="ChevronRight"/>
+            </Button>
+        </StackPanel>
+
     </Grid>
 </UserControl>

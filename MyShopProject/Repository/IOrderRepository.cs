@@ -82,6 +82,14 @@ namespace MyShopProject.Repository
             }
             return order;
         }
+        public List<Order> findPage(int skipCount, int takeCount, DateTime previousDate, DateTime lastDate, float minPrice, float maxPrice)
+        {
+            List<Order> orders = DataProvider.Instance.DB.Orders.OrderBy(o => o.CreateDate >= previousDate && o.CreateDate <= lastDate && o.TotalPrice >= minPrice && o.TotalPrice <= maxPrice).Skip(skipCount).Take(takeCount).ToList();
+            return orders;
+        }
+
+
+
 
         public List<Order> findByName(string name)
         {
