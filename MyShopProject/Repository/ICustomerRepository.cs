@@ -128,5 +128,10 @@ namespace MyShopProject.Repository
             List<Customer> customers = DataProvider.Instance.DB.Customers.OrderBy(c => c.Full_Name.Contains(name) && c.Gender.Contains("Male")).Skip(skipCount).Take(takeCount).ToList();
             return customers;
         }
+
+        public List<Customer> findPageByName(int skipCount, int takeCount)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
