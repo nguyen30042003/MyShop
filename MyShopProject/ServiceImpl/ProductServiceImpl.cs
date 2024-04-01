@@ -32,6 +32,20 @@ namespace MyShopProject.ServiceImpl
             return false;
         }
 
+        public bool deleteByIdCategory(int id)
+        {
+            List<Product> products = new List<Product>();
+            products = IProductRepository.Instance.findAll();
+            foreach(var product in products)
+            {
+                if(product.IDCategory == id)
+                {
+                    delete(product);
+                }
+            }
+            return true;
+        }
+
         public List<Product> findAll()
         {
             List<Product> products = new List<Product>();   

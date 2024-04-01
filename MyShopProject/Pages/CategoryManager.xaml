@@ -39,7 +39,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <uc:CustomButton ClickCommand="{Binding DeleteCategory_Click}" nameButton="Delete"/>
+                                            <uc:CustomButton ClickCommand="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.DeleteCategory_Click}" nameButton="Delete"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>

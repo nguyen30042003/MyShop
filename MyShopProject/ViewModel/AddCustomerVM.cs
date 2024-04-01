@@ -45,9 +45,11 @@ namespace MyShopProject.ViewModel
             {
                 Customer customer = new Customer() { ID = 0, Full_Name = tbFullName, DOB = tbDOB, Email = tbEmail, Gender = "Male", Avatar = PathImage, Phone = tbPhone };
                 ICustomerRepository customerRepository = new ICustomerRepository();
-                MessageBox.Show(tbFullName);
                 customerRepository.create(customer);
                 MessageBox.Show("Add Success");
+                //CustomerManagerVM customerManagerVM = new CustomerManagerVM();
+                
+                //customerManagerVM.customerList.Add(customer);
             });
         }
     }

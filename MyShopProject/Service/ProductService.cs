@@ -16,6 +16,7 @@ namespace MyShopProject.Service
         Product findById(int id);
         bool delete(Product product);
 
+        bool deleteByIdCategory (int id);
         List<Product> sortByCreateDate(DateTime previousDate, DateTime lastDate);
         List<Product> sortByPrice(float minPrice, float maxPrice);
         List<Product> sortByPriceASC();

@@ -25,7 +25,7 @@
             </Grid.ColumnDefinitions>
             <uc:CustomButton Margin="10" Grid.Column="0" nameButton="Create customer"  Width="200" Height="50" ClickCommand="{Binding CreateCustomer_Click}"/>
             <ComboBox Name="sortSelect" Grid.Column="1" Text="Select" Width="200" Height="50" Background="#1e2e44"/>
-            <uc:CustomButton Margin="10" Grid.Column="2" nameButton="Sort"  Width="200" Height="50" />
+            <uc:CustomButton Margin="10" Grid.Column="2" nameButton="Sort"  Width="200" Height="50" ClickCommand="{Binding Sort_Click}"/>
             <TextBox Grid.Column="3" Margin="20 0 10 0" VerticalAlignment="Center" Background="#1e2e44" Foreground="White" Height="50" 
 Padding="10,10,0,0" FontSize="20" />
             <uc:CustomButton Margin="10" Grid.Column="4" nameButton="Search"  Width="100" Height="50"/>

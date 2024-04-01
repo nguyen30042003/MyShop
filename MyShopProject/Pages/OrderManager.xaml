@@ -29,15 +29,13 @@ Padding="10,10,0,0" FontSize="20" />
         <uc:CustomButton Margin="10" Grid.Column="4" nameButton="Search"  Width="100" Height="50"/>
     </Grid>
     <Border Grid.Row="1" Margin="20 0 20 10" Style="{StaticResource mainBorder}">
-        <DataGrid Template="{DynamicResource DataGridTemplate1}" AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid">
+            <DataGrid ItemsSource="{Binding orderList}" Template="{DynamicResource DataGridTemplate1}" AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="ID" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding ID}"/>
-
-                <DataGridTextColumn Header="Customer" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Create Date" IsReadOnly="True" Width="*" Binding="{Binding Date}"/>
-                <DataGridTextColumn Header="Total Price" IsReadOnly="True" Width="*" Binding="{Binding totalPrice}"/>
-                <DataGridTextColumn Header="Total Quantity" IsReadOnly="True" Width="*" Binding="{Binding totalQuantity}"/>
+                    <DataGridTextColumn Header="ID" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding ID}"/>
+                    <DataGridTextColumn Header="Create Date" IsReadOnly="True" Width="*" Binding="{Binding CreateDate}"/>
+                <DataGridTextColumn Header="Total Price" IsReadOnly="True" Width="*" Binding="{Binding TotalPrice}"/>
+                <DataGridTextColumn Header="Total Quantity" IsReadOnly="True" Width="*" Binding="{Binding TotalQuantity}"/>
 
 
                 <DataGridTemplateColumn Header="Edit" IsReadOnly="True" Width="70">

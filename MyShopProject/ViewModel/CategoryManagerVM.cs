@@ -19,7 +19,6 @@ namespace MyShopProject.ViewModel
         public CategoryManagerVM()
         {
             ListCategory = new ObservableCollection<Category>(categoryList());
-
             AddCategory_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
                 Category category = new Category() { ID = 0, Name = tbCategoryName };
 
@@ -36,8 +35,10 @@ namespace MyShopProject.ViewModel
                 if (SelectedCategory != null)
                 {
                     ICategoryRepository categoryRepository = new ICategoryRepository();
+                    ProductServiceImpl.Instance.deleteByIdCategory(SelectedCategory.ID);
                     categoryRepository.delete(SelectedCategory);
                     ListCategory.Remove(SelectedCategory);
+                    
                     MessageBox.Show("Delete success");
                 }
                 else
