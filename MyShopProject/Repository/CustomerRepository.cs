@@ -17,5 +17,7 @@ namespace MyShopProject.Repository
         List<Customer> findByName(string name);
         Customer findById(int id);
 
+        List<Customer> findPage(int skipCount, int takeCount);
+        List<Customer> findPageByName(int skipCount, int takeCount);
     }
 }

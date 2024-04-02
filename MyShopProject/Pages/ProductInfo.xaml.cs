@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyShopProject.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace MyShopProject.Pages {
-    /// <summary>
-    /// Interaction logic for ProductInfo.xaml
-    /// </summary>
-    public partial class ProductInfo : UserControl {
+
+    public partial class ProductInfo : Window {
         public ProductInfo() {
             InitializeComponent();
         }

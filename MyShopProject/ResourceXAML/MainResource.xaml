@@ -11,4 +11,5 @@
     <viewmodel:AnalystBudgetVM x:Key="AnalystBudgetVM"></viewmodel:AnalystBudgetVM>
     <viewmodel:CreateOrderVM x:Key="CreateOrderVM"></viewmodel:CreateOrderVM>
     <viewmodel:CustomerManagerVM x:Key="CustomerManagerVM"></viewmodel:CustomerManagerVM>
+    <viewmodel:ProductInfoVM x:Key="ProductInfoVM"></viewmodel:ProductInfoVM>
 </ResourceDictionary>
