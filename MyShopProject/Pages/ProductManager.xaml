@@ -61,7 +61,7 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <uc:ProductCard Command="{Binding ElementName=ProductList, Path=DataContext.GetProductInfo}" CommandParameter="{Binding}" imageProduct="{Binding Image}" nameProduct="{Binding Name}" Height="300" Width="250" Margin="0 5 5 5"/>
+                    <uc:ProductCard Command="{Binding ElementName=ProductList, Path=DataContext.GetProductInfo}" CommandParameter="{Binding ID}" imageProduct="{Binding Image}" nameProduct="{Binding Name}" Height="300" Width="250" Margin="0 5 5 5"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.ItemsPanel>

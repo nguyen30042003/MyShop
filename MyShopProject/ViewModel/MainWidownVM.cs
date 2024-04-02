@@ -18,6 +18,7 @@ namespace MyShopProject.ViewModel {
         public ICommand analystBudget_Click { get; set; }
         public ICommand quit_Click { get; set; }
         public ICommand customerManager_Click { get; set; }
+        public ICommand productInfo_Click { get; set; }
 
         private UserControl _currentPage;
 
@@ -39,6 +40,7 @@ namespace MyShopProject.ViewModel {
                 setting_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Setting()));
                 analystBudget_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new AnalystBudget()));
             customerManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new CustomerManager()));
+            productInfo_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductInfo()));
             NavigateToPage(new Dashboard());
         }
         private void NavigateToPage(UserControl page)

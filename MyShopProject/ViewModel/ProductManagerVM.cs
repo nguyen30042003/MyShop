@@ -14,7 +14,6 @@ namespace MyShopProject.ViewModel {
         public ICommand Action_Click {  get; set; }
         public ICommand GetProductInfo {  get; set; }
 
-
         public List<Model.Product> Products { get; set; }
         public ProductManagerVM() {
             loadProduct();
@@ -68,7 +67,7 @@ namespace MyShopProject.ViewModel {
         private void getProductInfo(int p) {
             Window mainWindow = Application.Current.MainWindow;
             MainWidownVM mainWidownVM = (MainWidownVM)mainWindow.DataContext;
-            mainWidownVM.analystBudget_Click.Execute(null);
+            mainWidownVM.productInfo_Click.Execute(p);
         }
     }
 }
