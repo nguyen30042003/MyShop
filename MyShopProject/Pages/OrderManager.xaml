@@ -34,7 +34,7 @@
                 <Icon:PackIconMaterial Kind="Filter" Width="30" Height="30" Foreground="#9ea4ad" VerticalAlignment="Center"/>
                 <ComboBox Margin="10 0 0 0" Name="sortSelect" Text="Select"  Width="100" Height="40" Background="#1e2e44"/>
                 <uc:CustomButton Margin="20 0 0 0"   nameButton="Sort"   Width="100" Height="40"/>
-
+                <DatePicker Name="datePicker" Margin="10 0 0 0" Width="300" Height="40" SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
             </StackPanel>
         </Grid>
         <Border Grid.Row="2" Margin="20 0 20 10" Style="{StaticResource mainBorder}">
@@ -42,7 +42,7 @@
                 <DataGrid.Columns>
 
                     <DataGridTextColumn Header="ID" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding ID}"/>
-                    <DataGridTextColumn Header="Create Date" IsReadOnly="True" Width="*" Binding="{Binding CreateDate}"/>
+                    <DataGridTextColumn Header="Create Date" IsReadOnly="True" Width="*" Binding="{Binding CreateDate, StringFormat=MM/dd/yyy}"/>
                     <DataGridTextColumn Header="Total Price" IsReadOnly="True" Width="*" Binding="{Binding TotalPrice}"/>
                     <DataGridTextColumn Header="Total Quantity" IsReadOnly="True" Width="*" Binding="{Binding TotalQuantity}"/>
 
@@ -61,19 +61,25 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
-        <Border Grid.Row="3" Padding="5" HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <Button Style="{StaticResource pagingButton}">
-                    <Icon:PackIconMaterial Kind="ChevronLeft"/>
-                </Button>
-                <Button Style="{StaticResource pagingButton}" Content="1"/>
-                <Button Style="{StaticResource pagingButton}" Content="2"/>
-                <Button Style="{StaticResource pagingButton}" Content="3"/>
-                <Button Style="{StaticResource pagingButton}" Content="4"/>
-                <Button Style="{StaticResource pagingButton}">
-                    <Icon:PackIconMaterial Kind="ChevronRight"/>
-                </Button>
-            </StackPanel>
-        </Border>
+        <StackPanel Grid.Row="3"  Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Button  Style="{StaticResource pagingButton}" Command="{Binding previousPage}" CommandParameter="Previous">
+                <Icon:PackIconMaterial Kind="ChevronLeft"/>
+            </Button>
+            <ItemsControl ItemsSource="{Binding PageNumbers}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Style="{StaticResource pagingButton}" Content="{Binding}" Command="{Binding DataContext.NavigateToPageCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"  CommandParameter="{Binding}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Button Command="{Binding nextPage}" Style="{StaticResource pagingButton}"  CommandParameter="Next">
+                <Icon:PackIconMaterial Kind="ChevronRight"/>
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

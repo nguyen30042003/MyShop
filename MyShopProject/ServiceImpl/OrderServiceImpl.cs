@@ -70,12 +70,6 @@ namespace MyShopProject.ServiceImpl
             return false;
         }
 
-        public List<Order> sortByCreateDate(DateTime previousDate, DateTime lastDate)
-        {
-            List<Order> orders = new List<Order>();
-            orders = IOrderRepository.Instance.sortByCreateDate(previousDate, lastDate);
-            return orders;
-        }
 
         public List<Order> sortByPrice(float minPrice, float maxPrice)
         {
@@ -109,6 +103,42 @@ namespace MyShopProject.ServiceImpl
         {
             List<Order> orders = new List<Order>();
             orders = IOrderRepository.Instance.sortByQuantityDesc();
+            return orders;
+        }
+
+        public List<Order> sortByCreateDate(int skipCount, int takeCount, DateTime previousDate, DateTime lastDate)
+        {
+            double max = 0;
+            foreach(var l in findAll())
+            {
+                if(max < l.TotalPrice)
+                {
+                    max = l.TotalPrice.Value;
+                }
+            }
+            List<Order> orders = new List<Order>();
+            orders = IOrderRepository.Instance.findPage(skipCount, takeCount, previousDate, lastDate, 0, double.MaxValue);
+            return orders;
+        }
+        public List<Order> findAllPage(int skipCount, int takeCount)
+        {
+            double max = 0;
+            foreach (var l in findAll())
+            {
+                if (max < l.TotalPrice)
+                {
+                    max = l.TotalPrice.Value;
+                }
+            }
+            List<Order> orders = new List<Order>();
+            orders = IOrderRepository.Instance.findPage(skipCount, takeCount, DateTime.MinValue, DateTime.Now, 0, double.MaxValue);
+            return orders;
+        }
+
+        public List<Order> sortByPrice(int skipCount, int takeCount, double minPrice, double maxPrice)
+        {
+            List<Order> orders = new List<Order>();
+            orders = IOrderRepository.Instance.findPage(skipCount, takeCount, DateTime.MinValue, DateTime.Now, minPrice, maxPrice);
             return orders;
         }
     }
