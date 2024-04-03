@@ -18,8 +18,8 @@ namespace MyShopProject.ViewModel {
         public ICommand Action_Click { get; set; }
         public ICommand BrowseImage_Click { get; set; }
 
-        public delegate void Hanlder();
-        public event Hanlder Click_Hanlder;
+        public delegate void Handler();
+        public event Handler Click_Handler;
         public String[] Categories { get; set; }
         public int[] IDCategories { get; set; }
         public int cbCategories { get; set; }
@@ -42,7 +42,7 @@ namespace MyShopProject.ViewModel {
                 {
                     System.Windows.MessageBox.Show("Add Product unsuccess");
                 }
-                Click_Hanlder.Invoke();
+                Click_Handler.Invoke();
             });
 
             BrowseImage_Click = new RelayCommand<object>((p) => { return true; }, (p) => {

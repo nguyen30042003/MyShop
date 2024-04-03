@@ -1,5 +1,6 @@
 ﻿using MyShopProject.Model;
 using MyShopProject.Pages;
+using MyShopProject.ServiceImpl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,9 @@ namespace MyShopProject.ViewModel {
         }
         public MainWidownVM()
         {
+            Order order = OrderServiceImpl.Instance.findById(1);
+            List<Item> items = order.Item.ToList();
+            MessageBox.Show(items[0].Price.ToString());
             quit_Click = new RelayCommand<Object>((p) => { return true; }, (p) => Application.Current.Shutdown());
             dashboad_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Dashboard()));
                 productManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductManager()));
