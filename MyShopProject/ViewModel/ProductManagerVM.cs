@@ -47,7 +47,7 @@ namespace MyShopProject.ViewModel {
         private AddProduct addProduct { get; set; }
         private void OpenAddProductDialog() {
             var addProductVM = new AddProductVM();
-            addProductVM.Click_Hanlder += AddProduct;
+            addProductVM.Click_Handler += AddProduct;
 
             addProduct = new AddProduct();
             addProduct.DataContext = addProductVM;

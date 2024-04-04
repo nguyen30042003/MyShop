@@ -105,12 +105,28 @@ namespace MyShopProject.ViewModel
 
         private void SwitchToCreateOrderPage()
         {
-            CategoryManager categoryManager = new CategoryManager();
 
             CreateOrder createOrderPage = new CreateOrder();
+            CreateOrderVM createOrderVM = new CreateOrderVM();
 
-            AddCustomer addCustomer = new AddCustomer();
-            createOrderPage.ShowDialog();
+            void closeDialog()
+            {
+                createOrderPage.DialogResult = true;
+            }
+
+            createOrderVM.Click_Handler += closeDialog;
+            createOrderPage.DataContext = createOrderVM;
+            if (createOrderPage.ShowDialog() == true)
+            {
+                Order newOrder = createOrderVM.newOrder;
+                if (OrderServiceImpl.Instance.save(newOrder))
+                {
+                    MessageBox.Show("Add success");
+                }
+                
+            }
         }
+
+
     }
 }
