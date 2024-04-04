@@ -2,6 +2,7 @@
 /MyShopProject/.vs
 /MyShopProject/bin/
 /MyShopProject/obj/
-/MyShopProject/App.config
 /MyShopProject/obj/Debug/
 /MyShopProject/App.config
+/MyShopProject/obj/Debug/Pages/AddProduct.g.i.cs
+/MyShopProject/obj/Debug/Pages/ProductManager.g.i.cs
