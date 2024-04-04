@@ -20,31 +20,17 @@ namespace MyShopProject.ViewModel {
         public ICommand quit_Click { get; set; }
         public ICommand customerManager_Click { get; set; }
         public ICommand productInfo_Click { get; set; }
-
-        private UserControl _currentPage;
-
-        public UserControl content
-        {
-            get { return _currentPage; }
-            set
-            {
-                _currentPage = value;
-                OnPropertyChanged(nameof(content));
-            }
-        }
+        public UserControl content { get; set; }
         public MainWidownVM()
         {
-            Order order = OrderServiceImpl.Instance.findById(1);
-            List<Item> items = order.Item.ToList();
-            MessageBox.Show(items[0].Price.ToString());
             quit_Click = new RelayCommand<Object>((p) => { return true; }, (p) => Application.Current.Shutdown());
             dashboad_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Dashboard()));
-                productManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductManager()));
-                orderManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new OrderManager()));
-                setting_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Setting()));
-                analystBudget_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new AnalystBudget()));
+            productManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductManager()));
+            orderManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new OrderManager()));
+            setting_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Setting()));
+            analystBudget_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new AnalystBudget()));
             customerManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new CustomerManager()));
-            productInfo_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductInfo()));
+            productInfo_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductInfo((Model.Product)p)));
             NavigateToPage(new Dashboard());
         }
         private void NavigateToPage(UserControl page)

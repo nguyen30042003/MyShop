@@ -16,72 +16,52 @@ namespace MyShopProject.ViewModel {
         public ICommand Action_Click {  get; set; }
         public ICommand GetProductInfo {  get; set; }
         public ICommand Category_Click { get; set; }
-        private ObservableCollection<Model.Product> _Products { get; set; }
-        public ObservableCollection<Model.Product> Products { get => _Products; set { _Products = value; OnPropertyChanged(nameof(Products)); } }
+        public ObservableCollection<Model.Product> Products { get ; set ; }
         public ProductManagerVM() {
             loadProduct();
+
             Category_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
                 CategoryManager categoryManager = new CategoryManager();
                 categoryManager.ShowDialog();
             });
+
             Action_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
                 OpenAddProductDialog();
-                loadProduct();
             });
-                GetProductInfo = new RelayCommand<object>((p) => { return true; }, (p) => {
-                    if (p != null && p is int productId)
-                    {
-                        ProductInfoVM productInfoVM = new ProductInfoVM(productId);
-                        ProductInfo productInfo = new ProductInfo();
-                        productInfo.ShowDialog();
-                    }
 
-                });
+            GetProductInfo = new RelayCommand<object>((p) => { return true; }, (p) => {
+                if (p != null)
+                {
+                    getProductInfo((Model.Product) p);
+                }
+            });
         }
         private void loadProduct()
         {
-
-            Products = new ObservableCollection<Model.Product>(ProductServiceImpl.Instance.findAll());
-           
+            Task.Run(() => {
+                Products = new ObservableCollection<Model.Product>(ProductServiceImpl.Instance.findAll());
+            });
         }
-        private AddProduct addProduct { get; set; }
         private void OpenAddProductDialog() {
+            AddProduct addProduct = new AddProduct();
             var addProductVM = new AddProductVM();
-            addProductVM.Click_Handler += AddProduct;
-
-            addProduct = new AddProduct();
             addProduct.DataContext = addProductVM;
-            if (addProduct.ShowDialog() == true) {
-
-            }
-        }
-
-        private void AddProduct() {
-            addProduct.DialogResult = true;
-            MessageBox.Show("Add product");
-            OnPropertyChanged(nameof(Products));
-        }
-
-        private void OpenUpdateProductDialog() {
-            var product = new Model.Product() { Name = "Haha", Image = "Haha" };
-            var updateProductVM = new UpdateProductVM(product);
-            void UpdateProduct() {
+            addProductVM.Click_Handler += () => {
                 addProduct.DialogResult = true;
-                MessageBox.Show(product.Image);
-            }
-            updateProductVM.Click_Hanlder += UpdateProduct;
+            };
 
-            addProduct = new AddProduct();
-            addProduct.DataContext = updateProductVM;
             if (addProduct.ShowDialog() == true) {
-
+                if (ProductServiceImpl.Instance.save(addProductVM.product)) {
+                    MessageBox.Show("Add success");
+                    Products.Add(addProductVM.product);
+                }
             }
         }
 
-        private void getProductInfo(int p) {
-            /*Window mainWindow = Application.Current.MainWindow;
+        private void getProductInfo(Model.Product p) {
+            Window mainWindow = Application.Current.MainWindow;
             MainWidownVM mainWidownVM = (MainWidownVM)mainWindow.DataContext;
-            mainWidownVM.analystBudget_Click.Execute(null);*/
+            mainWidownVM.productInfo_Click.Execute(p);
         }
     }
 }

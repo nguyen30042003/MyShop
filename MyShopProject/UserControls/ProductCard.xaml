@@ -31,6 +31,6 @@
         </Button.Style>
         <StackPanel>
             <Image Stretch="Uniform" d:Source="/image/12.jpg" Source="{Binding ElementName=productCard, Path=imageProduct}" Margin="10 10 10 10"/>
-            <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding ElementName=productCard, Path=nameProduct}" d:Text="Button"/>
+            <TextBlock Foreground="White" FontSize="20" TextAlignment="Center" Text="{Binding ElementName=productCard, Path=nameProduct}" d:Text="Button"/>
         </StackPanel>
 </Button>

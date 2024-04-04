@@ -2,6 +2,7 @@
 using MyShopProject.ServiceImpl;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,28 +21,15 @@ namespace MyShopProject.ViewModel {
 
         public delegate void Handler();
         public event Handler Click_Handler;
-        public String[] Categories { get; set; }
-        public int[] IDCategories { get; set; }
-        public int cbCategories { get; set; }
+
+        public List<Category> Categories { get; set; }
         public AddProductVM()
         {
-            product = new Product();
-            DateTime createDate = DateTime.Now;
+            product = new Product() { CreateDate = DateTime.Now };
             loadCategory();
             Action = "Add product";
             Action_Click = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-                product.ID = 0;
-                product.IDCategory = IDCategories[cbCategories];
-                product.CreateDate = createDate; 
-                if (ProductServiceImpl.Instance.save(product))
-                {
-                    System.Windows.MessageBox.Show("Add Product Success");
-                }
-                else
-                {
-                    System.Windows.MessageBox.Show("Add Product unsuccess");
-                }
                 Click_Handler.Invoke();
             });
 
@@ -52,16 +40,12 @@ namespace MyShopProject.ViewModel {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     product.Image = openFileDialog.FileName;
-                    OnPropertyChanged("product");
                 }
             });
         }
         private void loadCategory()
         {
-            var list = new List<Category>();
-            list = CategoryServiceImpl.Instance.findAll();
-            Categories = list.Select(c => c.Name).ToArray();
-            IDCategories = list.Select(c => c.ID).ToArray();
+            Categories = CategoryServiceImpl.Instance.findAll();
         }
     }
 }

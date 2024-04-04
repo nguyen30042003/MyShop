@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyShopProject.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace MyShopProject.Pages
         public ProductManager()
         {
             InitializeComponent();
+            DataContext = new ProductManagerVM();
         }
 
 

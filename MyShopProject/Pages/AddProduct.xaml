@@ -26,7 +26,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <StackPanel HorizontalAlignment="Right" Grid.Row="0" Margin="5 5">
@@ -109,11 +108,15 @@
                 <TextBlock  Padding="5 0"  Text="Import price" Foreground="White"/>
                 <TextBox Text="{Binding product.PriceImport}" HorizontalAlignment="Left" Style="{StaticResource customTextbox}" Width="300"/>
             </StackPanel>
-
+             
             <StackPanel HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="5 5">
                 <TextBlock  Padding="5 0"  Text="Category" Foreground="White"/>
-                <ComboBox IsEditable="True" IsTextSearchEnabled="True" SelectedIndex="{Binding cbCategories}" HorizontalAlignment="Left" VerticalContentAlignment="Center" Background="White" ItemsSource="{Binding Categories}" Height="30"  Width="300">
-
+                <ComboBox x:Name="cbx" VerticalContentAlignment="Center" SelectedIndex="{Binding selectedIndex}" Background="White" ItemsSource="{Binding Categories}" Height="30"  Width="300">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
             </StackPanel>
             <StackPanel HorizontalAlignment="Left"  Grid.Row="2" Grid.Column="1" Margin="5 5">
@@ -135,6 +138,7 @@
                 </StackPanel>
                 <uc:CustomButton ClickCommand="{Binding BrowseImage_Click}" Padding="5 0" Width="70" Height="40" nameButton="Browse"/>
             </StackPanel>
+
             <uc:CustomButton Grid.Row="6" Grid.ColumnSpan="2" nameButton="{Binding Action}"  Width="80" Height="40" ClickCommand="{Binding Action_Click}"/>
         </Grid>
     </StackPanel>

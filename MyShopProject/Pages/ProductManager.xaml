@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MyShopProject.Pages"
              xmlns:uc="clr-namespace:MyShopProject.UserControls"
-             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             DataContext="{StaticResource ProductManagerVM}">
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </UserControl.Resources>
@@ -31,14 +30,14 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <uc:CustomButton Grid.Column="0" Margin="20 0 0 0" nameButton="Category"  Width="100" Height="40" ClickCommand="{Binding Category_Click}" />
-            <uc:CustomButton Grid.Column="1" Margin="20 0 0 0" nameButton="Add product"  Width="100" Height="40" ClickCommand="{Binding Action_Click}" />
+            <uc:CustomButton Grid.Column="0" nameButton="Category"  Width="100" Height="40" ClickCommand="{Binding Category_Click}" />
+            <uc:CustomButton Grid.Column="1" Margin="10 0 0 0" nameButton="Add product"  Width="100" Height="40" ClickCommand="{Binding Action_Click}" />
 
             <StackPanel  Grid.Column="2" Margin="20 0 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Icon:PackIconMaterial Kind="Filter" Width="30" Height="30" Foreground="#9ea4ad" VerticalAlignment="Center"/>
                 <ComboBox Margin="10 0 0 0" Name="sortSelect" Text="Select"  Width="100" Height="40" Background="#1e2e44"/>
                 <uc:CustomButton Margin="20 0 0 0"   nameButton="Sort"   Width="100" Height="40"/>
-                
+
             </StackPanel>
 
         </Grid>
@@ -76,7 +75,7 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <uc:ProductCard Command="{Binding ElementName=ProductList, Path=DataContext.GetProductInfo}" CommandParameter="{Binding ID}" imageProduct="{Binding Image}" nameProduct="{Binding Name}" Height="300" Width="250" Margin="0 5 5 5"/>
+                    <uc:ProductCard Command="{Binding ElementName=ProductList, Path=DataContext.GetProductInfo}" CommandParameter="{Binding}" imageProduct="{Binding Image}" nameProduct="{Binding Name}" Height="300" Width="250" Margin="0 5 5 5"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.ItemsPanel>
