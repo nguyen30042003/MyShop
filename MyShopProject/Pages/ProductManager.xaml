@@ -41,7 +41,8 @@
             </StackPanel>
 
         </Grid>
-        <ListView ItemsSource="{Binding Products}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" Background="Transparent" x:Name="ProductList" Grid.Row="3" Margin="20 10 20 10">
+        <TextBlock Visibility="{Binding TextVisible}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="Loading" Grid.Row="3"/>
+        <ListView Visibility="{Binding ListVisible}" ItemsSource="{Binding Products}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" Background="Transparent" x:Name="ProductList" Grid.Row="3" Margin="20 10 20 10">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Template">
