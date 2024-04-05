@@ -52,7 +52,7 @@ namespace MyShopProject.ViewModel
                 addCustomer.ShowDialog();
                 loadCustomer();
             });
-            NavigateToPageCommand = new RelayCommand<int>((page) => true, NavigateToPage);
+            NavigateToPageCommand = new RelayCommand<int>((page) => true, (page) => NavigateToPage(page));
             previousPage = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
                 if(_currentPage > 1)

@@ -31,9 +31,7 @@ namespace MyShopProject.ViewModel {
                 GetProductInfo = new RelayCommand<object>((p) => { return true; }, (p) => {
                     if (p != null && p is int productId)
                     {
-                        ProductInfoVM productInfoVM = new ProductInfoVM(productId);
-                        ProductInfo productInfo = new ProductInfo();
-                        productInfo.ShowDialog();
+                        getProductInfo(productId);
                     }
 
                 });
@@ -79,9 +77,12 @@ namespace MyShopProject.ViewModel {
         }
 
         private void getProductInfo(int p) {
-            /*Window mainWindow = Application.Current.MainWindow;
+            ProductInfoVM productInfoVM = new ProductInfoVM(p);
+            ProductInfo productInfo = new ProductInfo();
+
+            Window mainWindow = Application.Current.MainWindow;
             MainWidownVM mainWidownVM = (MainWidownVM)mainWindow.DataContext;
-            mainWidownVM.analystBudget_Click.Execute(null);*/
+            mainWidownVM.productInfo_Click.Execute(p);
         }
     }
 }

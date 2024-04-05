@@ -25,7 +25,7 @@
                             <Ellipse Width="8" Height="8" Fill="#eb1700" Margin="7 0"/>
                             <Ellipse Width="8" Height="8" Fill="#eb1700"/>
                         </StackPanel>
-                        <uc:MenuButton Icon="HomeVariant"  ClickCommand="{Binding dashboad_Click}"/>
+                        <uc:MenuButton Icon="HomeVariant"  ClickCommand="{Binding dashboard_Click}"/>
                         <uc:MenuButton Icon="Package" ClickCommand="{Binding productManager_Click}"/>
                         <uc:MenuButton Icon="Cart" ClickCommand="{Binding orderManager_Click}"/>
                         <uc:MenuButton Icon="Human" ClickCommand="{Binding customerManager_Click}"/>

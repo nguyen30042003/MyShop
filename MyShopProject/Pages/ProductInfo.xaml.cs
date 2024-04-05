@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace MyShopProject.Pages {
 
-    public partial class ProductInfo : Window {
+    public partial class ProductInfo : UserControl {
         public ProductInfo() {
             InitializeComponent();
         }

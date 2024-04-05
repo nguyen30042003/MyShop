@@ -218,3 +218,6 @@ C:\HCMUS\Nam 3\C#\Project1\MyShopProject\obj\Debug\Pages\CustomerManager.g.cs
 C:\HCMUS\Nam 3\C#\Project1\MyShopProject\obj\Debug\Pages\CustomerManager.baml
 C:\Users\phamm\source\repos\MyShop\MyShopProject\obj\Debug\Pages\CustomerManager.g.cs
 C:\Users\phamm\source\repos\MyShop\MyShopProject\obj\Debug\Pages\CustomerManager.baml
+C:\HCMUS\Nam 3\C#\Project1\MyShopProject\obj\Debug\MyShopProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\HCMUS\Nam 3\C#\Project1\MyShopProject\obj\Debug\MyShopProject.csproj.Fody.CopyLocal.cache
+C:\HCMUS\Nam 3\C#\Project1\MyShopProject\obj\Debug\MyShopProject.csproj.Fody.RuntimeCopyLocal.cache
