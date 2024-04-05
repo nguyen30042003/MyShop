@@ -12,6 +12,8 @@ using System.Collections.ObjectModel;
 using System.CodeDom;
 namespace MyShopProject.ViewModel {
     internal class ProductManagerVM : BaseViewModel {
+        public Visibility ListVisible { get; set; } = Visibility.Hidden;
+        public Visibility TextVisible { get; set; } = Visibility.Visible;
         public String Action {  get; set; }
         public ICommand Action_Click {  get; set; }
         public ICommand GetProductInfo {  get; set; }
@@ -40,6 +42,8 @@ namespace MyShopProject.ViewModel {
         {
             Task.Run(() => {
                 Products = new ObservableCollection<Model.Product>(ProductServiceImpl.Instance.findAll());
+                TextVisible = Visibility.Hidden;
+                ListVisible = Visibility.Visible;
             });
         }
         private void OpenAddProductDialog() {

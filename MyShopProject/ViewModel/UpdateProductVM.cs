@@ -46,15 +46,20 @@ namespace MyShopProject.ViewModel {
                 }
             });
             Action_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
-                product.IDCategory = selectedIndex;
-                product.Category = Categories.ElementAt(selectedIndex);
+                if (selectedIndex != -1) {
+                    product.IDCategory = Categories.ElementAt(selectedIndex).ID;
+                    product.Category = Categories.ElementAt(selectedIndex);
+                } else {
+                    product.IDCategory = null;
+                    product.Category = null;
+                }
                 Click_Hanlder.Invoke();
             });
         }
         private void loadCategory() {
             Categories = CategoryServiceImpl.Instance.findAll();
-            var selectedCategory = Categories.Where(c => c.ID == product.IDCategory).Single();
-            selectedIndex = Categories.IndexOf(selectedCategory);
+            var selectedCategory = Categories.Where(c => c.ID == product.IDCategory).FirstOrDefault();
+            selectedIndex = selectedCategory == null ? -1 : Categories.IndexOf(selectedCategory);
         }
     }
 }
