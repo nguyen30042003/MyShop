@@ -14,10 +14,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace MyShopProject.Pages {
-
     public partial class ProductInfo : UserControl {
-        public ProductInfo() {
+        public ProductInfo(Model.Product product) {
             InitializeComponent();
+            DataContext = new ProductInfoVM(product);
         }
     }
 }

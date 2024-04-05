@@ -34,7 +34,6 @@ namespace MyShopProject.Repository
             {
                 return false;
             }
-            return false;
         }
 
 
