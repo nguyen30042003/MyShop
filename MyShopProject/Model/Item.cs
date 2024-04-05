@@ -19,6 +19,7 @@ namespace MyShopProject.Model
         public Nullable<int> IDOrder { get; set; }
         public Nullable<double> Price { get; set; }
         public Nullable<int> Quantity { get; set; }
+        public Nullable<double> Profit { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
