@@ -1,4 +1,5 @@
-﻿using MyShopProject.Model;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using MyShopProject.Model;
 using MyShopProject.Pages;
 using MyShopProject.Repository;
 using MyShopProject.ServiceImpl;
@@ -31,15 +32,10 @@ namespace MyShopProject.ViewModel
             get { return _pageNumbers; }
             set { _pageNumbers = value; OnPropertyChanged(nameof(PageNumbers)); }
         }
-        private int currentPage { get; set; }
-        private int _currentPage
+
+        public int currentPage
         {
-            get => currentPage;
-            set
-            {
-                currentPage = value;
-                OnPropertyChanged(nameof(_currentPage));
-            }
+            get; set;
         }
         private int _totalItems;
         private int _totalPage;
@@ -50,53 +46,57 @@ namespace MyShopProject.ViewModel
             loadOrder();
             CreateOrder_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
                 SwitchToCreateOrderPage();
-                loadOrder();
             });
             NavigateToPageCommand = new RelayCommand<int>((page) => true, NavigateToPage);
             previousPage = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
-                if (_currentPage > 1)
+                if (currentPage > 1)
                 {
-                    NavigateToPage(_currentPage - 1);
+                    NavigateToPage(currentPage - 1);
                 }
 
             });
             nextPage = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
-                if (_currentPage < _totalPage)
+                if (currentPage < _totalPage)
                 {
-                    NavigateToPage(_currentPage + 1);
+                    NavigateToPage(currentPage + 1);
                 }
             });
         }
+
         public void loadOrder()
         {
-            orderList = new ObservableCollection<Order>(OrderServiceImpl.Instance.findAll());
-            _totalItems = orderList.Count;
-            _totalPage = _totalItems / _perPage;
-            if (_totalItems % _perPage != 0)
-            {
-                _totalPage += 1;
-            }
-
-            PageNumbers = new ObservableCollection<int>(Enumerable.Range(1, _totalPage));
             currentPage = 1;
-            NavigateToPage(1);
+          
+            NavigateToPage(currentPage);
             
         }
 
 
         private void NavigateToPage(int page)
         {
-            _currentPage = page;
-            int skipCount = (_currentPage - 1) * _perPage;
+            currentPage = page;
+            int skipCount = (currentPage - 1) * _perPage;
             int takeCount = _perPage;
-            if (page == _totalPage)
-            {
-                takeCount = (_totalItems - skipCount) - 1;
-            }
 
-            orderList = new ObservableCollection<Order>(OrderServiceImpl.Instance.findAllPage(skipCount, takeCount));
+
+            var pageResult = OrderServiceImpl.Instance.findAllPage(skipCount, takeCount);
+
+
+            if(_totalItems != pageResult.Item2)
+            {
+                _totalItems = pageResult.Item2;
+                _totalPage = _totalItems / _perPage;
+                if (_totalItems % _perPage != 0)
+                {
+                    _totalPage += 1;
+                }
+            }
+            
+
+            orderList = new ObservableCollection<Order>(pageResult.Item1);
+            PageNumbers = new ObservableCollection<int>(Enumerable.Range(1, _totalPage));
         }
 
 

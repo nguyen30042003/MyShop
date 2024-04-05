@@ -22,11 +22,9 @@ namespace MyShopProject.Pages
     /// </summary>
     public partial class OrderManager : UserControl
     {
-        public OrderManagerVM orderManagerVM { get; set; }
         public OrderManager()
         {
             InitializeComponent();
-            this.DataContext = orderManagerVM = new OrderManagerVM();
         }
 
     }

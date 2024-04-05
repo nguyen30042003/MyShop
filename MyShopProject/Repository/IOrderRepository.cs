@@ -82,11 +82,11 @@ namespace MyShopProject.Repository
             }
             return order;
         }
-        public List<Order> findPage(int skipCount, int takeCount, DateTime previousDate, DateTime lastDate, double minPrice, double maxPrice)
+        /*public List<Order> findPage(int skipCount, int takeCount, DateTime previousDate, DateTime lastDate, double minPrice, double maxPrice)
         {
             List<Order> orders = DataProvider.Instance.DB.Orders.OrderBy(o => o.CreateDate >= previousDate && o.CreateDate <= lastDate && o.TotalPrice >= minPrice && o.TotalPrice <= maxPrice).Skip(skipCount).Take(takeCount).ToList();
             return orders;
-        }
+        }*/
 
 
 
@@ -159,6 +159,18 @@ namespace MyShopProject.Repository
                 }
             }
             return false;
+        }
+
+        public Tuple<List<Order>, int> findPage(int skipCount, int takeCount, DateTime previousDate, DateTime lastDate, double minPrice, double maxPrice)
+        {
+            var orders = DataProvider.Instance.DB.Orders
+                .Where(o => o.CreateDate >= previousDate && o.CreateDate <= lastDate && o.TotalPrice >= minPrice && o.TotalPrice <= maxPrice)
+                .OrderBy(o => o.ID);
+            int count = orders.Count();
+            List<Order> list = orders.Skip(skipCount)
+                .Take(takeCount)
+                .ToList();
+            return new Tuple<List<Order>, int>(list, count);
         }
     }
 }

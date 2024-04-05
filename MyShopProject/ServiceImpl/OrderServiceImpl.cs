@@ -106,40 +106,21 @@ namespace MyShopProject.ServiceImpl
             return orders;
         }
 
-        public List<Order> sortByCreateDate(int skipCount, int takeCount, DateTime previousDate, DateTime lastDate)
+        public Tuple<List<Order>, int> sortByCreateDate(int skipCount, int takeCount, DateTime previousDate, DateTime lastDate)
         {
-            double max = 0;
-            foreach(var l in findAll())
-            {
-                if(max < l.TotalPrice)
-                {
-                    max = l.TotalPrice.Value;
-                }
-            }
-            List<Order> orders = new List<Order>();
-            orders = IOrderRepository.Instance.findPage(skipCount, takeCount, previousDate, lastDate, 0, double.MaxValue);
-            return orders;
+            return IOrderRepository.Instance.findPage(skipCount, takeCount, previousDate, lastDate, 0, double.MaxValue);
+           
         }
-        public List<Order> findAllPage(int skipCount, int takeCount)
+        public Tuple<List<Order>, int> findAllPage(int skipCount, int takeCount)
         {
-            double max = 0;
-            foreach (var l in findAll())
-            {
-                if (max < l.TotalPrice)
-                {
-                    max = l.TotalPrice.Value;
-                }
-            }
-            List<Order> orders = new List<Order>();
-            orders = IOrderRepository.Instance.findPage(skipCount, takeCount, DateTime.MinValue, DateTime.Now, 0, double.MaxValue);
-            return orders;
+            return IOrderRepository.Instance.findPage(skipCount, takeCount, DateTime.MinValue, DateTime.Now, 0, double.MaxValue);
+           
         }
 
-        public List<Order> sortByPrice(int skipCount, int takeCount, double minPrice, double maxPrice)
+        public Tuple<List<Order>, int> sortByPrice(int skipCount, int takeCount, double minPrice, double maxPrice)
         {
-            List<Order> orders = new List<Order>();
-            orders = IOrderRepository.Instance.findPage(skipCount, takeCount, DateTime.MinValue, DateTime.Now, minPrice, maxPrice);
-            return orders;
+            return IOrderRepository.Instance.findPage(skipCount, takeCount, DateTime.MinValue, DateTime.Now, minPrice, maxPrice);
+            
         }
     }
 }

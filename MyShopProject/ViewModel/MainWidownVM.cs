@@ -12,7 +12,7 @@ using System.Windows.Input;
 namespace MyShopProject.ViewModel {
     public class MainWidownVM : BaseViewModel
     {
-        public ICommand dashboad_Click {  get; set; }
+        public ICommand dashboard_Click {  get; set; }
         public ICommand productManager_Click { get; set; }
         public ICommand orderManager_Click { get; set; }
         public ICommand setting_Click { get; set; }
