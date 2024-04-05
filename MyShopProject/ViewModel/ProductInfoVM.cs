@@ -61,7 +61,7 @@ namespace MyShopProject.ViewModel
                 product.Quantity = updateProductVM.product.Quantity;
                 product.PriceSale = updateProductVM.product.PriceSale;
                 product.PriceImport = updateProductVM.product.PriceImport;
-                product.IDCategory = updateProductVM.product.Category.ID;
+                product.IDCategory = updateProductVM.product.IDCategory;
                 product.Category = updateProductVM.product.Category;
                 product.Discount = updateProductVM.product.Discount;
                 product.Image = updateProductVM.product.Image;
