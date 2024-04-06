@@ -107,6 +107,7 @@ namespace MyShopProject.ServiceImpl
         public Tuple<ObservableCollection<double>, ObservableCollection<string>> profitByWeek()
         {
             ObservableCollection<double> dataProfit = new ObservableCollection<double>();
+            
             ObservableCollection<string> seriesLabel = new ObservableCollection<string>();
             for (int i = 0; i < 7; i++)
             {
@@ -114,6 +115,7 @@ namespace MyShopProject.ServiceImpl
                 dataProfit.Add(IOrderRepository.Instance.totalProfit(date, date));
                 seriesLabel.Add(date.Date.ToString("MM-dd"));
             }
+   
             return Tuple.Create(dataProfit,seriesLabel);
         }
         public Tuple<ObservableCollection<double>, ObservableCollection<string>> profitByMonth()
@@ -125,6 +127,7 @@ namespace MyShopProject.ServiceImpl
                 dataProfit.Add(totalProfitByMonth(DateTime.Now.Year, month));
             }
             return Tuple.Create(dataProfit, seriesLabel);
+
         }
 
         public double totalTurnover(DateTime previousDate, DateTime lastDate)

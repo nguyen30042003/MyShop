@@ -88,39 +88,6 @@ namespace MyShopProject.Repository
             return DataProvider.Instance.DB.Products.Where(c => c.Name.Contains(name)).ToList();
         }
 
-        public List<Product> sortByCreateDate(DateTime previousDate, DateTime lastDate)
-        {
-            return DataProvider.Instance.DB.Products.Where(p => p.CreateDate >= previousDate && p.CreateDate <= lastDate)
-                                                     .OrderBy(p => p.CreateDate)
-                                                     .ToList();
-        }
-
-        public List<Product> sortByPrice(float minPrice, float maxPrice)
-        {
-            return DataProvider.Instance.DB.Products.Where(p => p.PriceSale >= minPrice && p.PriceSale <= maxPrice)
-                                                     .OrderBy(p => p.PriceSale)
-                                                     .ToList();
-        }
-
-        public List<Product> sortByPriceASC()
-        {
-            return DataProvider.Instance.DB.Products.OrderBy(p => p.PriceSale).ToList();
-        }
-
-        public List<Product> sortByPriceDesc()
-        {
-            return DataProvider.Instance.DB.Products.OrderByDescending(p => p.PriceSale).ToList();
-        }
-
-        public List<Product> sortByQuantityASC()
-        {
-            return DataProvider.Instance.DB.Products.OrderBy(p => p.Quantity).ToList();
-        }
-
-        public List<Product> sortByQuantityDesc()
-        {
-            return DataProvider.Instance.DB.Products.OrderByDescending(p => p.Quantity).ToList();
-        }
 
         public bool update(Product product)
         {

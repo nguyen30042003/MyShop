@@ -46,27 +46,48 @@ namespace MyShopProject.ViewModel
             seriesLabel = OrderServiceImpl.Instance.profitByWeek().Item2;
             seriesCollection = new SeriesCollection
             {
-               new ColumnSeries
-               {
+                new ColumnSeries
+                {
                     Title = "Weekly Profit",
                     Values = new ChartValues<double>(dataProfit)
-               }
+                }
             };
-            maxValue = dataProfit.Max() * 1.5;
+            if (dataProfit.Count > 0)
+            {
+                
+                maxValue = dataProfit.Max() * 1.5;
+            }
+            else
+            {
+                maxValue = 1;
+            }
+            
+            
+            
         }
         private void visualizeProfitByMonth()
         {
             dataProfitMonth = OrderServiceImpl.Instance.profitByMonth().Item1;
             seriesLabelMonth = OrderServiceImpl.Instance.profitByMonth().Item2;
             seriesCollectionByMonth = new SeriesCollection
+                {
+                   new LineSeries
+                   {
+                        Title = "Monthly Profit",
+                        Values = new ChartValues<double>(dataProfitMonth)
+                   }
+                };
+            if ( dataProfitMonth.Count > 0)
             {
-               new LineSeries
-               {
-                    Title = "Monthly Profit",
-                    Values = new ChartValues<double>(dataProfitMonth)
-               }
-            };
-            maxValueMonth = dataProfitMonth.Max() * 1.5;
+                
+                maxValueMonth = dataProfitMonth.Max() * 1.5;
+            }
+            else
+            {
+
+                maxValueMonth = 1;
+            }
+            
         }
 
     }

@@ -36,13 +36,14 @@
                     <Icon:PackIconMaterial Kind="Tune" Style="{StaticResource topMenuButtonIcon}"/>
                 </Button>
 
-                <lvc:CartesianChart Margin="0 30 0 0" Series="{Binding seriesCollection}">
+                <lvc:CartesianChart Margin="0 30 0 0"  Series="{Binding seriesCollection}" DisableAnimations="True"
+                        Hoverable="False">
                     <lvc:CartesianChart.DataTooltip>
                         <lvc:DefaultTooltip Background="#24336a" Foreground="#d5e2ff"/>
 
                     </lvc:CartesianChart.DataTooltip>
                     <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="{Binding seriesLabel}">
+                        <lvc:Axis Foreground="#bcc0c6" Width="30" ShowLabels="True" Labels="{Binding seriesLabel}">
                             <lvc:Axis.Separator>
                                 <lvc:Separator StrokeThickness="0" Step="1"/>
                             </lvc:Axis.Separator>
