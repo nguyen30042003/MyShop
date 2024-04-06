@@ -35,13 +35,8 @@ namespace MyShopProject.ViewModel {
         public ICommand Sort_Click { get; set; }
         public ICommand previousPage { get; set; }
         public ICommand nextPage { get; set; }
-        private ObservableCollection<int> _pageNumbers;
-        public ObservableCollection<int> PageNumbers
-        {
-            get { return _pageNumbers; }
-            set { _pageNumbers = value; OnPropertyChanged(nameof(PageNumbers)); }
-        }
-        public int currentPage { get; set; }
+        public ObservableCollection<int> PageNumbers {  get; set; }
+        public int currentPage { get; set; } = 1;
 
         private int _totalItems;
         private int _totalPage;
@@ -91,11 +86,7 @@ namespace MyShopProject.ViewModel {
             ListVisible = Visibility.Hidden;
             TextVisible = Visibility.Visible;
             Task.Run(() => {
-                var MinMaxValues = GetMinMax();
-
-                Products = new ObservableCollection<Model.Product>(ProductServiceImpl.Instance.findAll(StartDate, EndDate, MinMaxValues.Item1, MinMaxValues.Item2, Search, selectedSortOptions));
                 NavigateToPage(1);
-                //Products = new ObservableCollection<Model.Product>(ProductServiceImpl.Instance.findAll());
                 TextVisible = Visibility.Hidden;
                 ListVisible = Visibility.Visible;
             });
@@ -134,14 +125,25 @@ namespace MyShopProject.ViewModel {
             return new Tuple<int, int>(min, max);
         }
 
-        private void NavigateToPage(int p)
+        private void NavigateToPage(int page)
         {
-            Page page = new Page();
-            var pageResult = page.LoadPage<Model.Product>(new Model.Product(), p);
-            currentPage = p;
-            _totalPage = page.TotalPage;
-            Products = new ObservableCollection<Model.Product>(pageResult.Item1.Cast<Model.Product>());
-            PageNumbers = pageResult.Item2;
+            currentPage = page;
+            int skipCount = (currentPage - 1) * _perPage;
+            int takeCount = _perPage;
+
+            var MinMaxValues = GetMinMax();
+            var pageResult = ProductServiceImpl.Instance.findAllPage(StartDate, EndDate, skipCount, takeCount, MinMaxValues.Item1, MinMaxValues.Item2, Search, selectedSortOptions);
+
+            if (_totalItems != pageResult.Item2) {
+                _totalItems = pageResult.Item2;
+                _totalPage = _totalItems / _perPage;
+                if (_totalItems % _perPage != 0) {
+                    _totalPage += 1;
+                }
+            }
+
+            Products = new ObservableCollection<Model.Product>(pageResult.Item1);
+            PageNumbers = new ObservableCollection<int>(Enumerable.Range(1, _totalPage));
         }
     }
 }

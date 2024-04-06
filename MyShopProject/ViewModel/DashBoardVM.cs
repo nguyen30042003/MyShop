@@ -10,11 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace MyShopProject.ViewModel
-{
-    public class DashBoardVM : BaseViewModel
-    {
-        public ObservableCollection<double> dataProfit {  get; set; }
+namespace MyShopProject.ViewModel {
+    public class DashBoardVM : BaseViewModel {
+        public ObservableCollection<double> dataProfit { get; set; }
         public ObservableCollection<string> seriesLabel { get; set; }
 
         public ObservableCollection<double> dataProfitMonth { get; set; }
@@ -29,19 +27,17 @@ namespace MyShopProject.ViewModel
         public int totalQuantityProductSoldToday { get; set; }
         public int totalOrderToday { get; set; }
         public int totalCustomerPurchasedToday { get; set; }
-        public int totalProductInStock {  get; set; }
-        public int totalOrderWeek {  get; set; }
-        public int totalProductSelling {  get; set; }
+        public int totalProductInStock { get; set; }
+        public int totalOrderWeek { get; set; }
+        public int totalProductSelling { get; set; }
         public DashBoardVM() {
             visualizeProfitByWeek();
             visualizeProfitByMonth();
         }
-        private void load()
-        {
+        private void load() {
 
         }
-        private void visualizeProfitByWeek()
-        {
+        private void visualizeProfitByWeek() {
             dataProfit = OrderServiceImpl.Instance.profitByWeek().Item1;
             seriesLabel = OrderServiceImpl.Instance.profitByWeek().Item2;
             seriesCollection = new SeriesCollection
@@ -54,8 +50,7 @@ namespace MyShopProject.ViewModel
             };
             maxValue = dataProfit.Max() * 1.5;
         }
-        private void visualizeProfitByMonth()
-        {
+        private void visualizeProfitByMonth() {
             dataProfitMonth = OrderServiceImpl.Instance.profitByMonth().Item1;
             seriesLabelMonth = OrderServiceImpl.Instance.profitByMonth().Item2;
             seriesCollectionByMonth = new SeriesCollection

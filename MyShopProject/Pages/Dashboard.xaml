@@ -57,7 +57,7 @@
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisY>
 
-                    
+
                 </lvc:CartesianChart>
             </Grid>
         </Border>
@@ -67,7 +67,7 @@
                 <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
 
                 <lvc:CartesianChart Margin="0 30 0 0" Series="{Binding seriesCollectionByMonth}" >
-                     
+
                     <lvc:CartesianChart.DataTooltip>
                         <lvc:DefaultTooltip Background="#101a28" Foreground="#d5e2ff"/>
 
@@ -87,8 +87,8 @@
                             </lvc:Axis.Separator>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisY>
-                    
-                    
+
+
                 </lvc:CartesianChart>
             </Grid>
         </Border>

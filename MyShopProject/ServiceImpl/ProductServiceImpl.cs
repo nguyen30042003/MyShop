@@ -47,18 +47,18 @@ namespace MyShopProject.ServiceImpl
             return true;
         }
 
-        public List<Product> findAll(DateTime start, DateTime end, int min = 0, int max = int.MaxValue, string name = "", int sortOption = 1)
-        {  
+        public Tuple<List<Product>, int> findAllPage(DateTime start, DateTime end, int skip, int take, int min = 0, int max = int.MaxValue, string name = "", int sortOption = 1)
+        {
             var products = IProductRepository.Instance.findAll()
-                .Where(p => 
-                    ((p.PriceSale??0) <= max && (p.PriceSale??0) >= min)
+                .Where(p =>
+                    ((p.PriceSale ?? 0) <= max && (p.PriceSale ?? 0) >= min)
                     && (p.CreateDate <= end && p.CreateDate >= start)
                     && p.Name.ToLower().Contains(name.ToLower()));
-
+            int count = products.Count();
             if (sortOption == 0)
-                return products.OrderBy(p => p.PriceSale).ToList();
+                return Tuple.Create(products.OrderBy(p => p.PriceSale).Skip(skip).Take(take).ToList(), count);
             else
-                return products.OrderByDescending(p => p.PriceSale).ToList();
+                return Tuple.Create(products.OrderByDescending(p => p.PriceSale).Skip(skip).Take(take).ToList(), count);
         }
 
         public Product findById(int id)
@@ -85,7 +85,6 @@ namespace MyShopProject.ServiceImpl
         }
 
 
-
         public bool update(Product product)
         {
             if (IProductRepository.Instance.update(product))
@@ -109,6 +108,10 @@ namespace MyShopProject.ServiceImpl
                 total += p.Quantity.Value;
             }
             return total;
+        }
+
+        public List<Product> findAll() {
+            return IProductRepository.Instance.findAll();
         }
     }
 }

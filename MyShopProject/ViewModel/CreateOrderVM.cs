@@ -86,7 +86,7 @@ namespace MyShopProject.ViewModel
         public void loadCustomerAndProduct()
         {
             customers = CustomerServiceImpl.Instance.findAll();
-            products = ProductServiceImpl.Instance.findAll(DateTime.Parse($"01/01/{DateTime.Now.Year}"), DateTime.Now.AddDays(1));
+            products = ProductServiceImpl.Instance.findAll();
         }
     }
 }
