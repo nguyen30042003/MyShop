@@ -74,7 +74,7 @@ namespace MyShopProject.Repository
 
         public List<Customer> findByName(string name)
         {
-            return DataProvider.Instance.DB.Customers.Where(c=>c.Full_Name.Contains(name)).ToList();
+            return DataProvider.Instance.DB.Customers.Where(c => c.Full_Name.Contains(name)).ToList();
         }
 
         public bool update(Customer customer)
@@ -117,21 +117,16 @@ namespace MyShopProject.Repository
             return customer;
         }
 
-        public List<Customer> findPage(int skipCount, int takeCount)
+        public Tuple<List<Customer>, int> findPage(int skipCount, int takeCount, string name)
         {
-            List<Customer> customers = DataProvider.Instance.DB.Customers.OrderBy(c => c.ID).Skip(skipCount).Take(takeCount).ToList();
-            return customers;
-        }
-
-        public List<Customer> findPageByName(int skipCount, int takeCount, string name)
-        {
-            List<Customer> customers = DataProvider.Instance.DB.Customers.OrderBy(c => c.Full_Name.Contains(name) && c.Gender.Contains("Male")).Skip(skipCount).Take(takeCount).ToList();
-            return customers;
-        }
-
-        public List<Customer> findPageByName(int skipCount, int takeCount)
-        {
-            throw new NotImplementedException();
+            var customers = DataProvider.Instance.DB.Customers
+                .Where(o => o.Full_Name.Contains(name))
+                .OrderBy(o => o.ID);
+            int count = customers.Count();
+            List<Customer> list = customers.Skip(skipCount)
+                .Take(takeCount)
+                .ToList();
+            return new Tuple<List<Customer>, int>(list, count);
         }
     }
 }

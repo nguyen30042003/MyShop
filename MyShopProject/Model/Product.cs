@@ -11,8 +11,9 @@ namespace MyShopProject.Model
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Product
+    using System.ComponentModel;
+
+    public partial class Product : INotifyPropertyChanged
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
@@ -34,5 +35,7 @@ namespace MyShopProject.Model
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item> Item { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

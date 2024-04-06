@@ -21,8 +21,10 @@ namespace MyShopProject.ViewModel {
         public ICommand customerManager_Click { get; set; }
         public ICommand productInfo_Click { get; set; }
         public UserControl content { get; set; }
+        
         public MainWidownVM()
         {
+           
             quit_Click = new RelayCommand<Object>((p) => { return true; }, (p) => Application.Current.Shutdown());
             dashboard_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Dashboard()));
             productManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductManager()));

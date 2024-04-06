@@ -172,5 +172,48 @@ namespace MyShopProject.Repository
                 .ToList();
             return new Tuple<List<Order>, int>(list, count);
         }
+
+        public double totalProfit(DateTime previousDate, DateTime lastDate)
+        {
+            double total = 0;
+            List<Order> orders = findAll();
+            foreach (var o in orders)
+            {
+                if (o.CreateDate >= previousDate.Date && o.CreateDate <= lastDate.Date)
+                {
+                    foreach (var i in o.Item)
+                        total += i.Profit.Value;
+                }
+            }
+            return total;
+        }
+        public double totalTurnover(DateTime previousDate, DateTime lastDate)
+        {
+            double total = 0;
+            List<Order> orders = findAll();
+            foreach (var o in orders)
+            {
+                if (o.CreateDate >= previousDate.Date && o.CreateDate <= lastDate.Date)
+                {
+                    foreach (var i in o.Item)
+                        total += i.Price.Value;
+                }
+            }
+            return total;
+        }
+        public int totalQuantity(DateTime previousDate, DateTime lastDate)
+        {
+            int total = 0;
+            List<Order> orders = findAll();
+            foreach (var o in orders)
+            {
+                if (o.CreateDate >= previousDate.Date && o.CreateDate <= lastDate.Date)
+                {
+                    foreach (var i in o.Item)
+                        total += i.Quantity.Value;
+                }
+            }
+            return total;
+        }
     }
 }

@@ -69,5 +69,11 @@ namespace MyShopProject.ServiceImpl
             }
             return false;
         }
+
+        public Tuple<List<Customer>, int> findAllPage(int skipCount, int takeCount)
+        {
+            return ICustomerRepository.Instance.findPage(skipCount, takeCount, "");
+
+        }
     }
 }

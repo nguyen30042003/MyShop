@@ -225,9 +225,11 @@
     <Compile Include="ViewModel\CategoryManagerVM.cs" />
     <Compile Include="ViewModel\CreateOrderVM.cs" />
     <Compile Include="ViewModel\CustomerManagerVM.cs" />
+    <Compile Include="ViewModel\DashBoardVM.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="ViewModel\MainWidownVM.cs" />
     <Compile Include="ViewModel\OrderManagerVM.cs" />
+    <Compile Include="ViewModel\Page.cs" />
     <Compile Include="ViewModel\ProductInfoVM.cs" />
     <Compile Include="ViewModel\ProductManagerVM.cs" />
     <Compile Include="ViewModel\UpdateCustomerVM.cs" />
@@ -354,10 +356,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="image\12.jpg" />
-    <Resource Include="image\13.jpg" />
-    <Resource Include="image\14.jpg" />
-    <Resource Include="image\15.jpg" />
     <Resource Include="image\password.png" />
   </ItemGroup>
   <ItemGroup>
@@ -377,6 +375,19 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="image\girl1.png" />
+    <Resource Include="image\girl2.png" />
+    <Resource Include="image\girl3.png" />
+    <Resource Include="image\girl4.png" />
+    <Resource Include="image\girl5.png" />
+    <Resource Include="image\man1.png" />
+    <Resource Include="image\man2.png" />
+    <Resource Include="image\man3.png" />
+    <Resource Include="image\man4.png" />
+    <Resource Include="image\man5.png" />
+    <Resource Include="image\man6.png" />
+    <Resource Include="image\man7.png" />
+    <Resource Include="image\man8.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

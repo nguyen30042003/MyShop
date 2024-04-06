@@ -19,6 +19,22 @@ namespace MyShopProject.ViewModel {
         public ICommand GetProductInfo {  get; set; }
         public ICommand Category_Click { get; set; }
         public ObservableCollection<Model.Product> Products { get ; set ; }
+
+        public ICommand NavigateToPageCommand { get; set; }
+        public ICommand Sort_Click { get; set; }
+        public ICommand previousPage { get; set; }
+        public ICommand nextPage { get; set; }
+        private ObservableCollection<int> _pageNumbers;
+        public ObservableCollection<int> PageNumbers
+        {
+            get { return _pageNumbers; }
+            set { _pageNumbers = value; OnPropertyChanged(nameof(PageNumbers)); }
+        }
+        public int currentPage { get; set; }
+
+        private int _totalItems;
+        private int _totalPage;
+        private int _perPage = 10;
         public ProductManagerVM() {
             loadProduct();
 
@@ -37,11 +53,28 @@ namespace MyShopProject.ViewModel {
                     getProductInfo((Model.Product) p);
                 }
             });
+            NavigateToPageCommand = new RelayCommand<int>((page) => true, NavigateToPage);
+            previousPage = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            {
+                if (currentPage > 1)
+                {
+                    NavigateToPage(currentPage - 1);
+                }
+
+            });
+            nextPage = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            {
+                if (currentPage < _totalPage)
+                {
+                    NavigateToPage(currentPage + 1);
+                }
+            });
         }
         private void loadProduct()
         {
             Task.Run(() => {
-                Products = new ObservableCollection<Model.Product>(ProductServiceImpl.Instance.findAll());
+                NavigateToPage(1);
+                //Products = new ObservableCollection<Model.Product>(ProductServiceImpl.Instance.findAll());
                 TextVisible = Visibility.Hidden;
                 ListVisible = Visibility.Visible;
             });
@@ -66,6 +99,16 @@ namespace MyShopProject.ViewModel {
             Window mainWindow = Application.Current.MainWindow;
             MainWidownVM mainWidownVM = (MainWidownVM)mainWindow.DataContext;
             mainWidownVM.productInfo_Click.Execute(p);
+        }
+
+        private void NavigateToPage(int p)
+        {
+            Page page = new Page();
+            var pageResult = page.LoadPage<Model.Product>(new Model.Product(), p);
+            currentPage = p;
+            _totalPage = page.TotalPage;
+            Products = new ObservableCollection<Model.Product>(pageResult.Item1.Cast<Model.Product>());
+            PageNumbers = pageResult.Item2;
         }
     }
 }

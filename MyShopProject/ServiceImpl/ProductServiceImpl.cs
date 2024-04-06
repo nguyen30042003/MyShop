@@ -76,47 +76,7 @@ namespace MyShopProject.ServiceImpl
             return false;
         }
 
-        public List<Product> sortByCreateDate(DateTime previousDate, DateTime lastDate)
-        {
-            List<Product> products = new List<Product>();
-            products = IProductRepository.Instance.sortByCreateDate(previousDate, lastDate);
-            return products;
-        }
 
-        public List<Product> sortByPrice(float minPrice, float maxPrice)
-        {
-            List<Product> products = new List<Product>();
-            products = IProductRepository.Instance.sortByPrice(minPrice, maxPrice);
-            return products;
-        }
-
-        public List<Product> sortByPriceASC()
-        {
-            List<Product> products = new List<Product>();
-            products = IProductRepository.Instance.sortByPriceASC();
-            return products;
-        }
-
-        public List<Product> sortByPriceDesc()
-        {
-            List<Product> products = new List<Product>();
-            products = IProductRepository.Instance.sortByPriceDesc();
-            return products;
-        }
-
-        public List<Product> sortByQuantityASC()
-        {
-            List<Product> products = new List<Product>();
-            products = IProductRepository.Instance.sortByQuantityASC();
-            return products;
-        }
-
-        public List<Product> sortByQuantityDesc()
-        {
-            List<Product> products = new List<Product>();
-            products = IProductRepository.Instance.sortByQuantityDesc();
-            return products;
-        }
 
         public bool update(Product product)
         {
@@ -125,6 +85,22 @@ namespace MyShopProject.ServiceImpl
                 return true;
             }
             return false;
+        }
+
+        public Tuple<List<Product>, int> findAllPage(int skipCount, int takeCount)
+        {
+            return IProductRepository.Instance.findPage(skipCount, takeCount, "", double.MinValue, double.MaxValue);
+
+        }
+        public int totalQuantityProductInStock()
+        {
+            int total = 0;
+            List<Product> products = findAll();
+            foreach (var p in products)
+            {
+                total += p.Quantity.Value;
+            }
+            return total;
         }
     }
 }

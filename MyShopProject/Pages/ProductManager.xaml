@@ -86,15 +86,26 @@
             </ListView.ItemsPanel>
         </ListView>
         <Grid Grid.Row="4" HorizontalAlignment="Center" Margin="0,10,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <uc:CustomButton Margin="10" Grid.Column="0" nameButton="Previous"  Width="100" Height="50"/>
-            <ComboBox Name="pageSelect" Grid.Column="1" Width="100" Height="40" />
-            <uc:CustomButton Margin="10" Grid.Column="2" nameButton="Next"  Width="100" Height="50"/>
-
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button  Style="{StaticResource pagingButton}" Command="{Binding previousPage}" CommandParameter="Previous">
+                    <Icon:PackIconMaterial Kind="ChevronLeft"/>
+                </Button>
+                <ItemsControl ItemsSource="{Binding PageNumbers}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource pagingButton}" Content="{Binding}" Command="{Binding DataContext.NavigateToPageCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"  CommandParameter="{Binding}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Button Command="{Binding nextPage}" Style="{StaticResource pagingButton}"  CommandParameter="Next">
+                    <Icon:PackIconMaterial Kind="ChevronRight"/>
+                </Button>
+            </StackPanel>
 
         </Grid>
     </Grid>

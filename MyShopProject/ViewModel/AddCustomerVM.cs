@@ -12,44 +12,24 @@ namespace MyShopProject.ViewModel
 {
     public class AddCustomerVM : BaseViewModel
     {
-        public string tbFullName {  get; set; }
-        public string tbEmail { get; set; }
-        public DateTime tbDOB { get; set; }
-        public string tbGender { get; set; }
-        public string tbPhone { get; set; }
-
-        private string _pathImage;
-        public string PathImage
-        {
-            get { return _pathImage; }
-            set
-            {
-                if (_pathImage != value)
-                {
-                    _pathImage = value;
-                    OnPropertyChanged("PathImage");
-                }
-            }
-        }
+        public delegate void Handler();
+        public event Handler Click_Handler;
+        public Customer newCustomer {  get; set; }
         public ICommand AddCustomer_Click {  get; set; }
         public ICommand PathImage_Click { get; set; }
 
         public AddCustomerVM() {
+            newCustomer = new Customer();
             PathImage_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png|All files (*.*)|*.*";
                 openFileDialog.ShowDialog();
-                PathImage = openFileDialog.FileName;
+                newCustomer.Avatar = openFileDialog.FileName;
             });
             AddCustomer_Click = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-                Customer customer = new Customer() { ID = 0, Full_Name = tbFullName, DOB = tbDOB, Email = tbEmail, Gender = "Male", Avatar = PathImage, Phone = tbPhone };
-                ICustomerRepository customerRepository = new ICustomerRepository();
-                customerRepository.create(customer);
-                MessageBox.Show("Add Success");
-                //CustomerManagerVM customerManagerVM = new CustomerManagerVM();
-                
-                //customerManagerVM.customerList.Add(customer);
+                newCustomer.Gender = "Male";
+                Click_Handler.Invoke();
             });
         }
     }

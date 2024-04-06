@@ -147,5 +147,16 @@ namespace MyShopProject.Repository
             }
             return false; // Thất bại
         }
+        public Tuple<List<Product>, int> findPage(int skipCount, int takeCount, string name, double minPrice, double maxPrice)
+        {
+            var products = DataProvider.Instance.DB.Products
+                .Where(o => o.Name.Contains(name) && o.PriceSale >= minPrice && o.PriceSale <= maxPrice)
+                .OrderBy(o => o.ID);
+            int count = products.Count();
+            List<Product> list = products.Skip(skipCount)
+                .Take(takeCount)
+                .ToList();
+            return new Tuple<List<Product>, int>(list, count);
+        }
     }
 }
