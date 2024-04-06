@@ -12,6 +12,7 @@ namespace MyShopProject.Service
         bool save(Product product);
         bool update(Product product);
         List<Product> findAll();
+        Tuple<List<Product>, int> findAllPage(DateTime start, DateTime end, int skip, int take, int min, int max, string name, int sortOption);
         List<Product> findByName(string name);
         Product findById(int id);
         bool delete(Product product);

@@ -21,7 +21,7 @@
             <TextBlock Margin="40 0 15 0" VerticalAlignment="Center" Foreground="#9ea4ad" Panel.ZIndex="1" 
                        IsHitTestVisible="False" Text="Search here..."
                        Visibility="{Binding ElementName=textBox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>
-            <TextBox x:Name="textBox" Text="{Binding search}" Style="{StaticResource searchTextBox}"/>
+            <TextBox x:Name="textBox" Text="{Binding Search}" Style="{StaticResource searchTextBox}"/>
             <Icon:PackIconMaterial Margin="10 0 0 0" Kind="Magnify" Width="15" Height="15" Foreground="#9ea4ad" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         </Grid>
         <Grid Grid.Row="1" Margin="20 0 20 0">
@@ -34,14 +34,39 @@
             <uc:CustomButton Grid.Column="1" Margin="10 0 0 0" nameButton="Add product"  Width="100" Height="40" ClickCommand="{Binding Action_Click}" />
 
             <StackPanel  Grid.Column="2" Margin="20 0 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Icon:PackIconMaterial Kind="Filter" Width="30" Height="30" Foreground="#9ea4ad" VerticalAlignment="Center"/>
-                <ComboBox Margin="10 0 0 0" Name="sortSelect" Text="Select"  Width="100" Height="40" Background="#1e2e44"/>
-                <uc:CustomButton Margin="20 0 0 0"   nameButton="Sort"   Width="100" Height="40"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Price from" Margin="5 0" VerticalAlignment="Center" Foreground="White"/>
+                    <TextBox Text="{Binding MinPrice}" Style="{StaticResource customTextbox}" VerticalContentAlignment="Center" Width="70"/>
+                </StackPanel>
 
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="to" Margin="5 0" VerticalAlignment="Center" Foreground="White"/>
+                    <TextBox Text="{Binding MaxPrice}" Style="{StaticResource customTextbox}" VerticalContentAlignment="Center" Width="70"/>
+                </StackPanel>
+
+                <StackPanel Margin="10 0 0 0"  Orientation="Horizontal">
+                    <TextBlock Text="Date from" Margin="5 0" VerticalAlignment="Center" Foreground="White"/>
+                    <Border Background="White" Padding="2" CornerRadius="5">
+                        <DatePicker SelectedDate="{Binding StartDate}" BorderThickness="0" VerticalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="to" Margin="5 0" VerticalAlignment="Center" Foreground="White"/>
+                    <Border Background="White" Padding="2" CornerRadius="5">
+                        <DatePicker  SelectedDate="{Binding EndDate}"  BorderThickness="0" VerticalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Margin="10 0 0 0" Orientation="Horizontal">
+                    <TextBlock Text="Sort" Margin="5 0" VerticalAlignment="Center" Foreground="White"/>
+                    <ComboBox VerticalContentAlignment="Center" SelectedIndex="{Binding selectedSortOptions}" ItemsSource="{Binding SortOptions}" Width="100"/>
+                </StackPanel>
+                <uc:CustomButton ClickCommand="{Binding Search_Click}" Margin="20 0 0 0" nameButton="Search"  Width="100" Height="40"/>
             </StackPanel>
 
         </Grid>
-        <TextBlock Visibility="{Binding TextVisible}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="Loading" Grid.Row="3"/>
+        <TextBlock Visibility="{Binding TextVisible}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="Loading" FontSize="20" Grid.Row="3"/>
         <ListView Visibility="{Binding ListVisible}" ItemsSource="{Binding Products}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" Background="Transparent" x:Name="ProductList" Grid.Row="3" Margin="20 10 20 10">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">

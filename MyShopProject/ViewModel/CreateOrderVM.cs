@@ -83,12 +83,10 @@ namespace MyShopProject.ViewModel
             });
         }
 
-
         public void loadCustomerAndProduct()
         {
             customers = CustomerServiceImpl.Instance.findAll();
             products = ProductServiceImpl.Instance.findAll();
         }
-
     }
 }

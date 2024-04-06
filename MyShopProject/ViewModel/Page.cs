@@ -20,8 +20,8 @@ namespace MyShopProject.ViewModel
             int skipCount = (CurrentPage - 1) * PerPage;
             int takeCount = PerPage;
 
-            ObservableCollection<object> resultData = new ObservableCollection<object>();
-            ObservableCollection<int> pageNumbers = new ObservableCollection<int>();
+            ObservableCollection<object> resultData;
+            ObservableCollection<int> pageNumbers;
 
             if (obj is Customer)
             {
@@ -43,7 +43,7 @@ namespace MyShopProject.ViewModel
                 resultData = new ObservableCollection<object>(pageResult.Item1.Cast<object>());
                 pageNumbers = new ObservableCollection<int>(Enumerable.Range(1, TotalPage));
             }
-            else if (obj is Product)
+            else
             {
                 var pageResult = ProductServiceImpl.Instance.findAllPage(skipCount, takeCount);
                 if (TotalItems != pageResult.Item2)
