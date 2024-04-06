@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MyShopProject.ServiceImpl
 {
@@ -46,11 +47,18 @@ namespace MyShopProject.ServiceImpl
             return true;
         }
 
-        public List<Product> findAll()
-        {
-            List<Product> products = new List<Product>();   
-            products = IProductRepository.Instance.findAll();
-            return products;
+        public List<Product> findAll(DateTime start, DateTime end, int min = 0, int max = int.MaxValue, string name = "", int sortOption = 1)
+        {  
+            var products = IProductRepository.Instance.findAll()
+                .Where(p => 
+                    ((p.PriceSale??0) <= max && (p.PriceSale??0) >= min)
+                    && (p.CreateDate <= end && p.CreateDate >= start)
+                    && p.Name.ToLower().Contains(name.ToLower()));
+
+            if (sortOption == 0)
+                return products.OrderBy(p => p.PriceSale).ToList();
+            else
+                return products.OrderByDescending(p => p.PriceSale).ToList();
         }
 
         public Product findById(int id)
