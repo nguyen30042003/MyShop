@@ -4,6 +4,7 @@
              xmlns:uc="clr-namespace:MyShopProject.UserControls"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             DataContext="{StaticResource DashBoardVM}"
              >
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,14 +18,14 @@
         </Grid.RowDefinitions>
         <!--Card-->
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="20 20 10 10">
-            <uc:InfoCard Number="10" Icon="HomeVariant"  NameTitle="Total product" Title="Total number of products sold in today" IsTechnical="True"/>
-            <uc:InfoCard Number="10" Icon="HomeVariant" NameTitle="Total order" Title="Total number of order in today" IsTechnical="True"/>
-            <uc:InfoCard Number="10" Icon="HomeVariant" NameTitle="Total Customer" Title="Total number of customers purchased" IsTechnical="True"/>
+            <uc:InfoCard Number="{Binding totalQuantityProductSoldToday}" Icon="HomeVariant"  NameTitle="Total product" Title="Total number of products sold in today" IsTechnical="True"/>
+            <uc:InfoCard Number="{Binding totalOrderToday}" Icon="HomeVariant" NameTitle="Total order" Title="Total number of order in today" IsTechnical="True"/>
+            <uc:InfoCard Number="{Binding totalCustomerPurchasedToday}" Icon="HomeVariant" NameTitle="Total Customer" Title="Total number of customers purchased" IsTechnical="True"/>
         </StackPanel>
         <StackPanel Margin="0 20 10 10" Grid.Column="1">
-            <uc:InfoCard Number="10" Icon="HomeVariant" NameTitle="Total product" Title="Total number of the product have stock" IsTechnical="False"/>
-            <uc:InfoCard Number="10" Icon="HomeVariant" NameTitle="Total revenue" Title="Total revenue" IsTechnical="False"/>
-            <uc:InfoCard Number="10" Icon="HomeVariant" NameTitle="TOTAL PROFIT" Title="Total profit" IsTechnical="False"/>
+            <uc:InfoCard Number="{Binding totalProductInStock}" Icon="HomeVariant" NameTitle="Total product" Title="Total number of the product have stock" IsTechnical="False"/>
+            <uc:InfoCard Number="{Binding totalOrderWeek}" Icon="HomeVariant" NameTitle="Total revenue" Title="Total revenue" IsTechnical="False"/>
+            <uc:InfoCard Number="{Binding totalProductSelling}" Icon="HomeVariant" NameTitle="TOTAL PROFIT" Title="Total profit" IsTechnical="False"/>
         </StackPanel>
 
         <Border Grid.Column="2" Style="{StaticResource mainBorder}" Margin="0 20 20 30">
@@ -35,13 +36,13 @@
                     <Icon:PackIconMaterial Kind="Tune" Style="{StaticResource topMenuButtonIcon}"/>
                 </Button>
 
-                <lvc:CartesianChart Margin="0 30 0 0">
+                <lvc:CartesianChart Margin="0 30 0 0" Series="{Binding seriesCollection}">
                     <lvc:CartesianChart.DataTooltip>
                         <lvc:DefaultTooltip Background="#24336a" Foreground="#d5e2ff"/>
 
                     </lvc:CartesianChart.DataTooltip>
                     <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug">
+                        <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="{Binding seriesLabel}">
                             <lvc:Axis.Separator>
                                 <lvc:Separator StrokeThickness="0" Step="1"/>
                             </lvc:Axis.Separator>
@@ -49,16 +50,14 @@
                     </lvc:CartesianChart.AxisX>
 
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" MinValue="0" MaxValue="50">
+                        <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" MinValue="0" MaxValue="{Binding maxValue}">
                             <lvc:Axis.Separator>
                                 <lvc:Separator StrokeThickness="0"/>
                             </lvc:Axis.Separator>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisY>
 
-                    <lvc:CartesianChart.Series>
-                        <lvc:StackedColumnSeries Fill="#7166f9" MaxColumnWidth="15" Values="12,16,0,11,20,6,0,8"/>
-                    </lvc:CartesianChart.Series>
+                    
                 </lvc:CartesianChart>
             </Grid>
         </Border>
@@ -67,38 +66,29 @@
             <Grid>
                 <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
 
-                <lvc:CartesianChart Margin="0 30 0 0">
+                <lvc:CartesianChart Margin="0 30 0 0" Series="{Binding seriesCollectionByMonth}" >
+                     
                     <lvc:CartesianChart.DataTooltip>
                         <lvc:DefaultTooltip Background="#101a28" Foreground="#d5e2ff"/>
 
                     </lvc:CartesianChart.DataTooltip>
                     <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="Jan,Apr,Jun,Aug">
+                        <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="{Binding seriesLabelMonth}">
                             <lvc:Axis.Separator>
-                                <lvc:Separator StrokeThickness="0" Step="4"/>
+                                <lvc:Separator StrokeThickness="0" Step="1"/>
                             </lvc:Axis.Separator>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisX>
 
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" MinValue="0" MaxValue="100">
+                        <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" MinValue="0" MaxValue="{Binding maxValueMonth}">
                             <lvc:Axis.Separator>
                                 <lvc:Separator StrokeThickness="1" Stroke="#2c3a54"/>
                             </lvc:Axis.Separator>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisY>
-
-                    <lvc:CartesianChart.Series>
-                        <lvc:LineSeries StrokeThickness="2" Stroke="#6860e6" PointGeometrySize="0"
-                            Values="60,50,66,70,40">
-                            <lvc:LineSeries.Fill>
-                                <LinearGradientBrush>
-                                    <GradientStop Color="#2e3966" Offset="0.4"/>
-                                    <GradientStop Color="#21304a" Offset="1.2"/>
-                                </LinearGradientBrush>
-                            </lvc:LineSeries.Fill>
-                        </lvc:LineSeries>
-                    </lvc:CartesianChart.Series>
+                    
+                    
                 </lvc:CartesianChart>
             </Grid>
         </Border>
@@ -108,10 +98,8 @@
                 <TextBlock Text="TOP 5 PRODUCT" Style="{StaticResource titleText}"/>
 
                 <ListView Margin="0 50 0 0" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                    <uc:TopProduct ProductName="" Flag="/image/12.jpg" Price="$" IsLevelUp="True"/>
-                    <uc:TopProduct ProductName="" Flag="/image/12.jpg" Price="$" IsLevelUp="False"/>
-                    <uc:TopProduct ProductName="" Flag="/image/12.jpg" Price="$" IsLevelUp="False"/>
-                    <uc:TopProduct ProductName="" Flag="/image/12.jpg" Price="$" IsLevelUp="True"/>
+                    <uc:TopProduct ProductName=""  Price="$" IsLevelUp="True"/>
+                    <uc:TopProduct ProductName=""  Price="$" IsLevelUp="False"/>
                 </ListView>
             </Grid>
         </Border>

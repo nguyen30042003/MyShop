@@ -43,7 +43,14 @@ namespace MyShopProject.ViewModel
             newOrder.TotalPrice = 0;
             addProduct_Click = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
-                Item item = new Item() { Product = product, Quantity = int.Parse(quantity), Price = product.PriceSale * int.Parse(quantity) };
+                Item item = new Item()
+                {
+                    Product = product,
+                    Quantity = int.Parse(quantity),
+                    Price = product.PriceSale * int.Parse(quantity),
+                    Profit = int.Parse(quantity) * (product.PriceSale * (product.Discount == 0 ? 1 : product.Discount) - product.PriceImport)
+                };
+
                 bool flag = false;
                 for (var i = 0; i < items.Count; i++)
                 {
@@ -53,6 +60,7 @@ namespace MyShopProject.ViewModel
                         newOrder.TotalPrice += item.Price;
                         item.Quantity += items[i].Quantity;
                         item.Price += items[i].Price;
+                        item.Profit += items[i].Quantity * (items[i].Product.PriceSale * (product.Discount == 0 ? 1 : product.Discount) - items[i].Product.PriceImport);
                         flag = true;
                         items[i] = item;
                         break;
@@ -70,7 +78,7 @@ namespace MyShopProject.ViewModel
             {
                 newOrder.Item = items;
                 newOrder.IDCustomer = customer.ID;
-                newOrder.CreateDate = DateTime.Now;
+                newOrder.CreateDate = DateTime.Now.Date;
                 Click_Handler.Invoke();
             });
         }

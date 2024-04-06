@@ -11,16 +11,20 @@ namespace MyShopProject.Model
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Item
+    using System.ComponentModel;
+
+    public partial class Item : INotifyPropertyChanged
     {
         public int ID { get; set; }
         public Nullable<int> IDProduct { get; set; }
         public Nullable<int> IDOrder { get; set; }
         public Nullable<double> Price { get; set; }
         public Nullable<int> Quantity { get; set; }
+        public Nullable<double> Profit { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

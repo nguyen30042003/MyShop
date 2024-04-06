@@ -30,73 +30,73 @@ namespace MyShopProject.ViewModel
             get { return _pageNumbers; }
             set { _pageNumbers = value; OnPropertyChanged(nameof(PageNumbers)); }
         }
-        private int currentPage { get; set; }
-        private int _currentPage
-        {
-            get => currentPage;
-            set
-            {
-                currentPage = value;
-                OnPropertyChanged(nameof(_currentPage));
-            }
-        }
-        private int _totalItems;
+        public int currentPage { get; set; }
+
         private int _totalPage;
-        private int _perPage = 5;
         public CustomerManagerVM() {
             
             loadCustomer();
             CreateCustomer_Click = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
-                AddCustomer addCustomer = new AddCustomer();
-                addCustomer.ShowDialog();
-                loadCustomer();
+                SwitchToCreateOrderPage();
             });
             NavigateToPageCommand = new RelayCommand<int>((page) => true, (page) => NavigateToPage(page));
             previousPage = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
-                if(_currentPage > 1)
+                if(currentPage > 1)
                 {
-                    NavigateToPage(_currentPage - 1);
+                    NavigateToPage(currentPage - 1);
                 }    
                 
             });
             nextPage = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
-                if (_currentPage < _totalPage)
+                if (currentPage < _totalPage)
                 {
-                    NavigateToPage(_currentPage + 1);
+                    NavigateToPage(currentPage + 1);
                 }
             });
             Sort_Click = new RelayCommand<Object>((p) => { return true; }, (p) => {
                 //loadCustomer();
             });
         }
-        private void NavigateToPage(int page)
-        {  
-            _currentPage = page;
-            int skipCount = (_currentPage - 1) * _perPage;
-            int takeCount = _perPage;
-            if (page == _totalPage)
-            {
-                takeCount = (_totalItems - skipCount) - 1;
-            }
-            
-            customerList = new ObservableCollection<Customer>(ICustomerRepository.Instance.findPage(skipCount, takeCount));
+        private void NavigateToPage(int p)
+        {
+            Page page = new Page();
+            var pageResult = page.LoadPage<Customer>(new Customer(), p);
+            currentPage = p;
+            _totalPage = page.TotalPage;
+            customerList = new ObservableCollection<Customer>(pageResult.Item1.Cast<Customer>());
+            PageNumbers = pageResult.Item2;
         }
         public void loadCustomer()
         {
-            customerList = new ObservableCollection<Customer>(CustomerServiceImpl.Instance.findAll());
-            _totalItems = customerList.Count;
-            _totalPage = _totalItems / _perPage;
-            if (_totalItems % _perPage != 0)
+            currentPage = 1;
+            NavigateToPage(currentPage);
+        }
+        private void SwitchToCreateOrderPage()
+        {
+
+            AddCustomer addCustomerPage = new AddCustomer();
+            AddCustomerVM addCustomerVM = new AddCustomerVM();
+
+            void closeDialog()
             {
-                _totalPage += 1;
+                addCustomerPage.DialogResult = true;
             }
 
-            PageNumbers = new ObservableCollection<int>(Enumerable.Range(1, _totalPage));
-            currentPage = 1;
-            NavigateToPage(1);
+            addCustomerVM.Click_Handler += closeDialog;
+            addCustomerPage.DataContext = addCustomerVM;
+            if (addCustomerPage.ShowDialog() == true)
+            {
+                Customer newCustomer = addCustomerVM.newCustomer;
+                if (CustomerServiceImpl.Instance.save(newCustomer))
+                {
+                    MessageBox.Show("Add success");
+                    loadCustomer();
+                }
+
+            }
         }
     }
 }

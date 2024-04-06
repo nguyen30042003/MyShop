@@ -37,9 +37,7 @@ namespace MyShopProject.ViewModel
         {
             get; set;
         }
-        private int _totalItems;
         private int _totalPage;
-        private int _perPage = 5;
 
         public OrderManagerVM()
         {
@@ -74,34 +72,15 @@ namespace MyShopProject.ViewModel
         }
 
 
-        private void NavigateToPage(int page)
+        private void NavigateToPage(int p)
         {
-            currentPage = page;
-            int skipCount = (currentPage - 1) * _perPage;
-            int takeCount = _perPage;
-
-
-            var pageResult = OrderServiceImpl.Instance.findAllPage(skipCount, takeCount);
-
-
-            if(_totalItems != pageResult.Item2)
-            {
-                _totalItems = pageResult.Item2;
-                _totalPage = _totalItems / _perPage;
-                if (_totalItems % _perPage != 0)
-                {
-                    _totalPage += 1;
-                }
-            }
-            
-
-            orderList = new ObservableCollection<Order>(pageResult.Item1);
-            PageNumbers = new ObservableCollection<int>(Enumerable.Range(1, _totalPage));
+            Page page = new Page();
+            var pageResult = page.LoadPage<Order>(new Order(), p);
+            currentPage = p;
+            _totalPage = page.TotalPage;
+            orderList = new ObservableCollection<Order>(pageResult.Item1.Cast<Order>());
+            PageNumbers = pageResult.Item2;
         }
-
-
-
-
 
         private void SwitchToCreateOrderPage()
         {
@@ -122,6 +101,7 @@ namespace MyShopProject.ViewModel
                 if (OrderServiceImpl.Instance.save(newOrder))
                 {
                     MessageBox.Show("Add success");
+                    loadOrder();
                 }
                 
             }

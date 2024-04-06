@@ -16,8 +16,7 @@ namespace MyShopProject.Service
         Order findById(int id);
         bool delete(Order order);
 
-        //List<Order> sortByCreateDate(int skipCount, int takeCount, DateTime previousDate, DateTime lastDate);
-        //List<Order> sortByPrice(int skipCount, int takeCount, double minPrice, double maxPrice);
+
 
 
     }
