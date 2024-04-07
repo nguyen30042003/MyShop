@@ -142,7 +142,7 @@ namespace MyShopProject.Repository
             List<Order> orders = findAll();
             foreach (var o in orders)
             {
-                if (o.CreateDate >= previousDate.Date && o.CreateDate <= lastDate.Date)
+                if (o.CreateDate >= previousDate && o.CreateDate <= lastDate)
                 {
                     foreach (var i in o.Item)
                         total += i.Profit.Value;

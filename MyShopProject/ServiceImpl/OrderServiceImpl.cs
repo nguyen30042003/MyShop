@@ -94,10 +94,7 @@ namespace MyShopProject.ServiceImpl
   
         public double totalProfitByMonth(int year, int month)
         {
-            
             DateTime startDate = new DateTime(year, month, 1);
-
-            
             DateTime endDate = startDate.AddMonths(1).AddDays(-1);
 
             return IOrderRepository.Instance.totalProfit(startDate, endDate);

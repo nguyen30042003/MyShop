@@ -34,9 +34,7 @@ namespace MyShopProject.ViewModel {
             visualizeProfitByWeek();
             visualizeProfitByMonth();
         }
-        private void load() {
 
-        }
         private void visualizeProfitByWeek() {
             dataProfit = OrderServiceImpl.Instance.profitByWeek().Item1;
             seriesLabel = OrderServiceImpl.Instance.profitByWeek().Item2;
@@ -48,18 +46,11 @@ namespace MyShopProject.ViewModel {
                     Values = new ChartValues<double>(dataProfit)
                 }
             };
-            if (dataProfit.Count > 0)
-            {
-                
-                maxValue = dataProfit.Max() * 1.5;
-            }
-            else
+
+            if (dataProfit.Max() == 0)
             {
                 maxValue = 1;
             }
-            
-            
-            
         }
         private void visualizeProfitByMonth() {
             dataProfitMonth = OrderServiceImpl.Instance.profitByMonth().Item1;
@@ -72,17 +63,11 @@ namespace MyShopProject.ViewModel {
                         Values = new ChartValues<double>(dataProfitMonth)
                    }
                 };
-            if ( dataProfitMonth.Count > 0)
-            {
-                
-                maxValueMonth = dataProfitMonth.Max() * 1.5;
-            }
-            else
-            {
 
+            if (dataProfit.Max() == 0) {
                 maxValueMonth = 1;
             }
-            
+
         }
 
     }
