@@ -17,11 +17,6 @@ namespace MyShopProject.Repository
         Order findById(int id);
 
 
-        List<Order> sortByCreateDate(DateTime previousDate, DateTime lastDate);
-        List<Order> sortByPrice(float minPrice, float maxPrice);
-        List<Order> sortByPriceASC();
-        List<Order> sortByPriceDesc();
-        List<Order> sortByQuantityASC();
-        List<Order> sortByQuantityDesc();
+
     }
 }
