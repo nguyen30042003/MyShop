@@ -112,8 +112,12 @@ namespace MyShopProject.ServiceImpl
             for (int i = 0; i < 7; i++)
             {
                 DateTime date = DateTime.Now.AddDays(-i);
-                dataProfit.Add(IOrderRepository.Instance.totalProfit(date, date));
-                seriesLabel.Add(date.Date.ToString("MM-dd"));
+                if(IOrderRepository.Instance.findAll().Count > 0)
+                {
+                    dataProfit.Add(IOrderRepository.Instance.totalProfit(date, date));
+                    seriesLabel.Add(date.Date.ToString("MM-dd"));
+                }    
+                
             }
    
             return Tuple.Create(dataProfit,seriesLabel);
@@ -124,7 +128,11 @@ namespace MyShopProject.ServiceImpl
             ObservableCollection<string> seriesLabel = new ObservableCollection<string>() { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
             for (int month = 1; month <= 12; month++)
             {
-                dataProfit.Add(totalProfitByMonth(DateTime.Now.Year, month));
+                if (IOrderRepository.Instance.findAll().Count > 0)
+                {
+                    dataProfit.Add(totalProfitByMonth(DateTime.Now.Year, month));
+                }
+                
             }
             return Tuple.Create(dataProfit, seriesLabel);
 

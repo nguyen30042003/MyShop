@@ -23,7 +23,6 @@ namespace MyShopProject.ViewModel {
 
         public double maxValue { get; set; }
         public double maxValueMonth { get; set; }
-
         public int totalQuantityProductSoldToday { get; set; }
         public int totalOrderToday { get; set; }
         public int totalCustomerPurchasedToday { get; set; }
@@ -31,11 +30,12 @@ namespace MyShopProject.ViewModel {
         public int totalOrderWeek { get; set; }
         public int totalProductSelling { get; set; }
         public DashBoardVM() {
+            load();
             visualizeProfitByWeek();
             visualizeProfitByMonth();
         }
         private void load() {
-
+            totalQuantityProductSoldToday = OrderServiceImpl.Instance.totalQuantitySoldToday();
         }
         private void visualizeProfitByWeek() {
             dataProfit = OrderServiceImpl.Instance.profitByWeek().Item1;

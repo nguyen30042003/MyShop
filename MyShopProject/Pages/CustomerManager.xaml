@@ -41,7 +41,7 @@
         </Grid>
         
         <Border Grid.Row="2" Margin="20 0 20 10" Padding="10" Style="{StaticResource mainBorder}">
-            <DataGrid BorderThickness="1" BorderBrush="#1e2e44" ItemsSource="{Binding customerList}"  AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid" Margin="10">
+            <DataGrid BorderThickness="1" BorderBrush="#1e2e44" ItemsSource="{Binding customerList}" SelectedItem="{Binding SelectedCustomer}"  AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid" Margin="10">
                 <DataGrid.Columns >
 
                     <DataGridTextColumn Header="ID" IsReadOnly="True" CanUserResize="False" Width="50" Binding="{Binding ID}"/>
@@ -63,7 +63,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button  Style="{StaticResource gridRemoveButton}">
+                                    <Button  Style="{StaticResource gridRemoveButton}" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.DeleteCustomer_Click}">
                                         <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource girdButtonIcon}"/>
                                     </Button>
                                     <Button Margin="10 0 0 0    "  Style="{StaticResource gridEditButton}">

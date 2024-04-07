@@ -12,7 +12,7 @@ namespace MyShopProject.ViewModel
         public int CurrentPage { get; set; }
         public int TotalItems { get; set; }
         public int TotalPage { get; set; }
-        public int PerPage { get; set; } = 4;
+        public int PerPage { get; set; } = 10;
 
         public Tuple<ObservableCollection<object>, ObservableCollection<int>> LoadPage<T>(T obj, int page)
         {
@@ -22,39 +22,39 @@ namespace MyShopProject.ViewModel
 
             ObservableCollection<object> resultData;
             ObservableCollection<int> pageNumbers;
-
+            var pageResult = Tuple.Create<IEnumerable<object>, int>(null, 0);
             if (obj is Customer)
             {
-                var pageResult = CustomerServiceImpl.Instance.findAllPage(skipCount, takeCount);
+                var customerPageResult = CustomerServiceImpl.Instance.findAllPage(skipCount, takeCount);
+                pageResult = Tuple.Create(customerPageResult.Item1.Cast<object>(), customerPageResult.Item2);
                 if (TotalItems != pageResult.Item2)
                 {
                     totalPage(pageResult.Item2);
                 }
-                resultData = new ObservableCollection<object>(pageResult.Item1.Cast<object>());
-                pageNumbers = new ObservableCollection<int>(Enumerable.Range(1, TotalPage));
             }
             else if (obj is Order)
             {
-                var pageResult = OrderServiceImpl.Instance.findAllPage(skipCount, takeCount);
+                var orderPageResult = OrderServiceImpl.Instance.findAllPage(skipCount, takeCount);
+                pageResult = Tuple.Create(orderPageResult.Item1.Cast<object>(), orderPageResult.Item2);
                 if (TotalItems != pageResult.Item2)
                 {
                     totalPage(pageResult.Item2);
                 }
-                resultData = new ObservableCollection<object>(pageResult.Item1.Cast<object>());
-                pageNumbers = new ObservableCollection<int>(Enumerable.Range(1, TotalPage));
             }
             else
             {
-                var pageResult = ProductServiceImpl.Instance.findAllPage(skipCount, takeCount);
+                var productPageResult = ProductServiceImpl.Instance.findAllPage(skipCount, takeCount);
+                pageResult = Tuple.Create(productPageResult.Item1.Cast<object>(), productPageResult.Item2);
                 if (TotalItems != pageResult.Item2)
                 {
                     totalPage(pageResult.Item2);
                 }
-                resultData = new ObservableCollection<object>(pageResult.Item1.Cast<object>());
-                pageNumbers = new ObservableCollection<int>(Enumerable.Range(1, TotalPage));
             }
+            resultData = new ObservableCollection<object>(pageResult.Item1);
+            pageNumbers = new ObservableCollection<int>(Enumerable.Range(1, TotalPage));
             return Tuple.Create(resultData, pageNumbers);
         }
+
         private void totalPage(int i)
         {
             TotalItems = i;
@@ -63,7 +63,6 @@ namespace MyShopProject.ViewModel
             {
                 TotalPage += 1;
             }
-
         }
     }
 }
