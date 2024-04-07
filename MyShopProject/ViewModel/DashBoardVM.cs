@@ -30,12 +30,21 @@ namespace MyShopProject.ViewModel {
         public int totalOrderWeek { get; set; }
         public int totalProductSelling { get; set; }
         public DashBoardVM() {
-            load();
-            visualizeProfitByWeek();
-            visualizeProfitByMonth();
+            Task.Run(() =>
+            {
+                Application.Current.Dispatcher.Invoke(load);
+            });
+            
         }
         private void load() {
             totalQuantityProductSoldToday = OrderServiceImpl.Instance.totalQuantitySoldToday();
+            totalOrderToday = OrderServiceImpl.Instance.totalOrderToday();
+            totalCustomerPurchasedToday = CustomerServiceImpl.Instance.findAll().Count();
+            totalProductInStock = ProductServiceImpl.Instance.totalQuantityProductInStock();
+            totalProductSelling = ProductServiceImpl.Instance.findAll().Count();
+            totalOrderWeek = OrderServiceImpl.Instance.totalOrderWeek();
+            visualizeProfitByWeek();
+            visualizeProfitByMonth();
         }
         private void visualizeProfitByWeek() {
             dataProfit = OrderServiceImpl.Instance.profitByWeek().Item1;
