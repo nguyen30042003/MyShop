@@ -17,6 +17,7 @@ namespace MyShopProject.ViewModel
     public class CustomerManagerVM : BaseViewModel
     {
         public ICommand CreateCustomer_Click {  get; set; }
+        public ICommand DeleteCustomer_Click { get; set; }
         public ICommand NavigateToPageCommand { get; set; }
         public ICommand Sort_Click { get; set; }
         public ICommand previousPage { get; set; }
@@ -33,6 +34,7 @@ namespace MyShopProject.ViewModel
         public int currentPage { get; set; }
 
         private int _totalPage;
+        public Customer SelectedCustomer { get; set; }
         public CustomerManagerVM() {
             
             loadCustomer();
@@ -55,6 +57,27 @@ namespace MyShopProject.ViewModel
                 {
                     NavigateToPage(currentPage + 1);
                 }
+            });
+            DeleteCustomer_Click = new RelayCommand<Object>((p) => { return true; }, (p) => {
+                MessageBoxResult result = MessageBox.Show("Do you want to delete customer information?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    if (CustomerServiceImpl.Instance.delete(SelectedCustomer))
+                    {
+                        MessageBox.Show("Delete success");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Delete unSuccess");
+                    }
+                    NavigateToPage(1);
+                }
+                else if (result == MessageBoxResult.No)
+                {
+                    NavigateToPage(currentPage);
+                }
+                
             });
             Sort_Click = new RelayCommand<Object>((p) => { return true; }, (p) => {
                 //loadCustomer();
