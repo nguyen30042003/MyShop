@@ -16,12 +16,21 @@ namespace MyShopProject.ViewModel
 {
     public class CustomerManagerVM : BaseViewModel
     {
+        public Visibility ListVisible { get; set; }
+        public Visibility TextVisible { get; set; }
         public ICommand CreateCustomer_Click {  get; set; }
         public ICommand DeleteCustomer_Click { get; set; }
         public ICommand NavigateToPageCommand { get; set; }
         public ICommand Sort_Click { get; set; }
         public ICommand previousPage { get; set; }
         public ICommand nextPage { get; set; }
+        public ICommand Search_Click { get; set; }
+        public DateTime StartDate { get; set; } = DateTime.Parse($"01/01/{DateTime.Now.Year}");
+        public DateTime EndDate { get; set; } = DateTime.Now.AddDays(1);
+        public String Search { get; set; } = "";
+        public List<string> SortOptions { get; set; }
+        public int selectedSortOptions { get; set; } = 0;
+
         private ObservableCollection<Customer> _customerList { get; set; }
         public ObservableCollection<Customer> customerList {  get => _customerList; set { _customerList = value; OnPropertyChanged(nameof(customerList)); } }
 
@@ -31,13 +40,19 @@ namespace MyShopProject.ViewModel
             get { return _pageNumbers; }
             set { _pageNumbers = value; OnPropertyChanged(nameof(PageNumbers)); }
         }
-        public int currentPage { get; set; }
+        public int currentPage { get; set; } = 1;
 
+        private int _totalItems;
         private int _totalPage;
+        private int _perPage = 10;
+
         public Customer SelectedCustomer { get; set; }
         public CustomerManagerVM() {
-            
+            SortOptions = new List<string>() { "Ascending", "Descending" };
             loadCustomer();
+            Search_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
+                loadCustomer();
+            });
             CreateCustomer_Click = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
                 SwitchToCreateOrderPage();
@@ -85,12 +100,30 @@ namespace MyShopProject.ViewModel
         }
         private void NavigateToPage(int p)
         {
-            Page page = new Page();
-            var pageResult = page.LoadPage<Customer>(new Customer(), p);
-            currentPage = p;
-            _totalPage = page.TotalPage;
-            customerList = new ObservableCollection<Customer>(pageResult.Item1.Cast<Customer>());
-            PageNumbers = pageResult.Item2;
+            ListVisible = Visibility.Hidden;
+            TextVisible = Visibility.Visible;
+            Task.Run(() => {
+                currentPage = p;
+                int skipCount = (currentPage - 1) * _perPage;
+                int takeCount = _perPage;
+
+                var pageResult = CustomerServiceImpl.Instance.findAllPage(StartDate, EndDate, skipCount, takeCount, Search, selectedSortOptions);
+
+                if (_totalItems != pageResult.Item2)
+                {
+                    _totalItems = pageResult.Item2;
+                    _totalPage = _totalItems / _perPage;
+                    if (_totalItems % _perPage != 0)
+                    {
+                        _totalPage += 1;
+                    }
+                }
+
+                customerList = new ObservableCollection<Model.Customer>(pageResult.Item1);
+                PageNumbers = new ObservableCollection<int>(Enumerable.Range(1, _totalPage));
+                TextVisible = Visibility.Hidden;
+                ListVisible = Visibility.Visible;
+            });
         }
         public void loadCustomer()
         {

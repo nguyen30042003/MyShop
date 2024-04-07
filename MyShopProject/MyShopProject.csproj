@@ -193,6 +193,7 @@
     <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
+    <Compile Include="ResourceXAML\GenderConverter.cs" />
     <Compile Include="ServiceImpl\CategoryServiceImpl.cs" />
     <Compile Include="ServiceImpl\CustomerServiceImpl.cs" />
     <Compile Include="ServiceImpl\ItemServiceImpl.cs" />
@@ -229,7 +230,6 @@
     <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="ViewModel\MainWidownVM.cs" />
     <Compile Include="ViewModel\OrderManagerVM.cs" />
-    <Compile Include="ViewModel\Page.cs" />
     <Compile Include="ViewModel\ProductInfoVM.cs" />
     <Compile Include="ViewModel\ProductManagerVM.cs" />
     <Compile Include="ViewModel\UpdateCustomerVM.cs" />

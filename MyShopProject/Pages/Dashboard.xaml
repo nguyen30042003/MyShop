@@ -97,9 +97,12 @@
             <Grid>
                 <TextBlock Text="TOP 5 PRODUCT" Style="{StaticResource titleText}"/>
 
-                <ListView Margin="0 50 0 0" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                    <uc:TopProduct ProductName=""  Price="$" IsLevelUp="True"/>
-                    <uc:TopProduct ProductName=""  Price="$" IsLevelUp="False"/>
+                <ListView ItemsSource="{Binding topFiveProducts}" Margin="0 50 0 0" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <uc:TopProduct Flag="{Binding Image}" ProductName="{Binding Name}" Price="{Binding PriceSale}" Quantity="{Binding Quantity}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </Grid>
         </Border>

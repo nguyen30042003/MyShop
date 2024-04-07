@@ -19,27 +19,44 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="20 10 20 0">
+        <Grid Grid.Row="0" Margin="20 ">
             <TextBlock Margin="40 0 15 0" VerticalAlignment="Center" Foreground="#9ea4ad" Panel.ZIndex="1" 
-       IsHitTestVisible="False" Text="Search here..."
-       Visibility="{Binding ElementName=textBox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>
-            <TextBox x:Name="textBox" Text="{Binding search}" Style="{StaticResource searchTextBox}"/>
-            <Icon:PackIconMaterial Margin="20 " Kind="Magnify" Width="15" Height="15" Foreground="#9ea4ad" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+    IsHitTestVisible="False" Text="Search here..."
+    Visibility="{Binding ElementName=textBox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="textBox" Text="{Binding Search}" Style="{StaticResource searchTextBox}"/>
+            <Icon:PackIconMaterial Margin="10 0 0 0" Kind="Magnify" Width="15" Height="15" Foreground="#9ea4ad" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         </Grid>
-        <Grid Grid.Row="1" Margin="20 10 20 0">
+        <Grid Grid.Row="1" Margin="20 0 20 10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <uc:CustomButton Margin="10" Grid.Column="0" nameButton="Create customer"  Width="100" Height="40" ClickCommand="{Binding CreateCustomer_Click}"/>
-            <StackPanel  Grid.Column="2" Margin="20 0 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Icon:PackIconMaterial Kind="Filter" Width="30" Height="30" Foreground="#9ea4ad" VerticalAlignment="Center"/>
-                <ComboBox Margin="10 0 0 0" Name="sortSelect" Text="Select"  Width="100" Height="40" Background="#1e2e44"/>
-                <uc:CustomButton Margin="20 0 0 0"   nameButton="Sort"   Width="100" Height="40"/>
+            <uc:CustomButton Margin="10" Grid.Column="0" nameButton="Create Customer"  Width="100" Height="40" ClickCommand="{Binding CreateCustomer_Click}"/>
+            <StackPanel  Grid.Column="1" Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
+                
 
+                <StackPanel Margin="10 0 0 0"  Orientation="Horizontal">
+                    <TextBlock Text="Date of birth from" Margin="5 0" VerticalAlignment="Center" Foreground="White"/>
+                    <Border Background="White" Padding="2" CornerRadius="5">
+                        <DatePicker SelectedDate="{Binding StartDate}" BorderThickness="0" VerticalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="to" Margin="5 0" VerticalAlignment="Center" Foreground="White"/>
+                    <Border Background="White" Padding="2" CornerRadius="5">
+                        <DatePicker  SelectedDate="{Binding EndDate}"  BorderThickness="0" VerticalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Margin="10 0 0 0" Orientation="Horizontal">
+                    <TextBlock Text="Sort" Margin="5 0" VerticalAlignment="Center" Foreground="White"/>
+                    <ComboBox VerticalContentAlignment="Center" SelectedIndex="{Binding selectedSortOptions}" ItemsSource="{Binding SortOptions}" Width="100"/>
+                </StackPanel>
+                <uc:CustomButton ClickCommand="{Binding Search_Click}" Margin="20 0 0 0" nameButton="Search"  Width="100" Height="40"/>
             </StackPanel>
         </Grid>
-        
+
         <Border Grid.Row="2" Margin="20 0 20 10" Padding="10" Style="{StaticResource mainBorder}">
             <DataGrid BorderThickness="1" BorderBrush="#1e2e44" ItemsSource="{Binding customerList}" SelectedItem="{Binding SelectedCustomer}"  AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid" Margin="10">
                 <DataGrid.Columns >

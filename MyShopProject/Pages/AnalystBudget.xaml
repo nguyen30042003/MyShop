@@ -39,40 +39,30 @@
                 <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
                 
                 <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                    
 
-                    <lvc:CartesianChart Margin="0 30 0 0">
+
+                    <lvc:CartesianChart Margin="0 30 0 0" Series="{Binding seriesTurnoverCollection}">
                         <lvc:CartesianChart.DataTooltip>
                             <lvc:DefaultTooltip Background="#101a28" Foreground="#d5e2ff"/>
 
                         </lvc:CartesianChart.DataTooltip>
                         <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="Jan,Apr,Jun,Aug">
+                            <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="{Binding seriesTurnoverLabel}">
                                 <lvc:Axis.Separator>
-                                    <lvc:Separator StrokeThickness="0" Step="4"/>
+                                    <lvc:Separator StrokeThickness="0" Step="1"/>
                                 </lvc:Axis.Separator>
                             </lvc:Axis>
                         </lvc:CartesianChart.AxisX>
 
                         <lvc:CartesianChart.AxisY>
-                            <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" MinValue="0" MaxValue="100">
+                            <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" MinValue="0" MaxValue="{Binding maxValueTurnover}">
                                 <lvc:Axis.Separator>
                                     <lvc:Separator StrokeThickness="1" Stroke="#2c3a54"/>
                                 </lvc:Axis.Separator>
                             </lvc:Axis>
                         </lvc:CartesianChart.AxisY>
 
-                        <lvc:CartesianChart.Series>
-                            <lvc:LineSeries StrokeThickness="2" Stroke="#6860e6" PointGeometrySize="0"
-                 Values="60,50,66,70,40">
-                                <lvc:LineSeries.Fill>
-                                    <LinearGradientBrush>
-                                        <GradientStop Color="#2e3966" Offset="0.4"/>
-                                        <GradientStop Color="#21304a" Offset="1.2"/>
-                                    </LinearGradientBrush>
-                                </lvc:LineSeries.Fill>
-                            </lvc:LineSeries>
-                        </lvc:CartesianChart.Series>
+                       
                     </lvc:CartesianChart>
                 </Grid>
                  
@@ -80,7 +70,7 @@
             
         </Border>
 
-        <Border Style="{StaticResource mainBorder}" Grid.Column="1" Grid.Row="1" Margin="20 10 0 0">
+        <Border Style="{StaticResource mainBorder}" Grid.Column="0" Grid.Row="2" Margin="20 10 0 0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -94,40 +84,30 @@
                 
 
                 <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                    
 
-                    <lvc:CartesianChart Margin="0 30 0 0">
+
+                    <lvc:CartesianChart Margin="0 30 0 0" Series="{Binding seriesCollection}">
                         <lvc:CartesianChart.DataTooltip>
                             <lvc:DefaultTooltip Background="#101a28" Foreground="#d5e2ff"/>
 
                         </lvc:CartesianChart.DataTooltip>
                         <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="Jan,Apr,Jun,Aug">
+                            <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="{Binding seriesProfitLabel}">
                                 <lvc:Axis.Separator>
-                                    <lvc:Separator StrokeThickness="0" Step="4"/>
+                                    <lvc:Separator StrokeThickness="0" Step="1"/>
                                 </lvc:Axis.Separator>
                             </lvc:Axis>
                         </lvc:CartesianChart.AxisX>
 
                         <lvc:CartesianChart.AxisY>
-                            <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" MinValue="0" MaxValue="100">
+                            <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" MinValue="0" MaxValue="{Binding maxValueProfit}">
                                 <lvc:Axis.Separator>
                                     <lvc:Separator StrokeThickness="1" Stroke="#2c3a54"/>
                                 </lvc:Axis.Separator>
                             </lvc:Axis>
                         </lvc:CartesianChart.AxisY>
 
-                        <lvc:CartesianChart.Series>
-                            <lvc:LineSeries StrokeThickness="2" Stroke="#6860e6" PointGeometrySize="0"
-         Values="60,50,66,70,40">
-                                <lvc:LineSeries.Fill>
-                                    <LinearGradientBrush>
-                                        <GradientStop Color="#2e3966" Offset="0.4"/>
-                                        <GradientStop Color="#21304a" Offset="1.2"/>
-                                    </LinearGradientBrush>
-                                </lvc:LineSeries.Fill>
-                            </lvc:LineSeries>
-                        </lvc:CartesianChart.Series>
+                       
                     </lvc:CartesianChart>
                 </Grid>
 
@@ -135,7 +115,7 @@
 
         </Border>
 
-        <Border Style="{StaticResource mainBorder}" Grid.Column="0" Grid.Row="2" Margin="20 10 0 0">
+        <Border Style="{StaticResource mainBorder}" Grid.Column="1" Grid.Row="2" Margin="20 10 0 0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -180,7 +160,7 @@
             </Grid>
 
         </Border>
-        <Border Style="{StaticResource mainBorder}" Grid.Column="1" Grid.Row="2" Margin="20 10 0 0">
+        <Border Style="{StaticResource mainBorder}" Grid.Column="1" Grid.Row="1" Margin="20 10 0 0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -202,18 +182,12 @@
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="TOP PRODUCT" Style="{StaticResource titleText}"/>
                         <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                            <lvc:PieChart Margin="0 30 0 0">
+                            <lvc:PieChart Margin="0 30 0 0"  Series="{Binding seriesProfitAndTurnoverCollection}">
                                 <lvc:PieChart.DataTooltip>
                                     <lvc:DefaultTooltip Background="#101a28" Foreground="#d5e2ff"/>
                                 </lvc:PieChart.DataTooltip>
 
-                                <lvc:PieChart.Series>
-                                    <lvc:PieSeries Title="MSI" Values="40" Fill="#FFA3FF6E"/>
-                                    <lvc:PieSeries Title="ACER" Values="60" Fill="White"/>
-                                    <lvc:PieSeries Title="MACBOOK" Values="60" Fill="Red"/>
-                                    <lvc:PieSeries Title="ASUS" Values="60" Fill="Blue"/>
-                                    <lvc:PieSeries Title="HP" Values="60" Fill="#FF4F81BD"/>
-                                </lvc:PieChart.Series>
+                               
                             </lvc:PieChart>
                         </Grid>
 

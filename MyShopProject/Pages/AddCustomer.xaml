@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:MyShopProject.UserControls"
         xmlns:local="clr-namespace:MyShopProject.Pages"
+        xmlns:R ="clr-namespace:MyShopProject.ResourceXAML"
         mc:Ignorable="d"
         Title="AddCustomer" Height="450" Width="800">
+    <Window.Resources>
+        <R:GenderConverter x:Key="genderConverterKey"/>
+    </Window.Resources>
     <Grid Background="#151f2d">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -29,7 +33,7 @@
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding newCustomer.Full_Name}" Style="{StaticResource customTextbox}"  HorizontalAlignment="Left" Margin="5 0 0 0" Width="350"/>
 
         <TextBlock Grid.Row="2" Text=" Date Of Birth" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
-        <DatePicker Grid.Row="2" Grid.Column="1" Text="{Binding newCustomer.DOB}" HorizontalAlignment="Left" Margin="5 10 0 0"  Width="350"/>
+        <DatePicker Grid.Row="2" Grid.Column="1" SelectedDate="{Binding newCustomer.DOB}" HorizontalAlignment="Left" Margin="5 10 0 0"  Width="350"/>
 
         <TextBlock  Grid.Row="3" Text="Email"  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
         <TextBox  Grid.Row="3" Grid.Column="1" Text="{Binding newCustomer.Email}" Style="{StaticResource customTextbox}"  HorizontalAlignment="Left" Margin="5 10 0 0"   Width="350"/>
@@ -39,8 +43,21 @@
         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding newCustomer.Phone}" Style="{StaticResource customTextbox}"  HorizontalAlignment="Left" Margin="5 10 0 0" Width="350"/>
 
         <TextBlock Grid.Row="5" Text=" Gender" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" />
-        <RadioButton  HorizontalAlignment="Left" Margin="20 10 0 0" Grid.Row="5" Grid.Column="1" Name="Male" GroupName="Buttons"  IsChecked="True">Male</RadioButton>
-        <RadioButton  HorizontalAlignment="Left" Margin="100 10 0 0" Grid.Row="5" Grid.Column="1" Name="Female" GroupName="Buttons"  >Female</RadioButton>
+        <RadioButton Content="Male"
+             HorizontalAlignment="Left"
+             Margin="20 10 0 0"
+             Grid.Row="5"
+             Grid.Column="1"
+             GroupName="Gender" Foreground="White"
+             IsChecked="{Binding isGender, Mode=TwoWay, Converter={StaticResource genderConverterKey}, ConverterParameter=Male}" />
+
+        <RadioButton Content="Female"
+             HorizontalAlignment="Left"
+             Margin="100 10 0 0"
+             Grid.Row="5"
+             Grid.Column="1"
+             GroupName="Gender" Foreground="White"
+             IsChecked="{Binding isGender, Mode=TwoWay, Converter={StaticResource genderConverterKey}, ConverterParameter=Female}" />
 
         <TextBlock Grid.Row="6" Text="Avatar" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
         <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Margin="5 10 0 0">
