@@ -84,7 +84,6 @@ namespace MyShopProject.ServiceImpl
             return false;
         }
 
-
         public bool update(Product product)
         {
             if (IProductRepository.Instance.update(product))
@@ -94,11 +93,6 @@ namespace MyShopProject.ServiceImpl
             return false;
         }
 
-        public Tuple<List<Product>, int> findAllPage(int skipCount, int takeCount)
-        {
-            return IProductRepository.Instance.findPage(skipCount, takeCount, "", double.MinValue, double.MaxValue);
-
-        }
         public int totalQuantityProductInStock()
         {
             int total = 0;

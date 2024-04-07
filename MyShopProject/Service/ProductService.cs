@@ -16,8 +16,7 @@ namespace MyShopProject.Service
         List<Product> findByName(string name);
         Product findById(int id);
         bool delete(Product product);
-
         bool deleteByIdCategory (int id);
-       
+        int totalQuantityProductInStock();
     }
 }

@@ -35,7 +35,7 @@ namespace MyShopProject.ViewModel
                 if (SelectedCategory != null)
                 {
                     ICategoryRepository categoryRepository = new ICategoryRepository();
-                    ProductServiceImpl.Instance.deleteByIdCategory(SelectedCategory.ID);
+                    //ProductServiceImpl.Instance.deleteByIdCategory(SelectedCategory.ID);
                     categoryRepository.delete(SelectedCategory);
                     ListCategory.Remove(SelectedCategory);
                     

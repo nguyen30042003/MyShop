@@ -78,50 +78,10 @@ namespace MyShopProject.Repository
             }
             return product;
         }
-        public List<Product> findPage(int skipCount, int takeCount,string name, DateTime previousDate, DateTime lastDate, float minPrice, float maxPrice)
-        {
-            List<Product> orders = DataProvider.Instance.DB.Products.OrderBy(o => o.Name.Contains(name) && o.CreateDate >= previousDate && o.CreateDate <= lastDate && o.PriceSale >= minPrice && o.PriceSale <= maxPrice).Skip(skipCount).Take(takeCount).ToList();
-            return orders;
-        }
         public List<Product> findByName(string name)
         {
             return DataProvider.Instance.DB.Products.Where(c => c.Name.Contains(name)).ToList();
         }
-
-        public List<Product> sortByCreateDate(DateTime previousDate, DateTime lastDate)
-        {
-            return DataProvider.Instance.DB.Products.Where(p => p.CreateDate >= previousDate && p.CreateDate <= lastDate)
-                                                     .OrderBy(p => p.CreateDate)
-                                                     .ToList();
-        }
-
-        public List<Product> sortByPrice(float minPrice, float maxPrice)
-        {
-            return DataProvider.Instance.DB.Products.Where(p => p.PriceSale >= minPrice && p.PriceSale <= maxPrice)
-                                                     .OrderBy(p => p.PriceSale)
-                                                     .ToList();
-        }
-
-        public List<Product> sortByPriceASC()
-        {
-            return DataProvider.Instance.DB.Products.OrderBy(p => p.PriceSale).ToList();
-        }
-
-        public List<Product> sortByPriceDesc()
-        {
-            return DataProvider.Instance.DB.Products.OrderByDescending(p => p.PriceSale).ToList();
-        }
-
-        public List<Product> sortByQuantityASC()
-        {
-            return DataProvider.Instance.DB.Products.OrderBy(p => p.Quantity).ToList();
-        }
-
-        public List<Product> sortByQuantityDesc()
-        {
-            return DataProvider.Instance.DB.Products.OrderByDescending(p => p.Quantity).ToList();
-        }
-
         public bool update(Product product)
         {
             Product p = findById(product.ID);
@@ -146,17 +106,6 @@ namespace MyShopProject.Repository
                 }
             }
             return false; // Thất bại
-        }
-        public Tuple<List<Product>, int> findPage(int skipCount, int takeCount, string name, double minPrice, double maxPrice)
-        {
-            var products = DataProvider.Instance.DB.Products
-                .Where(o => o.Name.Contains(name) && o.PriceSale >= minPrice && o.PriceSale <= maxPrice)
-                .OrderBy(o => o.ID);
-            int count = products.Count();
-            List<Product> list = products.Skip(skipCount)
-                .Take(takeCount)
-                .ToList();
-            return new Tuple<List<Product>, int>(list, count);
         }
     }
 }

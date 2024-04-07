@@ -45,13 +45,7 @@ namespace MyShopProject.ViewModel
             }
             else
             {
-                var pageResult = ProductServiceImpl.Instance.findAllPage(skipCount, takeCount);
-                if (TotalItems != pageResult.Item2)
-                {
-                    totalPage(pageResult.Item2);
-                }
-                resultData = new ObservableCollection<object>(pageResult.Item1.Cast<object>());
-                pageNumbers = new ObservableCollection<int>(Enumerable.Range(1, TotalPage));
+                return null;
             }
             return Tuple.Create(resultData, pageNumbers);
         }
