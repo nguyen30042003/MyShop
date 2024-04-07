@@ -7,8 +7,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace MyShopProject.ViewModel {
     public class DashBoardVM : BaseViewModel {
@@ -21,8 +23,8 @@ namespace MyShopProject.ViewModel {
         public SeriesCollection seriesCollection { get; set; }
         public SeriesCollection seriesCollectionByMonth { get; set; }
 
-        public double maxValue { get; set; }
-        public double maxValueMonth { get; set; }
+        public double maxValue { get; set; } = 1;
+        public double maxValueMonth { get; set; } = 1;
         public int totalQuantityProductSoldToday { get; set; }
         public int totalOrderToday { get; set; }
         public int totalCustomerPurchasedToday { get; set; }
@@ -30,12 +32,14 @@ namespace MyShopProject.ViewModel {
         public int totalOrderWeek { get; set; }
         public int totalProductSelling { get; set; }
         public DashBoardVM() {
-            load();
-            visualizeProfitByWeek();
-            visualizeProfitByMonth();
+            Task.Run(() => {
+                Application.Current.Dispatcher.Invoke(load);
+            });
         }
         private void load() {
             totalQuantityProductSoldToday = OrderServiceImpl.Instance.totalQuantitySoldToday();
+            visualizeProfitByWeek();
+            visualizeProfitByMonth();
         }
         private void visualizeProfitByWeek() {
             dataProfit = OrderServiceImpl.Instance.profitByWeek().Item1;
@@ -52,6 +56,8 @@ namespace MyShopProject.ViewModel {
             if (dataProfit.Max() == 0)
             {
                 maxValue = 1;
+            } else {
+                maxValue = dataProfit.Max() * 1.5;
             }
         }
         private void visualizeProfitByMonth() {
@@ -66,10 +72,11 @@ namespace MyShopProject.ViewModel {
                    }
                 };
 
-            if (dataProfit.Max() == 0) {
+            if (dataProfitMonth.Max() == 0) {
                 maxValueMonth = 1;
+            } else {
+                maxValueMonth = dataProfitMonth.Max() * 1.5;
             }
-
         }
 
     }
