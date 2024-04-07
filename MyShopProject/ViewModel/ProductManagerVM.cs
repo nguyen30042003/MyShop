@@ -19,7 +19,6 @@ namespace MyShopProject.ViewModel {
         public String Action {  get; set; }
         public DateTime StartDate { get; set; } = DateTime.Parse($"01/01/{DateTime.Now.Year}");
         public DateTime EndDate { get; set; } = DateTime.Now.AddDays(1);
-
         public String Search { get; set; } = "";
         public List<string> SortOptions { get; set; }
         public int selectedSortOptions { get; set; } = 0;
@@ -83,13 +82,7 @@ namespace MyShopProject.ViewModel {
         }
         private void loadProduct()
         {
-            ListVisible = Visibility.Hidden;
-            TextVisible = Visibility.Visible;
-            Task.Run(() => {
-                NavigateToPage(1);
-                TextVisible = Visibility.Hidden;
-                ListVisible = Visibility.Visible;
-            });
+            NavigateToPage(1);
         }
         private void OpenAddProductDialog() {
             AddProduct addProduct = new AddProduct();
@@ -127,23 +120,29 @@ namespace MyShopProject.ViewModel {
 
         private void NavigateToPage(int page)
         {
-            currentPage = page;
-            int skipCount = (currentPage - 1) * _perPage;
-            int takeCount = _perPage;
+            ListVisible = Visibility.Hidden;
+            TextVisible = Visibility.Visible;
+            Task.Run(() => {
+                currentPage = page;
+                int skipCount = (currentPage - 1) * _perPage;
+                int takeCount = _perPage;
 
-            var MinMaxValues = GetMinMax();
-            var pageResult = ProductServiceImpl.Instance.findAllPage(StartDate, EndDate, skipCount, takeCount, MinMaxValues.Item1, MinMaxValues.Item2, Search, selectedSortOptions);
+                var MinMaxValues = GetMinMax();
+                var pageResult = ProductServiceImpl.Instance.findAllPage(StartDate, EndDate, skipCount, takeCount, MinMaxValues.Item1, MinMaxValues.Item2, Search, selectedSortOptions);
 
-            if (_totalItems != pageResult.Item2) {
-                _totalItems = pageResult.Item2;
-                _totalPage = _totalItems / _perPage;
-                if (_totalItems % _perPage != 0) {
-                    _totalPage += 1;
+                if (_totalItems != pageResult.Item2) {
+                    _totalItems = pageResult.Item2;
+                    _totalPage = _totalItems / _perPage;
+                    if (_totalItems % _perPage != 0) {
+                        _totalPage += 1;
+                    }
                 }
-            }
 
-            Products = new ObservableCollection<Model.Product>(pageResult.Item1);
-            PageNumbers = new ObservableCollection<int>(Enumerable.Range(1, _totalPage));
+                Products = new ObservableCollection<Model.Product>(pageResult.Item1);
+                PageNumbers = new ObservableCollection<int>(Enumerable.Range(1, _totalPage));
+                TextVisible = Visibility.Hidden;
+                ListVisible = Visibility.Visible;
+            });
         }
     }
 }

@@ -109,9 +109,8 @@ namespace MyShopProject.ServiceImpl
             for (int i = 0; i < 7; i++)
             {
                 DateTime date = DateTime.Now.AddDays(-i);
-                dataProfit.Add(IOrderRepository.Instance.totalProfit(date, date));
+                dataProfit.Add(IOrderRepository.Instance.totalProfit(date.Date, date));
                 seriesLabel.Add(date.Date.ToString("MM-dd"));
-
             }
    
             return Tuple.Create(dataProfit,seriesLabel);
@@ -123,7 +122,7 @@ namespace MyShopProject.ServiceImpl
             for (int month = 1; month <= 12; month++)
             {
                 dataProfit.Add(totalProfitByMonth(DateTime.Now.Year, month));
-
+                
             }
             return Tuple.Create(dataProfit, seriesLabel);
 
