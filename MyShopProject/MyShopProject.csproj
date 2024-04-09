@@ -169,8 +169,8 @@
     <Compile Include="Pages\OrderManager.xaml.cs">
       <DependentUpon>OrderManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Product.xaml.cs">
-      <DependentUpon>Product.xaml</DependentUpon>
+    <Compile Include="Pages\.xaml.cs">
+      <DependentUpon>ProductReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProductInfo.xaml.cs">
       <DependentUpon>ProductInfo.xaml</DependentUpon>
@@ -282,7 +282,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Product.xaml">
+    <Page Include="Pages\ProductReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

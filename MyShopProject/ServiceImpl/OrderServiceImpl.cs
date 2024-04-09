@@ -171,6 +171,55 @@ namespace MyShopProject.ServiceImpl
             return Tuple.Create(dataProfit, seriesLabel);
 
         }
+
+        public Tuple<ObservableCollection<double>, ObservableCollection<string>> totalQuantityByWeek()
+        {
+            ObservableCollection<double> data = new ObservableCollection<double>();
+
+            ObservableCollection<string> seriesLabel = new ObservableCollection<string>();
+            for (int i = 0; i < 7; i++)
+            {
+                DateTime date = DateTime.Now.AddDays(-i);
+                data.Add(totalQuantity(date, date));
+                seriesLabel.Add(date.Date.ToString("MM-dd"));
+            }
+
+            return Tuple.Create(data, seriesLabel);
+        }
+        public Tuple<ObservableCollection<double>, ObservableCollection<string>> totalQuantityForCurrentMonthWeeks()
+        {
+            ObservableCollection<double> data = new ObservableCollection<double>();
+            ObservableCollection<string> seriesLabel = new ObservableCollection<string>() { "Week_1", "Week_2", "Week_3", "Week_4" };
+            DateTime currentDate = DateTime.Now;
+            int currentMonth = currentDate.Month;
+            int currentYear = currentDate.Year;
+
+            DateTime startDate = new DateTime(currentYear, currentMonth, 1);
+            DateTime endDate = startDate.AddMonths(1).AddDays(-1);
+
+            int totalDaysInMonth = (endDate - startDate).Days;
+
+            int daysPerWeek = totalDaysInMonth / 4;
+            for (int i = 0; i < 4; i++)
+            {
+                DateTime weekStartDate = startDate.AddDays(i * daysPerWeek);
+                DateTime weekEndDate = i == 3 ? endDate : startDate.AddDays((i + 1) * daysPerWeek - 1);
+                data.Add(totalQuantity(weekStartDate, weekEndDate));
+            }
+            return Tuple.Create(data, seriesLabel);
+        }
+        public Tuple<ObservableCollection<double>, ObservableCollection<string>> totalQuantityByMonth()
+        {
+            ObservableCollection<double> data = new ObservableCollection<double>();
+            ObservableCollection<string> seriesLabel = new ObservableCollection<string>() { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+            for (int month = 1; month <= 12; month++)
+            {
+                DateTime startDate = new DateTime(DateTime.Now.Year, month, 1);
+                DateTime endDate = startDate.AddMonths(1).AddDays(-1);
+                data.Add(totalQuantity(startDate, endDate));
+            }
+            return Tuple.Create(data, seriesLabel);
+        }
         public Tuple<ObservableCollection<double>, ObservableCollection<string>> turnoverForCurrentMonthWeeks()
         {
             ObservableCollection<double> dataProfit = new ObservableCollection<double>();

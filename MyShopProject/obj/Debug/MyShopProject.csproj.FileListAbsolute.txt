@@ -234,7 +234,6 @@ C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\CustomerManager.g.cs
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\Dashboard.g.cs
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\Login.g.cs
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\OrderManager.g.cs
-C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\Product.g.cs
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\ProductInfo.g.cs
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\ProductManager.g.cs
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\Setting.g.cs
@@ -281,7 +280,6 @@ C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\CustomerManager.baml
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\Dashboard.baml
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\Login.baml
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\OrderManager.baml
-C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\Product.baml
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\ProductInfo.baml
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\ProductManager.baml
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\Setting.baml
@@ -300,3 +298,5 @@ C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\MyShopProject.csproj.Fody.Ru
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\MyShopProject.csproj.CopyComplete
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\MyShopProject.exe
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\MyShopProject.pdb
+C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\ProductReport.g.cs
+C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\ProductReport.baml
