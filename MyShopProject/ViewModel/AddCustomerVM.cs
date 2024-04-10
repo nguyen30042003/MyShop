@@ -17,7 +17,7 @@ namespace MyShopProject.ViewModel
         public Customer newCustomer {  get; set; }
         public ICommand AddCustomer_Click {  get; set; }
         public ICommand PathImage_Click { get; set; }
-
+        public bool isGender { get; set; } = true;
         public AddCustomerVM() {
             newCustomer = new Customer();
             PathImage_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
@@ -28,7 +28,14 @@ namespace MyShopProject.ViewModel
             });
             AddCustomer_Click = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-                newCustomer.Gender = "Male";
+                if(isGender == true)
+                {
+                    newCustomer.Gender = "Male";
+                }
+                else
+                {
+                    newCustomer.Gender = "Female";
+                }
                 Click_Handler.Invoke();
             });
         }

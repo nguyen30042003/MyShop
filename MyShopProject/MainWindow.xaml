@@ -31,8 +31,9 @@
                         <uc:MenuButton Icon="Human" ClickCommand="{Binding customerManager_Click}"/>
                         <uc:MenuButton Icon="Cogs" ClickCommand="{Binding setting_Click}"/>
                         <uc:MenuButton Icon="Finance" ClickCommand="{Binding analystBudget_Click}" />
+                        <uc:MenuButton Icon="Shopping" ClickCommand="{Binding analystBudget_Click}" />
 
-                        </StackPanel>
+                    </StackPanel>
                     <uc:MenuButton Icon="Power" ClickCommand="{Binding quit_Click}" VerticalAlignment="Bottom" Margin=" 0 0 0 15" />
 
                     </Grid>

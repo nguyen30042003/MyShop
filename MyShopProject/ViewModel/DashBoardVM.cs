@@ -1,5 +1,6 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
+using MyShopProject.Model;
 using MyShopProject.ServiceImpl;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace MyShopProject.ViewModel {
 
         public ObservableCollection<double> dataProfitMonth { get; set; }
         public ObservableCollection<string> seriesLabelMonth { get; set; }
-
+        public ObservableCollection<Product> topFiveProducts { get; set; }
         public SeriesCollection seriesCollection { get; set; }
         public SeriesCollection seriesCollectionByMonth { get; set; }
 
@@ -38,6 +39,12 @@ namespace MyShopProject.ViewModel {
         }
         private void load() {
             totalQuantityProductSoldToday = OrderServiceImpl.Instance.totalQuantitySoldToday();
+            totalOrderToday = OrderServiceImpl.Instance.totalOrderToday();
+            totalCustomerPurchasedToday = CustomerServiceImpl.Instance.findAll().Count;
+            totalProductInStock = ProductServiceImpl.Instance.totalQuantityProductInStock();
+            totalOrderWeek = OrderServiceImpl.Instance.totalOrderWeek();
+            totalProductSelling = ProductServiceImpl.Instance.findAll().Count;
+            topFiveProducts = new ObservableCollection<Product>(ProductServiceImpl.Instance.topFiveProductRunOut());
             visualizeProfitByWeek();
             visualizeProfitByMonth();
         }

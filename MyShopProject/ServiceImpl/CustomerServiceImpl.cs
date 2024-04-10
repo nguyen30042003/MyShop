@@ -70,10 +70,19 @@ namespace MyShopProject.ServiceImpl
             return false;
         }
 
-        public Tuple<List<Customer>, int> findAllPage(int skipCount, int takeCount)
+        public Tuple<List<Customer>, int> findAllPage(DateTime start, DateTime end, int skip, int take, string name = "", int sortOption = 1)
         {
-            return ICustomerRepository.Instance.findPage(skipCount, takeCount, "");
+            var customers = ICustomerRepository.Instance.findAll()
+                .Where(p => (p.DOB <= end && p.DOB >= start)
+                    && p.Full_Name.ToLower().Contains(name.ToLower()));
+            int count = customers.Count();
+            if (sortOption == 0)
+                return Tuple.Create(customers.OrderBy(p => p.DOB).Skip(skip).Take(take).ToList(), count);
+            else
+                return Tuple.Create(customers.OrderByDescending(p => p.DOB).Skip(skip).Take(take).ToList(), count);
+
 
         }
+
     }
 }

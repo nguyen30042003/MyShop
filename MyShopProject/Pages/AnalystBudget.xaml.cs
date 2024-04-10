@@ -24,5 +24,7 @@ namespace MyShopProject.Pages
         {
             InitializeComponent();
         }
+
+
     }
 }

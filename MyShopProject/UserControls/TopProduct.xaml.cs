@@ -41,13 +41,13 @@ namespace MyShopProject.UserControls
         public static readonly DependencyProperty PriceProperty =
             DependencyProperty.Register("Price", typeof(String), typeof(TopProduct));
 
-        public String IsLevelUp
+        public String Quantity
         {
-            get { return (String)GetValue(IsLevelUpProperty); }
-            set { SetValue(IsLevelUpProperty, value); }
+            get { return (String)GetValue(QuantityProperty); }
+            set { SetValue(QuantityProperty, value); }
         }
-        public static readonly DependencyProperty IsLevelUpProperty =
-            DependencyProperty.Register("IsLevelUp", typeof(String), typeof(TopProduct));
+        public static readonly DependencyProperty QuantityProperty =
+            DependencyProperty.Register("Quantity", typeof(String), typeof(TopProduct));
 
         public ImageSource Flag
         {

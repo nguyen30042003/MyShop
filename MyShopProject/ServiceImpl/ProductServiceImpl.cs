@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Wordprocessing;
+﻿using DocumentFormat.OpenXml.Vml;
+using DocumentFormat.OpenXml.Wordprocessing;
 using MyShopProject.Model;
 using MyShopProject.Repository;
 using MyShopProject.Service;
@@ -47,7 +48,7 @@ namespace MyShopProject.ServiceImpl
             return true;
         }
 
-        public Tuple<List<Product>, int> findAllPage(DateTime start, DateTime end, int skip, int take, int min = 0, int max = int.MaxValue, string name = "", int sortOption = 1)
+        public Tuple<List<Product>, int> findAllPage(DateTime start, DateTime end, int skip, int take, int min, int max = int.MaxValue, string name = "", int sortOption = 1)
         {
             var products = IProductRepository.Instance.findAll()
                 .Where(p =>
@@ -106,6 +107,25 @@ namespace MyShopProject.ServiceImpl
 
         public List<Product> findAll() {
             return IProductRepository.Instance.findAll();
+        }
+
+        public List<Product> topFiveProductRunOut()
+        {
+            List<Product> allProducts = findAll();
+
+            allProducts.Sort((p1, p2) => p1.Quantity.Value.CompareTo(p2.Quantity.Value));
+            List<Product> topFiveProducts = new List<Product>();
+            if (allProducts.Count >= 5)
+            {
+                topFiveProducts = allProducts.Take(5).ToList();
+            }
+            else
+            {
+                topFiveProducts = allProducts.Take(allProducts.Count).ToList();
+            }
+            
+
+            return topFiveProducts;
         }
     }
 }

@@ -8,51 +8,79 @@
          xmlns:uc="clr-namespace:MyShopProject.UserControls"
         mc:Ignorable="d"
         DataContext="{StaticResource CategoryManagerVM}"
-        Title="CategoryManager" Height="450" Width="800">
-    <Border Background="White" Style="{StaticResource mainBorder}" Margin="20 10 20 10">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Border Margin="10 10 10 0" Grid.RowSpan="3" Grid.Column="0"  Background="Wheat" CornerRadius="5" >
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" TextAlignment="Center" Text="List Product" Foreground="Black" FontSize="20" HorizontalAlignment="Center"/>
-                    <DataGrid ItemsSource="{Binding ListCategory}" SelectedItem="{Binding SelectedCategory}" Grid.Row="1" AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid">
-                        <DataGrid.Columns>
+        Title="CategoryManager" Height="450" Width="800"  Background="#151f2d">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Border Margin="10" Grid.RowSpan="3" Background="#1e2e44" Grid.Column="0" CornerRadius="5" >
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" TextAlignment="Center" Text="List Category" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
+                <DataGrid ItemsSource="{Binding ListCategory}" SelectedItem="{Binding SelectedCategory}" Grid.Row="1" AutoGenerateColumns="False" Background="#1e2e44" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid">
+                    <DataGrid.Columns>
 
-                            <DataGridTextColumn Header="ID Category" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding ID}"/>
+                        <DataGridTextColumn Header="ID Category" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding ID}"/>
 
-                            <DataGridTextColumn Header="Name Category" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Name Category" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
 
 
-                            <DataGridTemplateColumn Header="Edit" IsReadOnly="True" Width="70">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <uc:CustomButton ClickCommand="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.DeleteCategory_Click}" nameButton="Delete"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </Border>
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="Add Category" TextAlignment="Center"/>
-            <StackPanel Orientation="Horizontal" Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Center" Margin="0 30 0 0">
-                <TextBox Text="{Binding tbCategoryName}" Style="{StaticResource customTextbox}" Margin="5 0 0 0" Width="150" Height="36"/>
-                <uc:CustomButton ClickCommand="{Binding AddCategory_Click}" Grid.Column="1" Grid.Row="1" nameButton="Add Product" Width="100" Height="50" Grid.RowSpan="2" />
-            </StackPanel>
-        </Grid>
-    </Border>
+                        <DataGridTemplateColumn Header="Edit" IsReadOnly="True" Width="70">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <uc:CustomButton ClickCommand="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.DeleteCategory_Click}" nameButton="Delete"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Grid.Row="2"  Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button  Style="{StaticResource pagingButton}" Command="{Binding previousPage}" CommandParameter="Previous">
+                        <Icon:PackIconMaterial Kind="ChevronLeft"/>
+                    </Button>
+                    <ItemsControl ItemsSource="{Binding PageNumbers}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource pagingButton}" Content="{Binding}" Command="{Binding DataContext.NavigateToPageCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"  CommandParameter="{Binding}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <Button Command="{Binding nextPage}" Style="{StaticResource pagingButton}"  CommandParameter="Next">
+                        <Icon:PackIconMaterial Kind="ChevronRight"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+        </Border>
+        <Border  Margin="10" Style="{StaticResource mainBorder}"  Grid.Column="1">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" TextAlignment="Center" Text="Add Category" Foreground="White" FontSize="20" HorizontalAlignment="Center" Margin="0,-11,0,12"/>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="Name" Foreground="White" VerticalAlignment="Center"/>
+                    <TextBox Margin="5" VerticalAlignment="Top" Grid.Row="1" Text="{Binding tbCategoryName}" Style="{StaticResource customTextbox}" Width="150" Height="36"/>
+                </StackPanel>
+                <uc:CustomButton VerticalAlignment="Top" ClickCommand="{Binding AddCategory_Click}" Grid.Row="2" nameButton="Add Product" Width="100" Height="40" Grid.RowSpan="2" />
+            </Grid>
+
+
+        </Border>
+    </Grid>
 </Window>
