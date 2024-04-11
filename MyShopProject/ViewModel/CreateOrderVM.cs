@@ -78,7 +78,7 @@ namespace MyShopProject.ViewModel
             {
                 newOrder.Item = items;
                 newOrder.IDCustomer = customer.ID;
-                newOrder.CreateDate = DateTime.Today.AddDays(-5);
+                newOrder.CreateDate = DateTime.Now;
                 Click_Handler.Invoke();
             });
         }

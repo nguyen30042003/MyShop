@@ -164,20 +164,23 @@
     <Compile Include="Pages\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DetailOrder.xaml.cs">
+      <DependentUpon>DetailOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\OrderManager.xaml.cs">
       <DependentUpon>OrderManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\.xaml.cs">
-      <DependentUpon>ProductReport.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\ProductInfo.xaml.cs">
       <DependentUpon>ProductInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProductManager.xaml.cs">
       <DependentUpon>ProductManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductReport.xaml.cs">
+      <DependentUpon>ProductReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Setting.xaml.cs">
       <DependentUpon>Setting.xaml</DependentUpon>
@@ -228,11 +231,13 @@
     <Compile Include="ViewModel\CreateOrderVM.cs" />
     <Compile Include="ViewModel\CustomerManagerVM.cs" />
     <Compile Include="ViewModel\DashBoardVM.cs" />
+    <Compile Include="ViewModel\DetailOrderVM.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="ViewModel\MainWidownVM.cs" />
     <Compile Include="ViewModel\OrderManagerVM.cs" />
     <Compile Include="ViewModel\ProductInfoVM.cs" />
     <Compile Include="ViewModel\ProductManagerVM.cs" />
+    <Compile Include="ViewModel\ProductReportVM.cs" />
     <Compile Include="ViewModel\UpdateCustomerVM.cs" />
     <Compile Include="ViewModel\UpdateProductVM.cs" />
     <Page Include="MainWindow.xaml">
@@ -275,6 +280,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\DetailOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -283,15 +292,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ProductReport.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\ProductInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ProductManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProductReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

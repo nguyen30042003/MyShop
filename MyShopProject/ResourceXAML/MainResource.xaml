@@ -12,4 +12,5 @@
     <viewmodel:CreateOrderVM x:Key="CreateOrderVM"></viewmodel:CreateOrderVM>
     <viewmodel:CustomerManagerVM x:Key="CustomerManagerVM"></viewmodel:CustomerManagerVM>
     <viewmodel:DashBoardVM x:Key="DashBoardVM"></viewmodel:DashBoardVM>
+    <viewmodel:ProductReportVM x:Key="ProductReportVM"></viewmodel:ProductReportVM>
 </ResourceDictionary>

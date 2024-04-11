@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\phamm\source\repos\MyShop\MyShopProject\obj\Debug\
+C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\
 MyShopProject
 none
 false
 DEBUG;TRACE
-C:\Users\phamm\source\repos\MyShop\MyShopProject\App.xaml
-20-197880678
+C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\App.xaml
+21183973517
 2739969757
-72-881028150
-30760260659
-MainWindow.xaml;Pages\AddCustomer.xaml;Pages\AddProduct.xaml;Pages\AnalystBudget.xaml;Pages\CategoryManager.xaml;Pages\CreateOrder.xaml;Pages\CustomerManager.xaml;Pages\Dashboard.xaml;Pages\Login.xaml;Pages\OrderManager.xaml;Pages\Product.xaml;Pages\ProductInfo.xaml;Pages\ProductManager.xaml;Pages\Setting.xaml;ResourceXAML\MainResource.xaml;UserControls\CustomButton.xaml;UserControls\InfoCard.xaml;UserControls\MenuButton.xaml;UserControls\ProductCard.xaml;UserControls\TopProduct.xaml;
+751733633945
+30368474595
+MainWindow.xaml;Pages\AddCustomer.xaml;Pages\AddProduct.xaml;Pages\AnalystBudget.xaml;Pages\CategoryManager.xaml;Pages\CreateOrder.xaml;Pages\CustomerManager.xaml;Pages\Dashboard.xaml;Pages\DetailOrder.xaml;Pages\Login.xaml;Pages\OrderManager.xaml;Pages\ProductInfo.xaml;Pages\ProductManager.xaml;Pages\ProductReport.xaml;Pages\Setting.xaml;ResourceXAML\MainResource.xaml;UserControls\CustomButton.xaml;UserControls\InfoCard.xaml;UserControls\MenuButton.xaml;UserControls\ProductCard.xaml;UserControls\TopProduct.xaml;
 
 True
 

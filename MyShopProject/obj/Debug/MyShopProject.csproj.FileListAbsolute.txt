@@ -300,3 +300,5 @@ C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\MyShopProject.exe
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\MyShopProject.pdb
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\ProductReport.g.cs
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\ProductReport.baml
+C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\DetailOrder.g.cs
+C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\DetailOrder.baml

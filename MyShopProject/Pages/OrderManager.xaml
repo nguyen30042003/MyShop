@@ -63,7 +63,7 @@
             </StackPanel>
         </Grid>
         <Border Grid.Row="2" Margin="20 0 20 10" Style="{StaticResource mainBorder}">
-            <DataGrid Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding orderList}"  AutoGenerateColumns="False" Background="#1e2e44"  CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid">
+            <DataGrid Style="{DynamicResource DataGridStyle1}" SelectedItem="{Binding SelectedOrder}"  ItemsSource="{Binding orderList}"  AutoGenerateColumns="False" Background="#1e2e44"  CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="membersDataGrid">
                 <DataGrid.Columns>
 
                     <DataGridTextColumn Header="ID" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding ID}"/>
@@ -76,8 +76,8 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Style="{StaticResource gridRemoveButton}">
-                                        <Icon:PackIconMaterial Kind="Delete" Background="Black" Style="{StaticResource girdButtonIcon}"/>
+                                    <Button Style="{StaticResource gridRemoveButton}"  Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.DetailOrder_Click}">
+                                        <Icon:PackIconMaterial Kind="BookEdit" Background="Black" Style="{StaticResource girdButtonIcon}"/>
                                     </Button>
                                 </StackPanel>
                             </DataTemplate>

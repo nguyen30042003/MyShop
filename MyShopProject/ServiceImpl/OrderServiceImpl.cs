@@ -108,6 +108,40 @@ namespace MyShopProject.ServiceImpl
    
             return Tuple.Create(dataProfit,seriesLabel);
         }
+
+        public Tuple<ObservableCollection<Product>, ObservableCollection<int>> reportProductBestSellerByToday( )
+        {
+            ObservableCollection<Product> products = new ObservableCollection<Product>();
+            ObservableCollection<int> quantitys = new ObservableCollection<int>();
+            products = new ObservableCollection<Product>(IOrderRepository.Instance.ProductBestSell(DateTime.Now, DateTime.Now).Item1);
+            quantitys = new ObservableCollection<int>(IOrderRepository.Instance.ProductBestSell(DateTime.Now, DateTime.Now).Item2);
+            return Tuple.Create(products,quantitys);
+        }
+        public Tuple<ObservableCollection<Product>, ObservableCollection<int>> reportProductBestSellerByWeek()
+        {
+            DateTime startDate = DateTime.Now.AddDays(-7);
+            DateTime endDate = DateTime.Now;
+            ObservableCollection<Product> products = new ObservableCollection<Product>(IOrderRepository.Instance.ProductBestSell(startDate, endDate).Item1);
+            ObservableCollection<int> quantities = new ObservableCollection<int>(IOrderRepository.Instance.ProductBestSell(startDate, endDate).Item2);
+            return Tuple.Create(products, quantities);
+        }
+        public Tuple<ObservableCollection<Product>, ObservableCollection<int>> reportProductBestSellerByMonth()
+        {
+            DateTime startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            DateTime endDate = startDate.AddMonths(1).AddDays(-1);
+            ObservableCollection<Product> products = new ObservableCollection<Product>(IOrderRepository.Instance.ProductBestSell(startDate, endDate).Item1);
+            ObservableCollection<int> quantities = new ObservableCollection<int>(IOrderRepository.Instance.ProductBestSell(startDate, endDate).Item2);
+            return Tuple.Create(products, quantities);
+        }
+        public Tuple<ObservableCollection<Product>, ObservableCollection<int>> reportProductBestSellerByYear()
+        {
+            DateTime startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            DateTime endDate = startDate.AddMonths(1).AddDays(-1);
+            ObservableCollection<Product> products = new ObservableCollection<Product>(IOrderRepository.Instance.ProductBestSell(startDate, endDate).Item1);
+            ObservableCollection<int> quantities = new ObservableCollection<int>(IOrderRepository.Instance.ProductBestSell(startDate, endDate).Item2);
+            return Tuple.Create(products, quantities);
+        }
+
         public Tuple<ObservableCollection<double>, ObservableCollection<string>> profitByMonth()
         {
             ObservableCollection<double> dataProfit = new ObservableCollection<double>();

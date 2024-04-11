@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MyShopProject.Pages
 {
     /// <summary>
-    /// Interaction logic for Product.xaml
+    /// Interaction logic for ProductReport.xaml
     /// </summary>
-    public partial class Product : UserControl
+    public partial class ProductReport : UserControl
     {
-        public Product()
+        public ProductReport()
         {
             InitializeComponent();
         }

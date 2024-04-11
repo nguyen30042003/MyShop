@@ -30,7 +30,8 @@ namespace MyShopProject.ViewModel
         public String MaxPrice { get; set; } = "";
         private ObservableCollection<Order> _orderList { get; set; }
         public ObservableCollection<Order> orderList { get => _orderList; set { _orderList = value; OnPropertyChanged(nameof(orderList)); } }
-
+        public Order SelectedOrder { get; set; }
+        public ICommand DetailOrder_Click { get; set; }
         public ICommand NavigateToPageCommand { get; set; }
         public ICommand Sort_Click { get; set; }
         public ICommand previousPage { get; set; }
@@ -56,6 +57,10 @@ namespace MyShopProject.ViewModel
             Search_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
                 loadOrder();
             });
+            DetailOrder_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
+                getDetail(SelectedOrder);
+
+            });
             CreateOrder_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
                 SwitchToCreateOrderPage();
             });
@@ -76,7 +81,12 @@ namespace MyShopProject.ViewModel
                 }
             });
         }
-
+        private void getDetail(Order o)
+        {
+            Window mainWindow = Application.Current.MainWindow;
+            MainWidownVM mainWidownVM = (MainWidownVM)mainWindow.DataContext;
+            mainWidownVM.orderDetail_Click.Execute(o);
+        }
         public void loadOrder()
         {
             currentPage = 1;

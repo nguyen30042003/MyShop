@@ -25,6 +25,8 @@ namespace MyShopProject.ViewModel {
         public ICommand quit_Click { get; set; }
         public ICommand customerManager_Click { get; set; }
         public ICommand productInfo_Click { get; set; }
+        public ICommand orderDetail_Click { get; set; }
+        public ICommand productReport_Click {  get; set; }
         public UserControl content { get; set; }
         public BaseViewModel viewModel { get; set; }
 
@@ -41,15 +43,16 @@ namespace MyShopProject.ViewModel {
             analystBudget_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new AnalystBudget()));
             customerManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new CustomerManager()));
             productInfo_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductInfo((Model.Product)p)));
-            
-            LoadLastOpenedControl();
+            productReport_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductReport()));
+            orderDetail_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new DetailOrder((Model.Order)p))); 
+           // LoadLastOpenedControl();
         }
         private void NavigateToPage(UserControl page)
         {
             content = page;
         }
         private void Quit() {
-            SaveLastOpenedControl(content.GetType());
+            //SaveLastOpenedControl(content.GetType());
             Application.Current.Shutdown();
         }
 

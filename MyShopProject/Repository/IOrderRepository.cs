@@ -82,11 +82,6 @@ namespace MyShopProject.Repository
             }
             return order;
         }
-
-
-
-
-
         public List<Order> findByName(string name)
         {
             List<Customer> customers = ICustomerRepository.Instance.findByName(name);
@@ -177,6 +172,42 @@ namespace MyShopProject.Repository
                 }
             }
             return total;
+        }
+
+
+        public Tuple<List<Product>, List<int>> ProductBestSell(DateTime previousDate, DateTime lastDate)
+        {
+            List<Order> orders = findAll();
+            List<Product> products = new List<Product>();
+            List<int> quantities = new List<int>();
+
+            foreach (var order in orders)
+            {
+                if (order.CreateDate >= previousDate.Date && order.CreateDate <= lastDate.Date)
+                {
+                    foreach (var item in order.Item)
+                    {
+                        int index = products.FindIndex(p => p.ID == item.IDProduct);
+                        if (index != -1)
+                        {
+                            // Product already exists, update its quantity
+                            quantities[index] += item.Quantity.Value;
+                        }
+                        else
+                        {
+                            // Product doesn't exist, add it to the list
+                            products.Add(item.Product);
+                            quantities.Add(item.Quantity.Value);
+                        }
+                    }
+                }
+            }
+
+            // Sort products by quantity sold
+            var sortedProducts = products.OrderByDescending(p => quantities[products.IndexOf(p)]).ToList();
+            var sortedQuantities = quantities.OrderByDescending(q => q).ToList();
+
+            return Tuple.Create(sortedProducts, sortedQuantities);
         }
     }
 }

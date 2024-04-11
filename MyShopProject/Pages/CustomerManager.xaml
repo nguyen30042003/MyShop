@@ -83,7 +83,7 @@
                                     <Button  Style="{StaticResource gridRemoveButton}" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.DeleteCustomer_Click}">
                                         <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource girdButtonIcon}"/>
                                     </Button>
-                                    <Button Margin="10 0 0 0    "  Style="{StaticResource gridEditButton}">
+                                    <Button Margin="10 0 0 0"  Style="{StaticResource gridEditButton}" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.UpdateCustomer_Click}">
                                         <Icon:PackIconMaterial Kind="AccountEdit" Style="{StaticResource girdButtonIcon}"/>
                                     </Button>
                                 </StackPanel>

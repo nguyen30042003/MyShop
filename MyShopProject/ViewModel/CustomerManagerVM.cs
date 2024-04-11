@@ -20,6 +20,7 @@ namespace MyShopProject.ViewModel
         public Visibility TextVisible { get; set; }
         public ICommand CreateCustomer_Click {  get; set; }
         public ICommand DeleteCustomer_Click { get; set; }
+        public ICommand UpdateCustomer_Click { get; set; }
         public ICommand NavigateToPageCommand { get; set; }
         public ICommand Sort_Click { get; set; }
         public ICommand previousPage { get; set; }
@@ -56,6 +57,10 @@ namespace MyShopProject.ViewModel
             CreateCustomer_Click = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
                 SwitchToCreateOrderPage();
+            });
+            UpdateCustomer_Click = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            {
+                OpenUpdateCustomerDialog();
             });
             NavigateToPageCommand = new RelayCommand<int>((page) => true, (page) => NavigateToPage(page));
             previousPage = new RelayCommand<Object>((p) => { return true; }, (p) =>
@@ -95,8 +100,28 @@ namespace MyShopProject.ViewModel
                 
             });
             Sort_Click = new RelayCommand<Object>((p) => { return true; }, (p) => {
-                //loadCustomer();
+                loadCustomer();
             });
+        }
+        private void OpenUpdateCustomerDialog()
+        {
+            AddCustomer addCustomer = new AddCustomer();
+
+            var updateCustomerVM = new UpdateCustomerVM(SelectedCustomer);
+            updateCustomerVM.Click_Handler += () => {
+                addCustomer.DialogResult = true;
+            };
+            addCustomer.DataContext = updateCustomerVM;
+
+            if (addCustomer.ShowDialog() == true)
+            {
+                Customer customer = updateCustomerVM.newCustomer;
+                if(CustomerServiceImpl.Instance.update(customer))
+                {
+                    MessageBox.Show("Update success");
+                    loadCustomer();
+                }
+            }
         }
         private void NavigateToPage(int p)
         {

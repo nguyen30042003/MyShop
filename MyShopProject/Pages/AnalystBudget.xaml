@@ -36,7 +36,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
+                <TextBlock Text="PROFIT CHART" Style="{StaticResource titleText}"/>
                 
                 <Grid Grid.Row="1" Grid.ColumnSpan="2">
 
@@ -80,7 +80,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
+                <TextBlock Text="REVENEW CHART" Style="{StaticResource titleText}"/>
                 
 
                 <Grid Grid.Row="1" Grid.ColumnSpan="2">
@@ -125,7 +125,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="CHART REVENEW" Style="{StaticResource titleText}"/>
+                <TextBlock Text="QUANTITY PRODUCT SOLD CHART" Style="{StaticResource titleText}"/>
                
                 <Grid Grid.Row="1" Grid.ColumnSpan="2">
 
@@ -177,7 +177,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="TOP PRODUCT" Style="{StaticResource titleText}"/>
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="REVENEW AND PROFIT" Style="{StaticResource titleText}"/>
                         <Grid Grid.Row="1" Grid.ColumnSpan="2">
                             <lvc:PieChart LegendLocation="Bottom" Hoverable="True" InnerRadius="10" Margin="0 10 0 0" Series="{Binding seriesTurnoverAndProfitCollection}">
                                 <lvc:PieChart.DataTooltip>
