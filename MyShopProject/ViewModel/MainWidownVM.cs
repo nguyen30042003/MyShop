@@ -13,6 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Xml.Serialization;
 using System.Xml;
+using MyShopProject.Repository;
 
 namespace MyShopProject.ViewModel {
     public class MainWidownVM : BaseViewModel
@@ -35,6 +36,8 @@ namespace MyShopProject.ViewModel {
 
         public MainWidownVM()
         {
+            ExcelDataProcessor excelDataProcessor = new ExcelDataProcessor();
+            excelDataProcessor.ImportDataFromExcel();
             quit_Click = new RelayCommand<Object>((p) => { return true; }, (p) => Quit());
             dashboard_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Dashboard()));
             productManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductManager()));
@@ -45,14 +48,14 @@ namespace MyShopProject.ViewModel {
             productInfo_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductInfo((Model.Product)p)));
             productReport_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductReport()));
             orderDetail_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new DetailOrder((Model.Order)p))); 
-           // LoadLastOpenedControl();
+           LoadLastOpenedControl();
         }
         private void NavigateToPage(UserControl page)
         {
             content = page;
         }
         private void Quit() {
-            //SaveLastOpenedControl(content.GetType());
+            SaveLastOpenedControl(content.GetType());
             Application.Current.Shutdown();
         }
 

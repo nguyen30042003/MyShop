@@ -26,7 +26,7 @@ namespace MyShopProject.ViewModel
         public ICommand previousPage { get; set; }
         public ICommand nextPage { get; set; }
         public ICommand Search_Click { get; set; }
-        public DateTime StartDate { get; set; } = DateTime.Parse($"01/01/{DateTime.Now.Year}");
+        public DateTime StartDate { get; set; } = DateTime.Parse($"01/01/1000");
         public DateTime EndDate { get; set; } = DateTime.Now.AddDays(1);
         public String Search { get; set; } = "";
         public List<string> SortOptions { get; set; }

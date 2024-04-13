@@ -302,3 +302,6 @@ C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\ProductReport.g.cs
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\ProductReport.baml
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\DetailOrder.g.cs
 C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\obj\Debug\Pages\DetailOrder.baml
+C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\bin\Debug\ExcelDataReader.dll
+C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\bin\Debug\ExcelDataReader.pdb
+C:\HCMUS\Nam 3\C#\MyShopNew\MyShopProject\bin\Debug\ExcelDataReader.xml
