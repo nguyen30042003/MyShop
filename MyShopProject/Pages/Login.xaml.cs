@@ -22,6 +22,7 @@ namespace MyShopProject.Pages {
         public Login() {
             InitializeComponent();
             LoginViewModel = new LoginVM();
+            passwordbox.Password = LoginViewModel.password;
             DataContext = LoginViewModel;
         }
 

@@ -100,7 +100,7 @@ namespace MyShopProject.ViewModel
         }
         private void getDetail(Order o)
         {
-            Window mainWindow = Application.Current.MainWindow;
+            Window mainWindow = Application.Current.Windows[0];
             MainWidownVM mainWidownVM = (MainWidownVM)mainWindow.DataContext;
             mainWidownVM.orderDetail_Click.Execute(o);
         }

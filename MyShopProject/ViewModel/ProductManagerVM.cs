@@ -135,8 +135,8 @@ namespace MyShopProject.ViewModel {
         }
 
         private void getProductInfo(Model.Product p) {
-            Window mainWindow = System.Windows.Application.Current.MainWindow;
-            MainWidownVM mainWidownVM = (MainWidownVM)mainWindow.DataContext;
+            Window mainWindow = System.Windows.Application.Current.Windows[0];
+            MainWidownVM mainWidownVM = (MainWidownVM) mainWindow.DataContext;
             mainWidownVM.productInfo_Click.Execute(p);
         }
 

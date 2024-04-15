@@ -37,7 +37,7 @@ namespace MyShopProject.ViewModel
         }
         private void ReturnToProductManager()
         {
-            Window mainWindow = Application.Current.MainWindow;
+            Window mainWindow = Application.Current.Windows[0];
             MainWidownVM mainWidownVM = (MainWidownVM)mainWindow.DataContext;
             mainWidownVM.orderManager_Click.Execute(null);
         }

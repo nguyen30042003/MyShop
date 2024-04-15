@@ -8,9 +8,16 @@
         xmlns:uc="clr-namespace:MyShopProject.UserControls"
         Title="Login" Height="450" Width="300" Background="#151f2d"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
         <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -29,6 +36,14 @@
             <TextBlock Text="Password" Margin="0 0 0 2"/>
             <PasswordBox x:Name="passwordbox" PasswordChanged="ChangePassword" VerticalContentAlignment="Center" Height="35" Style="{StaticResource customPasswordbox}"/>
         </StackPanel>
-        <uc:CustomButton nameButton="Login" Margin="10 5" Height="40" Grid.Row="5" ClickCommand="{Binding LoginCommand}"/>
+        <StackPanel Margin="10 0 10 5" Grid.Row="5">
+            <TextBlock Text="Server Name" Margin="0 0 0 2"/>
+            <TextBox Text="{Binding Server}" x:Name="Server" VerticalContentAlignment="Center" Height="35" Style="{StaticResource customTextbox}"/>
+        </StackPanel>
+        <StackPanel Margin="10 0 10 5" Grid.Row="6">
+            <TextBlock Text="Database name" Margin="0 0 0 2"/>
+            <TextBox Text="{Binding Database}" x:Name="Database" VerticalContentAlignment="Center" Height="35" Style="{StaticResource customTextbox}"/>
+        </StackPanel>
+        <uc:CustomButton nameButton="Login" Margin="10 5" Height="40" Grid.Row="7" ClickCommand="{Binding LoginCommand}"/>
     </Grid>
 </Window>
