@@ -90,8 +90,8 @@ namespace MyShopProject.ViewModel
                 },
                  new PieSeries
                 {
-                     Title = "Expense",
-                     Values = new ChartValues<ObservableValue> { new ObservableValue(dataTurnover[0] - dataProfit[0]) },
+                     Title = "Turnover",
+                     Values = new ChartValues<ObservableValue> { new ObservableValue(dataTurnover[0]) },
                      DataLabels = true
                 }
             };
@@ -179,8 +179,8 @@ namespace MyShopProject.ViewModel
                 },
                  new PieSeries
                 {
-                     Title = "Expense",
-                     Values = new ChartValues<ObservableValue> { new ObservableValue(dataTurnover.Sum() - dataProfit.Sum()) },
+                     Title = "Turnover",
+                     Values = new ChartValues<ObservableValue> { new ObservableValue(dataTurnover.Sum()) },
                      DataLabels = true
                 }
             };

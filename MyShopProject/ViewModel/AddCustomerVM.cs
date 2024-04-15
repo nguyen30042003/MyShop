@@ -28,6 +28,7 @@ namespace MyShopProject.ViewModel
             });
             AddCustomer_Click = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
+                
                 if(isGender == true)
                 {
                     newCustomer.Gender = "Male";

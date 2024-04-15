@@ -33,11 +33,11 @@ namespace MyShopProject.ViewModel {
 
         private string lastOpenedControlKey = "LastOpenedControl";
         private string lastProductKey = "LastProductID";
+        private string lastOrderKey = "LastOrderID";
 
         public MainWidownVM()
         {
-            ExcelDataProcessor excelDataProcessor = new ExcelDataProcessor();
-            excelDataProcessor.ImportDataFromExcel();
+            
             quit_Click = new RelayCommand<Object>((p) => { return true; }, (p) => Quit());
             dashboard_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new Dashboard()));
             productManager_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductManager()));
@@ -48,7 +48,7 @@ namespace MyShopProject.ViewModel {
             productInfo_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductInfo((Model.Product)p)));
             productReport_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new ProductReport()));
             orderDetail_Click = new RelayCommand<Object>((p) => { return true; }, (p) => NavigateToPage(new DetailOrder((Model.Order)p))); 
-           LoadLastOpenedControl();
+            LoadLastOpenedControl();
         }
         private void NavigateToPage(UserControl page)
         {
@@ -67,6 +67,11 @@ namespace MyShopProject.ViewModel {
                 ProductInfoVM productInfoVM = content.DataContext as ProductInfoVM;
                 config.AppSettings.Settings[lastProductKey].Value = productInfoVM.product.ID.ToString();
             }
+            else if(controlType == typeof(DetailOrder))
+            {
+                DetailOrderVM detailOrderVM = content.DataContext as DetailOrderVM;
+                config.AppSettings.Settings[lastOrderKey].Value = detailOrderVM.order.ID.ToString();
+            }
             config.Save(ConfigurationSaveMode.Minimal);
             ConfigurationManager.RefreshSection("appSettings");
         }
@@ -83,6 +88,11 @@ namespace MyShopProject.ViewModel {
                         string lastProductID = ConfigurationManager.AppSettings[lastProductKey];
                         content = new ProductInfo(ProductServiceImpl.Instance.findById(int.Parse(lastProductID)));
                     }
+                    else if(controlType == typeof(DetailOrder))
+                    {
+                        string lastOrderID = ConfigurationManager.AppSettings[lastOrderKey];
+                        content = new DetailOrder(OrderServiceImpl.Instance.findById(int.Parse(lastOrderID)));
+                    }    
                     else
                         content = (UserControl)Activator.CreateInstance(controlType);
                     return;

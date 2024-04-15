@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace MyShopProject.ViewModel
@@ -26,12 +27,21 @@ namespace MyShopProject.ViewModel
         public ICommand previousPage { get; set; }
         public ICommand nextPage { get; set; }
         public ICommand Search_Click { get; set; }
+        public ICommand Import_Click { get; set; }
+        
+        public ICommand perPage_Click { get; set; }
         public DateTime StartDate { get; set; } = DateTime.Parse($"01/01/1000");
         public DateTime EndDate { get; set; } = DateTime.Now.AddDays(1);
         public String Search { get; set; } = "";
         public List<string> SortOptions { get; set; }
         public int selectedSortOptions { get; set; } = 0;
-
+        private string _PerPage {  get; set; }
+        public string perPage { get => _PerPage;
+            set {
+                _PerPage = value;
+                OnPropertyChanged(nameof(_PerPage));
+            }
+        }
         private ObservableCollection<Customer> _customerList { get; set; }
         public ObservableCollection<Customer> customerList {  get => _customerList; set { _customerList = value; OnPropertyChanged(nameof(customerList)); } }
 
@@ -49,8 +59,15 @@ namespace MyShopProject.ViewModel
 
         public Customer SelectedCustomer { get; set; }
         public CustomerManagerVM() {
+            
             SortOptions = new List<string>() { "Ascending", "Descending" };
             loadCustomer();
+            perPage_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
+                _perPage = int.Parse(perPage);
+                loadCustomer();
+
+
+            });
             Search_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
                 loadCustomer();
             });
@@ -61,6 +78,19 @@ namespace MyShopProject.ViewModel
             UpdateCustomer_Click = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
                 OpenUpdateCustomerDialog();
+            });
+            Import_Click = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Excel Files (*.xls; *.xlsx)|*.xls; *.xlsx|All files (*.*)|*.*";
+                openFileDialog.ShowDialog();
+                string filename = openFileDialog.FileName;
+                if (filename != null)
+                {
+                    ExcelDataProcessor processor = new ExcelDataProcessor();
+                    processor.ImportDataFromExcel(filename);
+                    loadCustomer();
+                }    
             });
             NavigateToPageCommand = new RelayCommand<int>((page) => true, (page) => NavigateToPage(page));
             previousPage = new RelayCommand<Object>((p) => { return true; }, (p) =>
@@ -79,17 +109,17 @@ namespace MyShopProject.ViewModel
                 }
             });
             DeleteCustomer_Click = new RelayCommand<Object>((p) => { return true; }, (p) => {
-                MessageBoxResult result = MessageBox.Show("Do you want to delete customer information?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = System.Windows.MessageBox.Show("Do you want to delete customer information?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (result == MessageBoxResult.Yes)
                 {
                     if (CustomerServiceImpl.Instance.delete(SelectedCustomer))
                     {
-                        MessageBox.Show("Delete success");
+                        System.Windows.MessageBox.Show("Delete success");
                     }
                     else
                     {
-                        MessageBox.Show("Delete unSuccess");
+                        System.Windows.MessageBox.Show("Delete unSuccess");
                     }
                     NavigateToPage(1);
                 }
@@ -118,7 +148,7 @@ namespace MyShopProject.ViewModel
                 Customer customer = updateCustomerVM.newCustomer;
                 if(CustomerServiceImpl.Instance.update(customer))
                 {
-                    MessageBox.Show("Update success");
+                    System.Windows.MessageBox.Show("Update success");
                     loadCustomer();
                 }
             }
@@ -134,14 +164,11 @@ namespace MyShopProject.ViewModel
 
                 var pageResult = CustomerServiceImpl.Instance.findAllPage(StartDate, EndDate, skipCount, takeCount, Search, selectedSortOptions);
 
-                if (_totalItems != pageResult.Item2)
+                _totalItems = pageResult.Item2;
+                _totalPage = _totalItems / _perPage;
+                if (_totalItems % _perPage != 0)
                 {
-                    _totalItems = pageResult.Item2;
-                    _totalPage = _totalItems / _perPage;
-                    if (_totalItems % _perPage != 0)
-                    {
-                        _totalPage += 1;
-                    }
+                    _totalPage += 1;
                 }
 
                 customerList = new ObservableCollection<Model.Customer>(pageResult.Item1);
@@ -173,7 +200,7 @@ namespace MyShopProject.ViewModel
                 Customer newCustomer = addCustomerVM.newCustomer;
                 if (CustomerServiceImpl.Instance.save(newCustomer))
                 {
-                    MessageBox.Show("Add success");
+                    System.Windows.MessageBox.Show("Add success");
                     loadCustomer();
                 }
 

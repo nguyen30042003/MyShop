@@ -121,7 +121,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Button>
+                                                <Button Command="{Binding DataContext.deleteItem, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}">
                                                     <Icon:PackIconMaterial Kind="Delete" Background="Yellow"/>
                                                 </Button>
                                             </StackPanel>

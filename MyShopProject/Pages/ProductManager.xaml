@@ -28,12 +28,14 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <uc:CustomButton Grid.Column="0" nameButton="Category"  Width="100" Height="40" ClickCommand="{Binding Category_Click}" />
-            <uc:CustomButton Grid.Column="1" Margin="10 0 0 0" nameButton="Add product"  Width="100" Height="40" ClickCommand="{Binding Action_Click}" />
-
-            <StackPanel  Grid.Column="2" Margin="20 0 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <uc:CustomButton Grid.Column="0" nameButton="Category"  Width="80" Height="40" ClickCommand="{Binding Category_Click}" />
+            <uc:CustomButton Grid.Column="1" Margin="10 0 0 0" nameButton="Create product"  Width="80" Height="40" ClickCommand="{Binding Action_Click}" />
+            <uc:CustomButton Grid.Column="2" Margin="10 0 0 0" nameButton="Import data"  Width="80" Height="40" ClickCommand="{Binding Import_Click}" />
+            
+            <StackPanel  Grid.Column="3" Margin="5 0 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Price from" Margin="5 0" VerticalAlignment="Center" Foreground="White"/>
                     <TextBox Text="{Binding MinPrice}" Style="{StaticResource customTextbox}" VerticalContentAlignment="Center" Width="70"/>
@@ -47,22 +49,30 @@
                 <StackPanel Margin="10 0 0 0"  Orientation="Horizontal">
                     <TextBlock Text="Date from" Margin="5 0" VerticalAlignment="Center" Foreground="White"/>
                     <Border Background="White" Padding="2" CornerRadius="5">
-                        <DatePicker SelectedDate="{Binding StartDate}" BorderThickness="0" VerticalAlignment="Center"/>
+                        <DatePicker SelectedDate="{Binding StartDate}" Width="70" BorderThickness="0" VerticalAlignment="Center"/>
                     </Border>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="to" Margin="5 0" VerticalAlignment="Center" Foreground="White"/>
                     <Border Background="White" Padding="2" CornerRadius="5">
-                        <DatePicker  SelectedDate="{Binding EndDate}"  BorderThickness="0" VerticalAlignment="Center"/>
+                        <DatePicker  SelectedDate="{Binding EndDate}" Width="70" BorderThickness="0" VerticalAlignment="Center"/>
                     </Border>
                 </StackPanel>
 
                 <StackPanel Margin="10 0 0 0" Orientation="Horizontal">
-                    <TextBlock Text="Sort" Margin="5 0" VerticalAlignment="Center" Foreground="White"/>
-                    <ComboBox VerticalContentAlignment="Center" SelectedIndex="{Binding selectedSortOptions}" ItemsSource="{Binding SortOptions}" Width="100"/>
+                    <TextBlock Text="Category" Margin="5 5" VerticalAlignment="Center" Foreground="White"/>
+                    <ComboBox VerticalContentAlignment="Center" SelectedItem="{Binding category}" ItemsSource="{Binding categories}" Width="80">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <ComboBox Margin="5 0" VerticalContentAlignment="Center" SelectedIndex="{Binding selectedSortOptions}" ItemsSource="{Binding SortOptions}" Width="80"/>
                 </StackPanel>
-                <uc:CustomButton ClickCommand="{Binding Search_Click}" Margin="20 0 0 0" nameButton="Search"  Width="100" Height="40"/>
+                <uc:CustomButton ClickCommand="{Binding Search_Click}" Margin="10 0 0 0" nameButton="Search"  Width="100" Height="40"/>
             </StackPanel>
 
         </Grid>
@@ -110,29 +120,51 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
         </ListView>
-        <Grid Grid.Row="4" HorizontalAlignment="Center" Margin="0,10,0,10">
+        <Grid Grid.Row="4" Margin="0,10,10,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="220"/>
+            </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                <Button  Style="{StaticResource pagingButton}" Command="{Binding previousPage}" CommandParameter="Previous">
-                    <Icon:PackIconMaterial Kind="ChevronLeft"/>
-                </Button>
-                <ItemsControl ItemsSource="{Binding PageNumbers}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Button Style="{StaticResource pagingButton}" Content="{Binding}" Command="{Binding DataContext.NavigateToPageCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"  CommandParameter="{Binding}"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-                <Button Command="{Binding nextPage}" Style="{StaticResource pagingButton}"  CommandParameter="Next">
-                    <Icon:PackIconMaterial Kind="ChevronRight"/>
-                </Button>
-            </StackPanel>
+                    <Button  Style="{StaticResource pagingButton}" Command="{Binding previousPage}" CommandParameter="Previous">
+                        <Icon:PackIconMaterial Kind="ChevronLeft"/>
+                    </Button>
+                    <ItemsControl ItemsSource="{Binding PageNumbers}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource pagingButton}" Content="{Binding}" Command="{Binding DataContext.NavigateToPageCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"  CommandParameter="{Binding}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <Button Command="{Binding nextPage}" Style="{StaticResource pagingButton}"  CommandParameter="Next">
+                        <Icon:PackIconMaterial Kind="ChevronRight"/>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <TextBox Margin="10 10 5 10" Text="{Binding perPage}" Width="100" Height="40">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="FontSize" Value="16"/>
+                                <!-- Các setter khác nếu cần -->
+                            </Style>
+                        </TextBox.Style>
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <uc:CustomButton nameButton="Per page" ClickCommand="{Binding perPage_Click}" Margin="5 10 10 10"  Width="100" Height="40"/>
+                </StackPanel>
 
-        </Grid>
+            </Grid>
     </Grid>
 </UserControl>
 

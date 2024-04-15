@@ -26,8 +26,7 @@ namespace MyShopProject.ViewModel
                 {
                     ListCategory.Add(category);
                     MessageBox.Show("Add category success");
-                }    
-                MessageBox.Show("Add category unsuccess");
+                }
             });
 
             DeleteCategory_Click = new RelayCommand<object>((p) => { return true; }, (p) => {

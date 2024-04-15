@@ -23,6 +23,8 @@ namespace MyShopProject.ViewModel
     {
         public delegate void Handler();
         public event Handler Click_Handler;
+        
+        public ICommand deleteItem { get; set; }
         public ICommand addProduct_Click { get; set; }
         public ICommand payment_Click { get; set; }
         public List<Model.Product> products { get; set; }
@@ -73,9 +75,30 @@ namespace MyShopProject.ViewModel
                     newOrder.TotalPrice += item.Price;
                 }
             });
+            deleteItem = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            {
+                if (p is Item itemToDelete)
+                {
 
+                    items.Remove(itemToDelete);
+
+
+                    newOrder.TotalQuantity -= itemToDelete.Quantity;
+                    newOrder.TotalPrice -= itemToDelete.Price;
+
+                }
+            });
             payment_Click = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
+                foreach (var item in items)
+                {
+                    bool updated = ProductServiceImpl.Instance.updateQuantity(item.Product.ID, item.Quantity.Value);
+                    if (!updated)
+                    {
+                        MessageBox.Show("Insufficient stock for product: " + item.Product.Name);
+                        return;
+                    }
+                }
                 newOrder.Item = items;
                 newOrder.IDCustomer = customer.ID;
                 newOrder.CreateDate = DateTime.Now;

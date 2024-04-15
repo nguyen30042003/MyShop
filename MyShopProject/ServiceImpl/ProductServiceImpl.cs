@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Vml;
+﻿using DocumentFormat.OpenXml.Drawing.Diagrams;
+using DocumentFormat.OpenXml.Vml;
 using DocumentFormat.OpenXml.Wordprocessing;
 using MyShopProject.Model;
 using MyShopProject.Repository;
@@ -48,19 +49,37 @@ namespace MyShopProject.ServiceImpl
             return true;
         }
 
-        public Tuple<List<Product>, int> findAllPage(DateTime start, DateTime end, int skip, int take, int min, int max = int.MaxValue, string name = "", int sortOption = 1)
+        /*public Tuple<List<Product>, int> findAllPage(DateTime start, DateTime end, int skip, int take, int min, int max = int.MaxValue, string name = "", int sortOption = 1, Category category)
         {
-            var products = IProductRepository.Instance.findAll()
+            if(category != null)
+            {
+                var products = IProductRepository.Instance.findAll()
+                .Where(p =>
+                    ((p.PriceSale ?? 0) <= max && (p.PriceSale ?? 0) >= min)
+                    && (p.CreateDate <= end && p.CreateDate >= start)
+                    && p.Name.ToLower().Contains(name.ToLower()) &&
+                    p.IDCategory == category.ID);
+                int count = products.Count();
+                if (sortOption == 0)
+                    return Tuple.Create(products.OrderBy(p => p.PriceSale).Skip(skip).Take(take).ToList(), count);
+                else
+                    return Tuple.Create(products.OrderByDescending(p => p.PriceSale).Skip(skip).Take(take).ToList(), count);
+            }
+            else
+            {
+                var products = IProductRepository.Instance.findAll()
                 .Where(p =>
                     ((p.PriceSale ?? 0) <= max && (p.PriceSale ?? 0) >= min)
                     && (p.CreateDate <= end && p.CreateDate >= start)
                     && p.Name.ToLower().Contains(name.ToLower()));
-            int count = products.Count();
-            if (sortOption == 0)
-                return Tuple.Create(products.OrderBy(p => p.PriceSale).Skip(skip).Take(take).ToList(), count);
-            else
-                return Tuple.Create(products.OrderByDescending(p => p.PriceSale).Skip(skip).Take(take).ToList(), count);
-        }
+                int count = products.Count();
+                if (sortOption == 0)
+                    return Tuple.Create(products.OrderBy(p => p.PriceSale).Skip(skip).Take(take).ToList(), count);
+                else
+                    return Tuple.Create(products.OrderByDescending(p => p.PriceSale).Skip(skip).Take(take).ToList(), count);
+            }
+            
+        }*/
 
         public Product findById(int id)
         {
@@ -126,6 +145,53 @@ namespace MyShopProject.ServiceImpl
             
 
             return topFiveProducts;
+        }
+        public bool updateQuantity(int productId, int quantity)
+        {
+            Product productToUpdate = findById(productId);
+            if (productToUpdate != null)
+            {
+                if (productToUpdate.Quantity >= quantity)
+                {
+                    productToUpdate.Quantity -= quantity;
+                    return update(productToUpdate);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+        public Tuple<List<Product>, int> findAllPage(DateTime start, DateTime end, int skip, int take, int min, int max, string name, int sortOption, Model.Category category)
+        {
+            if (category != null)
+            {
+                var products = IProductRepository.Instance.findAll()
+                .Where(p =>
+                    ((p.PriceSale ?? 0) <= max && (p.PriceSale ?? 0) >= min)
+                    && (p.CreateDate <= end && p.CreateDate >= start)
+                    && p.Name.ToLower().Contains(name.ToLower()) &&
+                    p.IDCategory == category.ID);
+                int count = products.Count();
+                if (sortOption == 0)
+                    return Tuple.Create(products.OrderBy(p => p.PriceSale).Skip(skip).Take(take).ToList(), count);
+                else
+                    return Tuple.Create(products.OrderByDescending(p => p.PriceSale).Skip(skip).Take(take).ToList(), count);
+            }
+            else
+            {
+                var products = IProductRepository.Instance.findAll()
+                .Where(p =>
+                    ((p.PriceSale ?? 0) <= max && (p.PriceSale ?? 0) >= min)
+                    && (p.CreateDate <= end && p.CreateDate >= start)
+                    && p.Name.ToLower().Contains(name.ToLower()));
+                int count = products.Count();
+                if (sortOption == 0)
+                    return Tuple.Create(products.OrderBy(p => p.PriceSale).Skip(skip).Take(take).ToList(), count);
+                else
+                    return Tuple.Create(products.OrderByDescending(p => p.PriceSale).Skip(skip).Take(take).ToList(), count);
+            }
         }
     }
 }

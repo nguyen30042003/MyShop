@@ -36,7 +36,17 @@ namespace MyShopProject.ViewModel
         public ICommand Sort_Click { get; set; }
         public ICommand previousPage { get; set; }
         public ICommand nextPage { get; set; }
-
+        public ICommand perPage_Click { get; set; }
+        private string _PerPage { get; set; }
+        public string perPage
+        {
+            get => _PerPage;
+            set
+            {
+                _PerPage = value;
+                OnPropertyChanged(nameof(_PerPage));
+            }
+        }
         private ObservableCollection<int> _pageNumbers;
         public ObservableCollection<int> PageNumbers
         {
@@ -54,6 +64,12 @@ namespace MyShopProject.ViewModel
         {
             SortOptions = new List<string>() { "Ascending", "Descending" };
             loadOrder();
+            perPage_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
+                _perPage = int.Parse(perPage);
+                loadOrder();
+
+
+            });
             Search_Click = new RelayCommand<object>((p) => { return true; }, (p) => {
                 loadOrder();
             });
@@ -80,6 +96,7 @@ namespace MyShopProject.ViewModel
                     NavigateToPage(currentPage + 1);
                 }
             });
+
         }
         private void getDetail(Order o)
         {
@@ -120,14 +137,11 @@ namespace MyShopProject.ViewModel
                 var MinMaxValues = GetMinMax();
                 var pageResult = OrderServiceImpl.Instance.findAllPage(StartDate, EndDate, skipCount, takeCount, MinMaxValues.Item1, MinMaxValues.Item2, Search, selectedSortOptions);
 
-                if (_totalItems != pageResult.Item2)
+                _totalItems = pageResult.Item2;
+                _totalPage = _totalItems / _perPage;
+                if (_totalItems % _perPage != 0)
                 {
-                    _totalItems = pageResult.Item2;
-                    _totalPage = _totalItems / _perPage;
-                    if (_totalItems % _perPage != 0)
-                    {
-                        _totalPage += 1;
-                    }
+                    _totalPage += 1;
                 }
 
                 orderList = new ObservableCollection<Model.Order>(pageResult.Item1);
